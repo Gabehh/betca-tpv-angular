@@ -15,9 +15,9 @@
 >   * perfil **prod** mediante **Express**: `> ng build --prod` & `> node server.js`, en este caso ataca al API de Heroku
 
 This project was generated with  
-* Node version 8.15.0
-* Npm version: 6.7.0
-* [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+* Node version 12.14.1
+* Npm version: 6.13.4
+* [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
 ## Presentación
 Este proyecto es la práctica de Angular desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`, ya implementada, y se pretende ampliar con un conjunto de mejoras.  
