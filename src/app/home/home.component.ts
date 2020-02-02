@@ -12,6 +12,7 @@ import {CashierClosedComponent} from './cashier-closed/cashier-closed.component'
 import {CashierOpenedComponent} from './cashier-opened/cashier-opened.component';
 import {CashierClosureDialogComponent} from './cashier-opened/cashier/cashier-closure-dialog.component';
 import {UsersComponent} from './users/users.component';
+import {SystemService} from './system.service';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -20,13 +21,17 @@ import {UsersComponent} from './users/users.component';
 })
 export class HomeComponent {
   static URL = 'home';
+  backend: string;
 
   cashierClosed: boolean;
   username: string;
 
   constructor(private router: Router, private dialog: MatDialog,
               private tokensService: TokensService, private userService: UserService, private cashierService: CashierService,
-              private adminsService: AdminsService) {
+              private adminsService: AdminsService, private systemService: SystemService) {
+    systemService.readVersion().subscribe(
+      appInfo => this.backend = appInfo.version + '(' + appInfo.profile + ')(' + appInfo.build + ')'
+    );
     this.username = tokensService.getName();
     this.cashierClosed = true;
     this.cashier();

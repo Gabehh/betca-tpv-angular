@@ -14,7 +14,7 @@ import {UserService} from './home/users/user.service';
 import {AppMaterialModule} from './app-material.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SystemService} from './system.service';
+import {SystemService} from './home/system.service';
 
 @NgModule({
   imports: [
