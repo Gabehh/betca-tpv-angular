@@ -17,11 +17,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   displayedColumns = ['id', 'description', 'retailPrice', 'amount', 'discount', 'total', 'actions'];
   dataSource: MatTableDataSource<Shopping>;
 
-  private subscriptionDatasource: Subscription;
-  @ViewChild('code', {static: false}) private elementRef: ElementRef;
+  private subscriptionDataSource: Subscription;
+  @ViewChild('code', {static: true}) private elementRef: ElementRef;
 
   constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService) {
-    this.subscriptionDatasource = this.shoppingCartService.shoppingCartObservable().subscribe(
+    this.subscriptionDataSource = this.shoppingCartService.shoppingCartObservable().subscribe(
       data => {
         this.dataSource = new MatTableDataSource<Shopping>(data);
       }
@@ -114,16 +114,16 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.shoppingCartService.delete(shopping);
   }
 
-  add(code: string) {
-    this.shoppingCartService.add(code).subscribe(() => {
+  add(codeValue: string) {
+    this.shoppingCartService.add(codeValue).subscribe(() => {
       },
       () => {
         const dialogRef = this.dialog.open(ArticleQuickCreationDialogComponent);
-        dialogRef.componentInstance.article = {code: code, description: undefined, retailPrice: undefined};
+        dialogRef.componentInstance.article = {code: codeValue, description: undefined, retailPrice: undefined};
         dialogRef.afterClosed().subscribe(
           isCreatedCode => {
             if (isCreatedCode) {
-              this.add(code);
+              this.add(codeValue);
             }
           }
         );
@@ -159,7 +159,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptionDatasource.unsubscribe();
+    this.subscriptionDataSource.unsubscribe();
   }
 
 }

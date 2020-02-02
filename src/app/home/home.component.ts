@@ -5,13 +5,9 @@ import {MatDialog} from '@angular/material';
 import {TokensService} from '../core/tokens.service';
 import {CancelYesDialogComponent} from '../core/cancel-yes-dialog.component';
 import {CashierService} from './shared/cashier.service';
-import {AdminsService} from './admins/admins.service';
+import {AdminsService} from './admins.service';
 import {UserService} from './users/user.service';
-import {DbSeedDialogComponent} from './admins/db-seed-dialog.component';
-import {CashierClosedComponent} from './cashier-closed/cashier-closed.component';
-import {CashierOpenedComponent} from './cashier-opened/cashier-opened.component';
 import {CashierClosureDialogComponent} from './cashier-opened/cashier/cashier-closure-dialog.component';
-import {UsersComponent} from './users/users.component';
 import {SystemService} from './system.service';
 
 @Component({
@@ -30,7 +26,7 @@ export class HomeComponent {
               private tokensService: TokensService, private userService: UserService, private cashierService: CashierService,
               private adminsService: AdminsService, private systemService: SystemService) {
     systemService.readVersion().subscribe(
-      appInfo => this.backend = appInfo.version + '(' + appInfo.profile + ')(' + appInfo.build + ')'
+      appInfo => this.backend = appInfo.version + '(' + appInfo.profile + ')'
     );
     this.username = tokensService.getName();
     this.cashierClosed = true;
@@ -50,9 +46,9 @@ export class HomeComponent {
       closed => {
         this.cashierClosed = closed;
         if (closed) {
-          this.router.navigate([HomeComponent.URL, CashierClosedComponent.URL]);
+          this.router.navigate(['home', 'cashier-closed']);
         } else {
-          this.router.navigate([HomeComponent.URL, CashierOpenedComponent.URL]);
+          this.router.navigate(['home', 'cashier-opened']);
         }
       }
     );
@@ -68,7 +64,7 @@ export class HomeComponent {
   }
 
   seedDb() {
-    this.dialog.open(DbSeedDialogComponent);
+    this.adminsService.seedDb();
   }
 
 
@@ -98,14 +94,12 @@ export class HomeComponent {
   }
 
   customers() {
-    this.router.navigate([HomeComponent.URL, UsersComponent.URL]);
+    this.router.navigate(['home', 'users']);
   }
 
   vouchers() {
   }
 
-  statistics() {
-  }
 
   tickets() {
   }

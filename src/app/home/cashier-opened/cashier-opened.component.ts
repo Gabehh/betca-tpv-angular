@@ -5,7 +5,6 @@ import {Component} from '@angular/core';
   styleUrls: ['cashier-opened.component.css']
 })
 export class CashierOpenedComponent {
-  static URL = 'cashier-opened';
 
   constructor() {
   }

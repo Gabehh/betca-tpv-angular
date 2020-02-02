@@ -7,7 +7,6 @@ import {CashierService} from '../shared/cashier.service';
   templateUrl: 'cashier-closed.component.html'
 })
 export class CashierClosedComponent {
-  static URL = 'cashier-closed';
 
   cashierLast: CashierLast = {closed: undefined};
 

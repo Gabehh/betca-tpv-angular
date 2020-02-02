@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
+import {AppEndpoints} from '../../app-endpoints';
 import {HttpService} from '../../core/http.service';
-import {ApiEndpoint} from './api-endpoint.model';
 import {CashierLast} from './cashier-last.model';
 
 
@@ -14,7 +14,7 @@ export class CashierService {
   }
 
   readLast(): Observable<CashierLast> {
-    return this.httpService.get(ApiEndpoint.CASHIER_CLOSURES_LAST);
+    return this.httpService.get(AppEndpoints.CASHIER_CLOSURE_LAST);
   }
 
   isClosedCashier(): Observable<boolean> {
@@ -24,7 +24,7 @@ export class CashierService {
   }
 
   open(): Observable<any> {
-    return this.httpService.post(ApiEndpoint.CASHIER_CLOSURES);
+    return this.httpService.post(AppEndpoints.CASHIER_CLOSURE);
   }
 
 }

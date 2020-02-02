@@ -24,7 +24,7 @@ export class Shopping {
   }
 
   toString(): string {
-    return 'code:' + this.code + ',delivered:' + this.committed;
+    return 'code:' + this.code + ', delivered:' + this.committed;
   }
 
 

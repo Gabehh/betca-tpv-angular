@@ -9,7 +9,7 @@ import {CashierService} from './home/shared/cashier.service';
 import {ArticleService} from './home/shared/article.service';
 import {CashierClosureService} from './home/cashier-opened/cashier/cashier-closure.service';
 import {ShoppingCartService} from './home/cashier-opened/shopping-cart/shopping-cart.service';
-import {AdminsService} from './home/admins/admins.service';
+import {AdminsService} from './home/admins.service';
 import {UserService} from './home/users/user.service';
 import {AppMaterialModule} from './app-material.module';
 import {AppRoutingModule} from './app-routing.module';

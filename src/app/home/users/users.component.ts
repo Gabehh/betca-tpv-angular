@@ -7,7 +7,6 @@ import {User} from './user.model';
   templateUrl: `users.component.html`
 })
 export class UsersComponent {
-  static URL = 'users';
 
   user: User;
   onlyCustomer = true;

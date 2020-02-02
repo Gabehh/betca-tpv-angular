@@ -1,101 +1,65 @@
-# Proyecto TPV - Front-end - Angular
-#### Back-end con Tecnologías de Código Abierto (SPRING)
-#### [Máster en Ingeniería Web por la U.P.M.](http://miw.etsisi.upm.es)
+## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
+## Back-end con Tecnologías de Código Abierto: **SPRING**
+> Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación Front-end,
+mediante Angular, funcionando conjuntamente con 
+Front-end: [betca-tpv-spring](https://github.com/miw-upm/betca-tpv-spring), 
+realizado con Spring & webflux.
+
+### Estado del código  
 [![Build Status](https://travis-ci.org/miw-upm/betca-tpv-angular.svg?branch=develop)](https://travis-ci.org/miw-upm/betca-tpv-angular)
+[![](https://img.shields.io/static/v1?label=Heroku&message=v2.0.0-Release&color=green)](https://betca-tpv-angular.herokuapp.com)   
 
-> Proyecto Front-end completo para el uso de la tecnología Angular-Spring.  
-> Web en acción: [https://betca-tpv-angular.herokuapp.com](https://betca-tpv-angular.herokuapp.com).  
-> El Back-end se desarrolla en Spring en el proyecto [betca-tpv-spring](https://github.com/miw-upm/betca-tpv-spring). Documentación del API [Swagger](https://betca-tpv-spring.herokuapp.com/api/v0/swagger-ui.html)  
-> Ejecución en local:
-> * Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
-> * Se debe arrancar el **API** en linea de comando, mediante: `> mvn clean spring-boot:run`  
-> * Se debe arrancar **Angular**:  
->   * Perfil **dev**:`> ng serve`. [http://localhost:4200/](http://localhost:4200/)  
->   * Perfil **prod** en local: `> ng serve --prod` , en este caso ataca al API de Heroku
->   * perfil **prod** mediante **Express**: `> ng build --prod` & `> node server.js`, en este caso ataca al API de Heroku
+### Tecnologías necesarias
+`Typescript` `npm (6.13)` `Angular (8.3)` `Material` `node (12.14)` `HTML` `CSS` --- CI: `GitHub` `Travis-CI` `Heroku`
 
-This project was generated with  
-* Node version 8.15.0
-* Npm version: 6.7.0
-* [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
-
-## Presentación
-Este proyecto es la práctica de Angular desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`, ya implementada, y se pretende ampliar con un conjunto de mejoras.  
-
-Un **T**erminal **P**unto de **V**enta es un sistema informático que gestiona el proceso de venta mediante una interfaz accesible para los vendedores o compradores.
-Permite la creación e impresión del recibo ticket o factura de venta —con los detalles de las referencias y precios— de los artículos vendidos, actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos...
-
-## Video explicativo
-[Interfaz de Usuario](https://youtu.be/yBZ3SHShimE)
-
-[Front-End. Angular](https://youtu.be/2ZAd1uIx_E8)
-
-## Tecnologías necesarias
-`Typescript` `Angular` `Angular-Material` `Angular-layout` `HTML` `CSS`
-
-### Clonar el proyecto
- Clonar el repositorio en tu equipo, **mediante consola**:
+### :gear: Instalación del proyecto
+1. Clonar el repositorio en tu equipo, **mediante consola**:
 ```sh
 > cd <folder path>
 > git clone https://github.com/miw-upm/betca-tpv-angular
-> npm install
+> cd betca-tpv-angular
+betca-tpv-angular> npm install
 ```
-Importar el proyecto mediante **WebStorm**
-1. **Open**, y seleccionar la carpeta del proyecto
+2. Abrir el proyecto mediante **WebStorm**
+   * **Open**, y seleccionar la carpeta del proyecto
 
-## Ecosistema
-`Git` `GitHub` `Travis-CI` `Heroku`
-> Se utilizará un flujo de trabajo ramificado (_**Git Workflow**_).
-> Una **historia** por **alumno**, organizada como un **proyecto** de tipo **Automated kanban**.
-> Cada **historia** se dividirá en **tareas**, cada **tarea** será una **issue#**, que será el nombre de la **rama**.  
-> **Se recomienda aportaciones frecuentes a la rama `develop`** :sweat_smile:
+3. Ejecución
+   * Ejecución en local atacando al back-end desplegado en Heroku, por consola: `> ng serve --prod`.
+   * Ejecución en local atacando al back-end desplegado localmente: 
+      1. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
+      1. Se debe arrancar el **Back-end**: `> mvn clean spring-boot:run`  
+      1. Se debe arrancar **Angular**: `> ng serve`
 
-### Metodología de trabajo
-:one: Organización de la **historia** y **tareas** en el proyecto de GitHub mediante **notas**. Elegir la **nota** a implementar, convertirla en **issue#** y configurarla  
-:two: Mirar el estado del proyecto [![Build Status](https://travis-ci.org/miw-upm/betca-tpv-angular.svg?branch=develop) en Travis-CI](https://travis-ci.org/miw-upm/betca-tpv-angular)    
-:three: Sincronizarse con las ramas remotas, 
-```sh
-> git fetch --all
-```
-Y si fuera necesario, actualizar la rama **develop** con la remota **origin/develop**:
-```sh
-> git checkout develop
-> git pull origin develop
-```
-:four: Si se comienza la tarea, se crea la rama y se activa
-```sh
-> git checkout -b issue#xx
-```
- Y si se continúa, y se necesitara actualizar la rama **issue#** con las nuevas incorporaciones de **develop** :
-```sh
-> git checkout issue#xx
-> git merge -m "Merge develop into issue #xx" develop
-```  
-Resolver conflictos:   
-1. Editar el fichero, y decidir el código final   
-1. Realizar el commit para terminarlo   
+###  :movie_camera: Videos explicativos
+[Interfaz de Usuario](https://youtu.be/yBZ3SHShimE)   
+[Front-End. Angular](https://youtu.be/2ZAd1uIx_E8)
 
-:five: Programar la tarea o una parte de ella, lanzar **TODOS LOS TESTS** y asegurarse que no hay errores. Finalmente, sincronizarse con las ramas remotas:
- ```sh
-> git fetch --all
-```
-Y si necesitamos actualizarnos, se repite el paso :four:
+## :book: Documentación del proyecto
+> Este proyecto es la práctica de Angular desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`,
+ya implementada, y se pretende ampliar con un conjunto de mejoras. Un **T**erminal **P**unto de **V**enta
+es un sistema informático que gestiona el proceso de venta mediante una interfaz accesible para los vendedores o compradores.
+Permite la creación e impresión del recibo ticket o factura de venta —con los detalles de las referencias y precios— de los artículos vendidos,
+actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos...
 
-:six: Actualizar **develop** con nuestro cambios:
-```sh
-> git checkout develop
-> git merge --no-ff -m "Merge issue #xx into develop" issue#xx
-```
-:seven: Observar el flujo de ramas, y si todo ha ido bien... subirlo 
-```sh
-> git push --all
- ```
-:eight: Si la tarea continua, volver a activar la **rama issue#xx**:
-```sh
-> git checkout issue#xx
- ```
+### Interfaz de Usuario
+* [App TPV en Heroku](https://betca-tpv-angular.herokuapp.com)
 
- ### Travis-CI
+### Arquitectura
+
+#### Aplicación Web 
+![](./docs/application-flow.png)
+
+#### Angular
+![](./docs/angular-architecture.png)
+
+#### TPV: Vista de componentes
+![](./docs/app-components-view.png)
+
+
+
+### Ecosistema
+
+#### Travis-CI
 Integración continua con **Travis-CI**. Se despliega para ejecución de los test Unitarios y de Integración.
 * En el fichero `.travis.yml`:
 ```yaml
@@ -132,7 +96,26 @@ config.capabilities = {
 };
 exports.config = config;
 ```
-### Heroku
+
+#### Entorno-Perfil
+`environment.ts`
+```typescript
+export const environment = {
+  production: false,
+  VERSION: require('../../package.json').version,
+  API: 'http://localhost:8080/api/v0'
+};
+```
+`environment.prod.ts`
+```typescript
+export const environment = {
+  production: true,
+  VERSION: require('../../package.json').version,
+  API: 'https://betca-tpv-spring.herokuapp.com/api/v0'
+};
+```
+
+#### Heroku
 Se realiza un despliegue en **Heroku** .  
 En la cuenta de **Heroku**, en la página `-> Account settings -> API Key`, se ha obtenido la `API KEY`.  
 En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Settings`, se ha creado una variable de entorno llamada `HEROKU` cuyo contenido es la **API key** de **Heroku**.  
@@ -145,8 +128,8 @@ En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Setti
     "start": "node server.js"
   },
   "engines": {
-    "node": "~8.15.0",
-    "npm": "~6.7.0"
+    "node": "~12.14.1",
+    "npm": "~6.13.4"
   }  
 }
 ```
@@ -160,16 +143,65 @@ deploy:
   on:
     branch: master
 ```
-## Git Workflow
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/git-workflow.png)
 
-## Arquitectura
 
-### Modulos
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/app-module.png)
+#### Servicios (CORE)
+![](./docs/core-module.png)
 
-### Plantilla de la arquitectura de un componente
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/app-template.png)
+##### Servicio
+> Realiza las peticiones del API a traves del `servicio Http` de Core.  
+> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`.  
+
+:bulb:
+```typescript
+this.tokensService.login(this.mobile, this.password).subscribe(...
+this.tokensService.isAdmin()...
+this.tokensService.isManager()...
+```
+```typescript
+  demo1(): Observable<any> {
+    return this.httpService
+      .successful().pdf().param('param', 'value')
+      .get('...');
+  } 
+  demo2(): Observable<any> {
+    return this.httpService.post('...', object);
+  }
+```
+
+:heavy_check_mark:
+```typescript
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+
+import {HttpService} from '../../../core/http.service';
+import {ApiEndpoint} from '../../shared/api-endpoint.model';
+import {CashierState} from './cashier-state.model';
+import {CashierClosure} from cashier;
+
+@Injectable()
+export class CashierClosureService {
+  static STATE = '/state';
+
+  constructor(private httpService: HttpService) {
+  }
+
+  close(cashierClosure: CashierClosure): Observable<any> {
+    return this.httpService.patch(ApiEndpoint.CASHIER_CLOSURES_LAST, cashierClosure);
+  }
+
+  readLastTotals(): Observable<CashierState> {
+    return this.httpService.get(
+      ApiEndpoint.CASHIER_CLOSURES_LAST + CashierClosureService.STATE);
+  }
+}
+```
+
+#### Modulos
+![](./docs/app-module.png)
+
+#### Plantilla de la arquitectura de un componente
+![](./docs/app-template.png)
 
 :heavy_check_mark:
 ```typescript
@@ -263,60 +295,25 @@ export class CashierClosureDialogComponent {
   }
 
   cashMovement() {
-    // TODO ...
-    console.log('In construction!!!');
+    this.cashierClosureService.move().subscribe();
   }
 }
 ```
 
-##### Servicio
-> Realiza las peticiones del API a traves del `servicio Http` de Core.  
-> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`.  
 
-:heavy_check_mark:
-```typescript
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
 
-import {HttpService} from '../../../core/http.service';
-import {ApiEndpoint} from '../../shared/api-endpoint.model';
-import {CashierState} from './cashier-state.model';
-import {CashierClosure} from cashier;
-
-@Injectable()
-export class CashierClosureService {
-  static STATE = '/state';
-
-  constructor(private httpService: HttpService) {
-  }
-
-  close(cashierClosure: CashierClosure): Observable<any> {
-    return this.httpService.patch(ApiEndpoint.CASHIER_CLOSURES_LAST, cashierClosure);
-  }
-
-  readLastTotals(): Observable<CashierState> {
-    return this.httpService.get(
-      ApiEndpoint.CASHIER_CLOSURES_LAST + CashierClosureService.STATE);
-  }
-}
-
-```
-### Servicios (CORE)
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/core-module.png)
-
-### Jerarquía de componentes y servicios
+#### Jerarquía de componentes y servicios
 #### Métricas
 * Paquete: <20 clases.
 * Clases: <500-200 líneas, <20 métodos.
 * Métodos: <3-5 parámetros, <20 líneas.
 
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/app-hierarchy.png)
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/app-hierarchy-code.png)
+![](./docs/app-hierarchy.png)
+![](./docs/app-hierarchy-code.png)
 
-### Vista de pantallas
-![](https://github.com/miw-upm/betca-tpv-angular/blob/develop/docs/app-view.png)
 
-## Autenticación
+
+### Autenticación
 Se plantean mediante **Basic Auth** para logearse y obtener un **API Key** o **token** de tipo **JSON Web Tokens (JWT)** y **Bearer auth** para el acceso a los recursos.  
 Para obtener el **API Key** se accede al recurso: `POST \users\token`, enviando por **Basic auth** las credenciales, van en la cabecera de la petición.   
 Para el acceso a los recursos, se envia el **token** mediante **Bearer auth**, también en la cabecera de la petición
@@ -407,23 +404,7 @@ export class HttpService {
 }
 ```
     ~: versión mas cercana posible, ^: versión compatible mas alta
-### Entorno-Perfil
-`environment.ts`
-```typescript
-export const environment = {
-  production: false,
-  VERSION: require('../../package.json').version,
-  API: 'http://localhost:8080/api/v0'
-};
-```
-`environment.prod.ts`
-```typescript
-export const environment = {
-  production: true,
-  VERSION: require('../../package.json').version,
-  API: 'https://betca-tpv-spring.herokuapp.com/api/v0'
-};
-```
+
 ### Diálogos
 Genéricos, el _**dialog**_ devuelve los datos y se gestiona su evolución en la llamada
 ```typescript

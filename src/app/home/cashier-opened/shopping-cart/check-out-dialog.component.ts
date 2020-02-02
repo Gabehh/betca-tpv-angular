@@ -24,7 +24,7 @@ export class CheckOutDialogComponent {
   }
 
   uncommitted() {
-    return this.shoppingCartService.uncommitArticlesExist();
+    return this.shoppingCartService.unCommitArticlesExist();
   }
 
   totalCommitted() {
@@ -32,7 +32,7 @@ export class CheckOutDialogComponent {
   }
 
   warning(): boolean {
-    return (!this.ticketCreation.userMobile) && this.shoppingCartService.uncommitArticlesExist();
+    return (!this.ticketCreation.userMobile) && this.shoppingCartService.unCommitArticlesExist();
   }
 
   returnedAmount(): number {

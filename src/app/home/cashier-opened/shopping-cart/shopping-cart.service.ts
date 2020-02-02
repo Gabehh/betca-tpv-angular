@@ -3,13 +3,13 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {HttpService} from '../../../core/http.service';
-import {ApiEndpoint} from '../../shared/api-endpoint.model';
 import {ArticleService} from '../../shared/article.service';
 import {Article} from '../../shared/article.model';
 import {Shopping} from './shopping.model';
 import {TicketCreation} from './ticket-creation.model';
 
 import {ArticleQuickCreation} from './article-quick-creation.model';
+import {AppEndpoints} from '../../../app-endpoints';
 
 @Injectable()
 export class ShoppingCartService {
@@ -68,7 +68,7 @@ export class ShoppingCartService {
     return Math.round(total * 100) / 100;
   }
 
-  uncommitArticlesExist(): boolean {
+  unCommitArticlesExist(): boolean {
     for (const shopping of this.shoppingCart) {
       if (!shopping.committed && shopping.amount > 0) {
         return true;
@@ -116,12 +116,12 @@ export class ShoppingCartService {
   }
 
   createArticle(articleQuickCreation: ArticleQuickCreation): Observable<Article> {
-    return this.httpService.successful().post(ApiEndpoint.ARTICLES, articleQuickCreation);
+    return this.httpService.successful().post(AppEndpoints.ARTICLES, articleQuickCreation);
   }
 
   checkOut(ticketCreation: TicketCreation): Observable<any> {
     ticketCreation.shoppingCart = this.shoppingCart;
-    return this.httpService.pdf().post(ApiEndpoint.TICKETS, ticketCreation).pipe(
+    return this.httpService.pdf().post(AppEndpoints.TICKETS, ticketCreation).pipe(
       map(() => this.reset())
     );
   }

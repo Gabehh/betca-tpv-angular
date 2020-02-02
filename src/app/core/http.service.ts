@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {Observable, throwError} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material';
 
@@ -15,6 +15,7 @@ import {Error} from './error.model';
 export class HttpService {
   static API_END_POINT = environment.API;
   static UNAUTHORIZED = 401;
+  static CONNECTION_REFUSE = 0;
   static NOT_FOUND = 404;
 
   private token: Token;
@@ -22,7 +23,6 @@ export class HttpService {
   private params: HttpParams;
   private responseType: string;
   private successfulNotification = undefined;
-  private printDirectly: boolean;
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar, private router: Router) {
     this.resetOptions();
@@ -61,8 +61,7 @@ export class HttpService {
     return this;
   }
 
-  pdf(printDirectly = true): HttpService {
-    this.printDirectly = printDirectly;
+  pdf(): HttpService {
     this.responseType = 'blob';
     this.header('Accept', 'application/pdf , application/json');
     return this;
@@ -153,16 +152,7 @@ export class HttpService {
     if (contentType) {
       if (contentType.indexOf('application/pdf') !== -1) {
         const blob = new Blob([response.body], {type: 'application/pdf'});
-        if (this.printDirectly) {
-          const iFrame = document.createElement('iframe');
-          iFrame.src = URL.createObjectURL(blob);
-          iFrame.style.visibility = 'hidden';
-          document.body.appendChild(iFrame);
-          iFrame.contentWindow.focus();
-          iFrame.contentWindow.print();
-        } else {
-          window.open(window.URL.createObjectURL(blob));
-        }
+        window.open(window.URL.createObjectURL(blob));
       } else if (contentType.indexOf('application/json') !== -1) {
         return response.body; // with 'text': JSON.parse(response.body);
       }
@@ -171,33 +161,27 @@ export class HttpService {
     }
   }
 
-
   private handleError(response): any {
     let error: Error;
-    if (response.status === HttpService.UNAUTHORIZED) {
-      this.snackBar.open('Unauthorized', 'Error', {
-        duration: 2000
-      });
+    if (response.status === HttpService.CONNECTION_REFUSE || response.status === HttpService.UNAUTHORIZED) {
+      this.snackBar.open((response.status) ? 'Unauthorized' : 'Connection refuse', 'Error', {duration: 5000});
       this.logout();
       this.router.navigate(['']);
-      return throwError(response.error);
+      return of();
+    } else if (response.status === HttpService.NOT_FOUND) {
+      error = {error: 'Not Found', message: '', path: ''};
+      this.snackBar.open(error.error + ': ' + error.message, 'Info', {duration: 2000});
+      return throwError(error);
     } else {
       try {
-        if (response.status === HttpService.NOT_FOUND) {
-          error = {error: 'Not Found', message: '', path: ''};
-        } else {
-          error = response.error; // with 'text': JSON.parse(response.error);
-        }
-        this.snackBar.open(error.error + ': ' + error.message, 'Error', {
-          duration: 5000
-        });
+        error = response.error; // with 'text': JSON.parse(response.error);
+        this.snackBar.open(error.error + ' (' + response.status + '): ' + error.message, 'Error', {duration: 10000});
         return throwError(error);
       } catch (e) {
-        this.snackBar.open('No server response', 'Error', {
-          duration: 5000
-        });
+        this.snackBar.open('Not response', 'Error', {duration: 10000});
         return throwError(response.error);
       }
     }
   }
+
 }

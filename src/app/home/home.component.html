@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <img alt="miw" src="../../assets/img/miw.png"/>
-  <span>TPV -> <small>Back-end: {{backend}}</small></span>
+  <span>TPV-<small><small>Back-end: {{backend}}</small></small></span>
   <span class="toolbar-spacer"></span>
   <span>
     <app-date format="medium"></app-date>
@@ -43,14 +43,16 @@
     <mat-icon>account_circle</mat-icon>
     <span>Users</span>
   </button>
-  <button mat-menu-item (click)="statistics()">
-    <mat-icon>assessment</mat-icon>
-    <span>Statistics</span>
-  </button>
 </mat-menu>
 <mat-menu #settings="matMenu">
-  <button mat-menu-item (click)="deleteDb()">Delete Database</button>
-  <button mat-menu-item (click)="seedDb()">Seed Database</button>
+  <button mat-menu-item (click)="deleteDb()">
+    <mat-icon>delete_sweep</mat-icon>
+    <span>Delete Database</span>
+  </button>
+  <button mat-menu-item (click)="seedDb()">
+    <mat-icon>unarchive</mat-icon>
+    <span>Seed Database</span>
+  </button>
 </mat-menu>
 <mat-menu #cashiers="matMenu">
   <button *ngIf="!cashierClosed" mat-menu-item (click)="closeCashier()">

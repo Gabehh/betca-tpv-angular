@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
+import {AppEndpoints} from '../../app-endpoints';
 import {HttpService} from '../../core/http.service';
 import {Article} from './article.model';
-import {ApiEndpoint} from './api-endpoint.model';
 
 @Injectable()
 export class ArticleService {
@@ -12,11 +12,11 @@ export class ArticleService {
   }
 
   readOne(code: string): Observable<Article> {
-    return this.httpService.get(ApiEndpoint.ARTICLES + '/' + code);
+    return this.httpService.get(AppEndpoints.ARTICLES + '/' + code);
   }
 
   create(article: Article): Observable<Article> {
-    return this.httpService.successful().post(ApiEndpoint.ARTICLES, article);
+    return this.httpService.successful().post(AppEndpoints.ARTICLES, article);
   }
 
 }

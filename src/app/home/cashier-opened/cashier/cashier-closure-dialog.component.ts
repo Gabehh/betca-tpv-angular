@@ -16,7 +16,7 @@ export class CashierClosureDialogComponent {
 
   constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<CashierClosureDialogComponent>,
               private cashierClosureService: CashierClosureService) {
-    this.cashierClosureService.readLastTotals().subscribe(
+    this.cashierClosureService.readState().subscribe(
       cashierClosureData => this.cashierState = cashierClosureData
     );
   }
