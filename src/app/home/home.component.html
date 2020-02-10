@@ -9,7 +9,7 @@
       <mat-icon>person</mat-icon>
       <span>Logout</span>
     </button>
-    <button mat-button routerLink="">
+    <button mat-button disabled="true" routerLink="">
       <mat-icon>account_box</mat-icon>
       <span>Profile</span>
     </button>
@@ -63,59 +63,59 @@
     <mat-icon>lock_open</mat-icon>
     <span>Open Cashier</span>
   </button>
-  <button mat-menu-item *ngIf="!cashierClosed" routerLink="">
+  <button mat-menu-item *ngIf="!cashierClosed" disabled="true" routerLink="">
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash Movement</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>account_balance</mat-icon>
     <span>Cashier Closure</span>
   </button>
 </mat-menu>
 <mat-menu #receipts="matMenu">
-  <button mat-menu-item *ngIf="!cashierClosed" routerLink="">
+  <button mat-menu-item *ngIf="!cashierClosed" disabled="true" routerLink="">
     <mat-icon>toc</mat-icon>
     <span>Tickets</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>playlist_add_check</mat-icon>
     <span>Ticket tracking</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>receipt</mat-icon>
     <span>Invoices</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>description</mat-icon>
     <span>Budgets</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>local_offer</mat-icon>
     <span>Vouchers</span>
   </button>
 </mat-menu>
 <mat-menu #products="matMenu">
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>view_list</mat-icon>
     <span>Articles</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>view_quilt</mat-icon>
     <span>Articles Family</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>view_module</mat-icon>
     <span>Create Family sizes</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>local_shipping</mat-icon>
     <span>Providers</span>
   </button>
-  <button mat-menu-item *ngIf="isAdmin()||isManager()" routerLink="">
+  <button mat-menu-item *ngIf="isAdmin()||isManager()" disabled="true" routerLink="">
     <mat-icon>storage</mat-icon>
     <span>Orders</span>
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item disabled="true" routerLink="">
     <mat-icon>view_comfy</mat-icon>
     <span>Tags</span>
   </button>

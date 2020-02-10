@@ -50,9 +50,9 @@ export class HomeComponent {
         closed => {
           this.cashierClosed = closed;
           if (closed) {
-            this.router.navigate(['home', 'cashier-opened']);
-          } else {
             this.router.navigate(['home', 'cashier-closed']);
+          } else {
+            this.router.navigate(['home', 'cashier-opened']);
           }
         }
       );
