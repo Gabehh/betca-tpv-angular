@@ -1,9 +1,10 @@
 <mat-toolbar color="primary">
   <img alt="miw" src="../../assets/img/miw.png"/>
-  <span>TPV-<small><small>Back-end: {{backend}}</small></small></span>
+  <span>TPV </span>
+  <span class="backend"><small><small> Back-end: {{backend}}</small></small></span>
   <span class="toolbar-spacer"></span>
   <span>
-    <app-date format="medium"></app-date>
+    <app-date></app-date>
     <button (click)="logout()" mat-button>
       <span>{{username}}</span>
       <mat-icon>person</mat-icon>
