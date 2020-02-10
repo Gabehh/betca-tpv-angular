@@ -46,7 +46,6 @@ export class HttpService {
     this.router.navigate(['']);
   }
 
-
   getToken(): Token {
     return this.token;
   }

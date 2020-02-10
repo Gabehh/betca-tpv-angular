@@ -58,173 +58,16 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 #### TPV: Diagrama de clases
 ![](./docs/app-classes.png)
 
-### Ecosistema
-
-#### Travis-CI
-Integración continua con **Travis-CI**. Se despliega para ejecución de los test Unitarios y de Integración.
-* En el fichero `.travis.yml`:
-```yaml
-language: node_js
-node_js:
-  - '8'
-addons:
-  chrome: stable
-branches:
-  - develop
-  - /^release-[0-999].[0-999]$/
-  - master
-script:
-  - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
-  - ng e2e --protractor-config=e2e/protractor-travis.conf.js
-```
-* Se ha añadido al fichero `karma.conf.js` el contenido:
-```js
-    customLaunchers: {
-      ChromeHeadlessNoSandbox: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
-      }
-    }
-```
-* Se ha creado el fichero `e2e/protractor-travis.conf.js` con el contenido:
-```js
-const config = require('./protractor.conf').config;
-config.capabilities = {
-  browserName: 'chrome',
-  chromeOptions: {
-    args: ['--headless', '--no-sandbox']
-  }
-};
-exports.config = config;
-```
-
-#### Entorno-Perfil
-`environment.ts`
-```typescript
-export const environment = {
-  production: false,
-  VERSION: require('../../package.json').version,
-  API: 'http://localhost:8080/api/v0'
-};
-```
-`environment.prod.ts`
-```typescript
-export const environment = {
-  production: true,
-  VERSION: require('../../package.json').version,
-  API: 'https://betca-tpv-spring.herokuapp.com/api/v0'
-};
-```
-
-#### Heroku
-Se realiza un despliegue en **Heroku** .  
-En la cuenta de **Heroku**, en la página `-> Account settings -> API Key`, se ha obtenido la `API KEY`.  
-En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Settings`, se ha creado una variable de entorno llamada `HEROKU` cuyo contenido es la **API key** de **Heroku**.  
-
-* En el fichero `package.json`:
-```json
-{
-  "scripts": {
-    "postinstall": "ng build --prod",
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": "~12.14.1",
-    "npm": "~6.13.4"
-  }  
-}
-```
-* Se ha añadido al fichero `.travis.yml` el contenido:
-```yaml
-# Deploy https://betca-tpv-angular.herokuapp.com
-deploy:
-  provider: heroku
-  api_key:
-    secure: $HEROKU
-  on:
-    branch: master
-```
-
-
-#### Servicios (CORE)
-![](./docs/core-module.png)
-
-##### Servicio
-> Realiza las peticiones del API a traves del `servicio Http` de Core.  
-> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`.  
-
-:bulb:
-```typescript
-this.tokensService.login(this.mobile, this.password).subscribe(...
-this.tokensService.isAdmin()...
-this.tokensService.isManager()...
-```
-```typescript
-  demo1(): Observable<any> {
-    return this.httpService
-      .successful().pdf().param('param', 'value')
-      .get('...');
-  } 
-  demo2(): Observable<any> {
-    return this.httpService.post('...', object);
-  }
-```
-
-:heavy_check_mark:
-```typescript
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-
-import {HttpService} from '../../../core/http.service';
-import {ApiEndpoint} from '../../shared/api-endpoint.model';
-import {CashierState} from cashier-closure;
-import {CashierClosure} from cashier;
-
-@Injectable()
-export class CashierClosureService {
-  static STATE = '/state';
-
-  constructor(private httpService: HttpService) {
-  }
-
-  close(cashierClosure: CashierClosure): Observable<any> {
-    return this.httpService.patch(ApiEndpoint.CASHIER_CLOSURES_LAST, cashierClosure);
-  }
-
-  readLastTotals(): Observable<CashierState> {
-    return this.httpService.get(
-      ApiEndpoint.CASHIER_CLOSURES_LAST + CashierClosureService.STATE);
-  }
-}
-```
-
-#### Modulos
-![](./docs/app-module.png)
-
-#### Plantilla de la arquitectura de un componente
+#### Plantilla de la arquitectura 
 ![](./docs/app-template.png)
 
-:heavy_check_mark:
-```typescript
-export interface ArticleQuickCreation {
-  code: string;
-  description: string;
-  retailPrice: number;
-}
-```
-:x:
-```typescript
-export interface Article {
-  code: string;
-  reference?: string;
-  description?: string;
-  retailPrice?: number;
-  stock?: number;
-  provider?: string;
-  discontinued?: boolean;
-  registrationDate?: Date;
-}
-```
+### Diseño y reparto de responsabilidades
+
+#### Módulo principal
+![](./docs/app-module.png)
+
+#### Módulo Core
+![](./docs/core-module.png)
 
 #### Responsabilidades
 
@@ -301,16 +144,85 @@ export class CashierClosureDialogComponent {
 }
 ```
 
+##### Servicio
+> Realiza las peticiones del API a traves del `servicio Http` de Core.  
+> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`.  
 
+:bulb:
+```typescript
+this.tokensService.login(this.mobile, this.password).subscribe(...
+this.tokensService.isAdmin()...
+this.tokensService.isManager()...
+```
+```typescript
+  demo1(): Observable<any> {
+    return this.httpService.successful().pdf().param('param', 'value').get('...');
+  } 
+  
+  demo2(): Observable<any> {
+    return this.httpService.post('...', object);
+  }
+```
 
-#### Jerarquía de componentes y servicios
-#### Métricas
-* Paquete: <20 clases.
-* Clases: <500-200 líneas, <20 métodos.
-* Métodos: <3-5 parámetros, <20 líneas.
+:heavy_check_mark:
+```typescript
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
+import {HttpService} from '../../../core/http.service';
+import {ApiEndpoint} from '../../shared/api-endpoint.model';
+import {CashierState} from cashier-closure;
+import {CashierClosure} from cashier;
 
-### Autenticación
+@Injectable()
+export class CashierClosureService {
+  static STATE = '/state';
+
+  constructor(private httpService: HttpService) {
+  }
+
+  close(cashierClosure: CashierClosure): Observable<any> {
+    return this.httpService.patch(ApiEndpoint.CASHIER_CLOSURES_LAST, cashierClosure);
+  }
+
+  readLastTotals(): Observable<CashierState> {
+    return this.httpService.get(
+      ApiEndpoint.CASHIER_CLOSURES_LAST + CashierClosureService.STATE);
+  }
+}
+```
+
+:grey_question:
+```typescript
+export interface ArticleQuickCreation {
+  code: string;
+  description: string;
+  retailPrice: number;
+}
+```
+:heavy_check_mark:
+```typescript
+export interface Article {
+  code: string;
+  reference?: string;
+  description: string;
+  retailPrice: number;
+  stock?: number;
+  provider?: string;
+  discontinued?: boolean;
+  registrationDate?: Date;
+}
+```
+
+```typescript
+create(article: Article): Observable<Article> {
+    return this.httpService.successful().post(AppEndpoints.ARTICLES, article);
+}
+
+this.ref.create(articleQuickCreation);
+```
+
+#### Autenticación
 Se plantean mediante **Basic Auth** para logearse y obtener un **API Key** o **token** de tipo **JSON Web Tokens (JWT)** y **Bearer auth** para el acceso a los recursos.  
 Para obtener el **API Key** se accede al recurso: `POST \users\token`, enviando por **Basic auth** las credenciales, van en la cabecera de la petición.   
 Para el acceso a los recursos, se envia el **token** mediante **Bearer auth**, también en la cabecera de la petición
@@ -365,44 +277,15 @@ export class HttpService {
   ...
 }
 ```
-## Organización del código
 
-### `package.json`
-```json
-{
-  "name": "betca-tpv-angular",
-  "version": "1.3.0-SNAPSHOT",
-  "scripts": {
-    "ng": "ng",
-    "postinstall": "ng build --prod",
-    "start": "node server.js",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "~7.2.0",
-    "@angular/flex-layout": "^7.0.0-beta.23",
-    ...
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.12.0",
-    "@angular/cli": "~7.2.1",
-    "@angular/compiler-cli": "~7.2.0",
-    "@angular/language-service": "~7.2.0",
-    ...
-  },
-  "engines": {
-    "node": "~8.15.0",
-    "npm": "~6.7.0"
-  }
-}
-```
-    ~: versión mas cercana posible, ^: versión compatible mas alta
+### Organización del código
 
-### Diálogos
+#### Métricas
+* Paquete: <20 clases.
+* Clases: <500-200 líneas, <20 métodos.
+* Métodos: <3-5 parámetros, <20 líneas.
+
+#### Diálogos
 Genéricos, el _**dialog**_ devuelve los datos y se gestiona su evolución en la llamada
 ```typescript
 deleteDb() {
@@ -474,7 +357,8 @@ export class LoginDialogComponent {
   }
 }
 ```
-### Observadores
+
+#### Observadores
 Con un ciclo de vida sin cierre. El sujeto observado, pueden cambiar por acciones en otro lugar de la aplicación a lo largo del tiempo. Debemos darnos de baja cuando se destruya el componente.
 ```typescript
 this.subscription = this.cashierService.lastObservable().subscribe(
@@ -518,7 +402,7 @@ Proceso intermedio de los datos
   }
 ```
 
-### CrudComponent
+#### CrudComponent
 
 ```html
 <!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
@@ -555,3 +439,151 @@ export class UsersComponent {
 }
 ```
 
+## Anexo I. Despliegue de Angular en Heroku
+### Travis-CI
+Integración continua con **Travis-CI**. Se despliega para ejecución de los test Unitarios y de Integración.
+* En el fichero `.travis.yml`:
+```yaml
+language: node_js
+node_js:
+  - '12'
+addons:
+  chrome: stable
+branches:
+  - develop
+  - /^release-[0-999].[0-999]$/
+  - master
+notifications:
+  email:
+    recipients:
+      - j.bernal@upm.es
+script:
+  - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - ng e2e --protractor-config=e2e/protractor-travis.conf.js
+
+# Deploy https://betca-tpv-angular.herokuapp.com
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU
+  on:
+    branch: master
+```
+* Se ha creado el fichero `e2e/protractor-travis.conf.js` con el contenido:
+```js
+const config = require('./protractor.conf').config;
+config.capabilities = {
+  browserName: 'chrome',
+  chromeOptions: {
+    args: ['--headless', '--no-sandbox']
+  }
+};
+exports.config = config;
+```
+
+### Entorno-Perfil
+`environment.ts`
+```typescript
+export const environment = {
+  production: false,
+  VERSION: require('../../package.json').version,
+  API: 'http://localhost:8080/api/v0'
+};
+```
+`environment.prod.ts`
+```typescript
+export const environment = {
+  production: true,
+  VERSION: require('../../package.json').version,
+  API: 'https://betca-tpv-spring.herokuapp.com/api/v0'
+};
+```
+
+### Heroku
+Se realiza un despliegue en **Heroku** .  
+En la cuenta de **Heroku**, en la página `-> Account settings -> API Key`, se ha obtenido la `API KEY`.  
+En la cuenta de **Travis-CI**, dentro del proyecto, en `-> More options -> Settings`, se ha creado una variable de entorno llamada `HEROKU` cuyo contenido es la **API key** de **Heroku**.  
+
+* En el fichero `package.json`:
+```json
+{
+  "scripts": {
+    "postinstall": "ng build --prod",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "~12.14.1",
+    "npm": "~6.13.4"
+  }  
+}
+```
+* Se ha añadido al fichero `.travis.yml` el contenido:
+```yaml
+# Deploy https://betca-tpv-angular.herokuapp.com
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU
+  on:
+    branch: master
+```
+
+## Anexo II. Versionado
+
+### **package.json**
+```json
+{
+  "name": "betca-tpv-angular",
+  "version": "2.1.0-SNAPSHOT",
+  "scripts": {
+    "postinstall": "ng build --prod",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "~12.14.1",
+    "npm": "~6.13.4"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~8.2.14",
+    "@angular/cdk": "~8.2.3",
+    "@angular/common": "~8.2.14",
+    "@angular/compiler": "~8.2.14",
+    "@angular/core": "~8.2.14",
+    "@angular/flex-layout": "^9.0.0-beta.28",
+    "@angular/forms": "~8.2.14",
+    "@angular/material": "^8.2.3",
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
+    "@auth0/angular-jwt": "^3.0.1",
+    "express": "^4.17.1",
+    "hammerjs": "^2.0.8",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.24",
+    "@angular/cli": "~8.3.24",
+    "@angular/compiler-cli": "~8.2.14",
+    "@angular/language-service": "~8.2.14",
+    "@types/node": "~8.9.4",
+    "@types/jasmine": "~3.3.8",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "^5.0.0",
+    "jasmine-core": "~3.4.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.1.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.15.0",
+    "typescript": "~3.5.3"
+  }
+}
+```
+  `~: versión mas cercana posible, ^: versión compatible mas alta`
