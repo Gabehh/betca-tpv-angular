@@ -21,6 +21,7 @@ import {timer} from 'rxjs';
 export class DateComponent {
 
   date: Date;
+
   constructor() {
     timer(0, 1000).subscribe(
       () => this.date = new Date()

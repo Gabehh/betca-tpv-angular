@@ -11,7 +11,7 @@
       </ng-container>
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef fxFlex="28%"> Description</mat-header-cell>
-        <mat-cell *matCellDef="let item" fxFlex="28%" [matTooltip]="item.code"> {{item.description}}</mat-cell>
+        <mat-cell *matCellDef="let item" [matTooltip]="item.code" fxFlex="28%"> {{item.description}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="retailPrice">
         <mat-header-cell *matHeaderCellDef fxFlex="11%"> Price</mat-header-cell>
