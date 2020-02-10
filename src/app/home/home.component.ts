@@ -1,14 +1,17 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
+import {map} from 'rxjs/operators';
 
+import {AppEndpoints} from '../app-endpoints';
+import {HttpService} from '../core/http.service';
 import {TokensService} from '../core/tokens.service';
 import {CancelYesDialogComponent} from '../core/cancel-yes-dialog.component';
 import {CashierService} from './shared/cashier.service';
 import {AdminsService} from './admins.service';
 import {UserService} from './users/user.service';
-import {CashierClosureDialogComponent} from './cashier-opened/cashier/cashier-closure-dialog.component';
 import {SystemService} from './system.service';
+import {CashierClosureDialogComponent} from './cashier-opened/cashier-closure/cashier-closure-dialog.component';
 
 @Component({
   templateUrl: 'home.component.html',
@@ -16,13 +19,12 @@ import {SystemService} from './system.service';
 
 })
 export class HomeComponent {
-  static URL = 'home';
   backend: string;
 
   cashierClosed: boolean;
   username: string;
 
-  constructor(private router: Router, private dialog: MatDialog,
+  constructor(private router: Router, private dialog: MatDialog, private httpService: HttpService,
               private tokensService: TokensService, private userService: UserService, private cashierService: CashierService,
               private adminsService: AdminsService, private systemService: SystemService) {
     systemService.readVersion().subscribe(
@@ -42,16 +44,18 @@ export class HomeComponent {
   }
 
   cashier() {
-    this.cashierService.isClosedCashier().subscribe(
-      closed => {
-        this.cashierClosed = closed;
-        if (closed) {
-          this.router.navigate(['home', 'cashier-closed']);
-        } else {
-          this.router.navigate(['home', 'cashier-opened']);
+    this.cashierService.readLast()
+      .pipe(map(cashierLast => cashierLast.closed))
+      .subscribe(
+        closed => {
+          this.cashierClosed = closed;
+          if (closed) {
+            this.router.navigate(['home', 'cashier-opened']);
+          } else {
+            this.router.navigate(['home', 'cashier-closed']);
+          }
         }
-      }
-    );
+      );
   }
 
   deleteDb() {
@@ -67,10 +71,6 @@ export class HomeComponent {
     this.adminsService.seedDb();
   }
 
-
-  profile() {
-  }
-
   logout() {
     this.tokensService.logout();
   }
@@ -82,53 +82,9 @@ export class HomeComponent {
   }
 
   openCashier() {
-    this.cashierService.open().subscribe(
+    this.httpService.post(AppEndpoints.CASHIER_CLOSURES).subscribe(
       () => this.cashier()
     );
-  }
-
-  cashMovement() {
-  }
-
-  cashierClosure() {
-  }
-
-  customers() {
-    this.router.navigate(['home', 'users']);
-  }
-
-  vouchers() {
-  }
-
-
-  tickets() {
-  }
-
-  ticketTracking() {
-  }
-
-  invoices() {
-  }
-
-  article() {
-  }
-
-  articlesFamily() {
-  }
-
-  createFamilySizes() {
-  }
-
-  providers() {
-  }
-
-  tags() {
-  }
-
-  budgets() {
-  }
-
-  Orders() {
   }
 
 }

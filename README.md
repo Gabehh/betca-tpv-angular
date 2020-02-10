@@ -55,7 +55,8 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 #### TPV: Vista de componentes
 ![](./docs/app-components-view.png)
 
-
+#### TPV: Diagrama de clases
+![](./docs/app-classes.png)
 
 ### Ecosistema
 
@@ -176,7 +177,7 @@ import {Observable} from 'rxjs';
 
 import {HttpService} from '../../../core/http.service';
 import {ApiEndpoint} from '../../shared/api-endpoint.model';
-import {CashierState} from './cashier-state.model';
+import {CashierState} from cashier-closure;
 import {CashierClosure} from cashier;
 
 @Injectable()
@@ -263,7 +264,7 @@ import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 
 import {CashierClosureService} from cashier;
-import {CashierState} from './cashier-state.model';
+import {CashierState} from cashier-closure;
 import {CashierClosure} from cashier;
 
 @Component({
@@ -307,10 +308,6 @@ export class CashierClosureDialogComponent {
 * Paquete: <20 clases.
 * Clases: <500-200 líneas, <20 métodos.
 * Métodos: <3-5 parámetros, <20 líneas.
-
-![](./docs/app-hierarchy.png)
-![](./docs/app-hierarchy-code.png)
-
 
 
 ### Autenticación

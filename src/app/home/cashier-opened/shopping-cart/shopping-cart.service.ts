@@ -8,7 +8,6 @@ import {Article} from '../../shared/article.model';
 import {Shopping} from './shopping.model';
 import {TicketCreation} from './ticket-creation.model';
 
-import {ArticleQuickCreation} from './article-quick-creation.model';
 import {AppEndpoints} from '../../../app-endpoints';
 
 @Injectable()
@@ -115,8 +114,8 @@ export class ShoppingCartService {
     this.synchronizeAll();
   }
 
-  createArticle(articleQuickCreation: ArticleQuickCreation): Observable<Article> {
-    return this.httpService.successful().post(AppEndpoints.ARTICLES, articleQuickCreation);
+  createArticle(article: Article): Observable<Article> {
+    return this.articleService.create(article);
   }
 
   checkOut(ticketCreation: TicketCreation): Observable<any> {

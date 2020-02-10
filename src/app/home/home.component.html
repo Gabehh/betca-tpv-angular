@@ -9,7 +9,7 @@
       <mat-icon>person</mat-icon>
       <span>Logout</span>
     </button>
-    <button (click)="profile()" mat-button>
+    <button mat-button routerLink="">
       <mat-icon>account_box</mat-icon>
       <span>Profile</span>
     </button>
@@ -23,7 +23,7 @@
     <mat-icon>home</mat-icon>
     <span>Cashier</span>
   </button>
-  <button *ngIf="isAdmin()" mat-menu-item [matMenuTriggerFor]="settings">
+  <button mat-menu-item *ngIf="isAdmin()" [matMenuTriggerFor]="settings">
     <mat-icon>settings</mat-icon>
     <span>Admin</span>
   </button>
@@ -39,7 +39,7 @@
     <mat-icon>line_style</mat-icon>
     <span>Products</span>
   </button>
-  <button mat-menu-item (click)="customers()">
+  <button mat-menu-item routerLink="/home/users">
     <mat-icon>account_circle</mat-icon>
     <span>Users</span>
   </button>
@@ -55,67 +55,67 @@
   </button>
 </mat-menu>
 <mat-menu #cashiers="matMenu">
-  <button *ngIf="!cashierClosed" mat-menu-item (click)="closeCashier()">
+  <button mat-menu-item *ngIf="!cashierClosed" (click)="closeCashier()">
     <mat-icon>lock_outline</mat-icon>
     <span>Close cashier</span>
   </button>
-  <button *ngIf="cashierClosed" mat-menu-item (click)="openCashier()">
+  <button mat-menu-item *ngIf="cashierClosed" (click)="openCashier()">
     <mat-icon>lock_open</mat-icon>
     <span>Open Cashier</span>
   </button>
-  <button *ngIf="!cashierClosed" mat-menu-item (click)="cashMovement()">
+  <button mat-menu-item *ngIf="!cashierClosed" routerLink="">
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash Movement</span>
   </button>
-  <button mat-menu-item (click)="cashierClosure()">
+  <button mat-menu-item routerLink="">
     <mat-icon>account_balance</mat-icon>
     <span>Cashier Closure</span>
   </button>
 </mat-menu>
 <mat-menu #receipts="matMenu">
-  <button mat-menu-item (click)="tickets()">
+  <button mat-menu-item *ngIf="!cashierClosed" routerLink="">
     <mat-icon>toc</mat-icon>
     <span>Tickets</span>
   </button>
-  <button mat-menu-item (click)="ticketTracking()">
+  <button mat-menu-item routerLink="">
     <mat-icon>playlist_add_check</mat-icon>
     <span>Ticket tracking</span>
   </button>
-  <button mat-menu-item (click)="invoices()">
+  <button mat-menu-item routerLink="">
     <mat-icon>receipt</mat-icon>
     <span>Invoices</span>
   </button>
-  <button mat-menu-item (click)="budgets()">
+  <button mat-menu-item routerLink="">
     <mat-icon>description</mat-icon>
     <span>Budgets</span>
   </button>
-  <button mat-menu-item (click)="vouchers()">
+  <button mat-menu-item routerLink="">
     <mat-icon>local_offer</mat-icon>
     <span>Vouchers</span>
   </button>
 </mat-menu>
 <mat-menu #products="matMenu">
-  <button mat-menu-item (click)="article()">
+  <button mat-menu-item routerLink="">
     <mat-icon>view_list</mat-icon>
     <span>Articles</span>
   </button>
-  <button mat-menu-item (click)="articlesFamily()">
+  <button mat-menu-item routerLink="">
     <mat-icon>view_quilt</mat-icon>
     <span>Articles Family</span>
   </button>
-  <button mat-menu-item (click)="createFamilySizes()">
+  <button mat-menu-item routerLink="">
     <mat-icon>view_module</mat-icon>
     <span>Create Family sizes</span>
   </button>
-  <button mat-menu-item (click)="providers()">
+  <button mat-menu-item routerLink="">
     <mat-icon>local_shipping</mat-icon>
     <span>Providers</span>
   </button>
-  <button mat-menu-item *ngIf="isAdmin()||isManager()" (click)="Orders()">
+  <button mat-menu-item *ngIf="isAdmin()||isManager()" routerLink="">
     <mat-icon>storage</mat-icon>
     <span>Orders</span>
   </button>
-  <button mat-menu-item (click)="tags()">
+  <button mat-menu-item routerLink="">
     <mat-icon>view_comfy</mat-icon>
     <span>Tags</span>
   </button>

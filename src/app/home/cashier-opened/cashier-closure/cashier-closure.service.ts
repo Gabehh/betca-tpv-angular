@@ -12,12 +12,12 @@ export class CashierClosureService {
   constructor(private httpService: HttpService) {
   }
 
-  close(cashierClosure: CashierClosure): Observable<any> {
-    return this.httpService.patch(AppEndpoints.CASHIER_CLOSURE_LAST, cashierClosure);
+  close(cashierClosure: CashierClosure): Observable<void> {
+    return this.httpService.patch(AppEndpoints.CASHIER_CLOSURES_LAST, cashierClosure);
   }
 
   readState(): Observable<CashierState> {
-    return this.httpService.get(AppEndpoints.CASHIER_CLOSURE_LAST_STATE);
+    return this.httpService.get(AppEndpoints.CASHIER_CLOSURES_LAST_STATE);
   }
 
 }

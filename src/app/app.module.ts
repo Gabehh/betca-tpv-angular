@@ -5,42 +5,33 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import {CoreModule} from './core/core.module';
-import {CashierService} from './home/shared/cashier.service';
-import {ArticleService} from './home/shared/article.service';
-import {CashierClosureService} from './home/cashier-opened/cashier/cashier-closure.service';
-import {ShoppingCartService} from './home/cashier-opened/shopping-cart/shopping-cart.service';
-import {AdminsService} from './home/admins.service';
-import {UserService} from './home/users/user.service';
 import {AppMaterialModule} from './app-material.module';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SystemService} from './home/system.service';
+import {AppComponents} from './app-components';
+import {AppServices} from './app-services';
 
 @NgModule({
   imports: [
     AppMaterialModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     CdkTableModule,
     CoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    AppRoutingModule.COMPONENTS,
-    AppRoutingModule.DIALOGS
+    AppComponents.COMPONENTS,
+    AppComponents.DIALOGS
   ],
-  entryComponents: [AppRoutingModule.DIALOGS],
+  entryComponents: [
+    AppComponents.DIALOGS
+  ],
   providers: [
-    AdminsService,
-    ArticleService,
-    CashierClosureService,
-    CashierService,
-    ShoppingCartService,
-    SystemService,
-    UserService
+    AppServices.SERVICES
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 
-import {ArticleQuickCreation} from './article-quick-creation.model';
 import {ShoppingCartService} from './shopping-cart.service';
+import {Article} from '../../shared/article.model';
 
 @Component({
   templateUrl: 'article-quick-creation-dialog.component.html',
@@ -10,7 +10,7 @@ import {ShoppingCartService} from './shopping-cart.service';
 })
 export class ArticleQuickCreationDialogComponent {
 
-  article: ArticleQuickCreation;
+  article: Article;
 
   constructor(private shoppingCartService: ShoppingCartService, private dialogRef: MatDialogRef<ArticleQuickCreationDialogComponent>) {
   }

@@ -18,5 +18,4 @@ export class ArticleService {
   create(article: Article): Observable<Article> {
     return this.httpService.successful().post(AppEndpoints.ARTICLES, article);
   }
-
 }
