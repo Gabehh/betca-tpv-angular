@@ -10,7 +10,7 @@ realizado con Spring & webflux.
 [![](https://img.shields.io/static/v1?label=Heroku&message=v2.0.0-Release&color=green)](https://betca-tpv-angular.herokuapp.com)   
 
 ### Tecnologías necesarias
-`Typescript` `npm (6.13)` `Angular (8.3)` `Material` `node (12.14)` `HTML` `CSS` --- CI: `GitHub` `Travis-CI` `Heroku`
+`Typescript` `npm (6.13)` `Angular (8.3)` `Material` `Node (12.14)` `HTML` `CSS` --- CI: `GitHub` `Travis-CI` `Heroku`
 
 ### :gear: Instalación del proyecto
 1. Clonar el repositorio en tu equipo, **mediante consola**:
@@ -20,15 +20,15 @@ realizado con Spring & webflux.
 > cd betca-tpv-angular
 betca-tpv-angular> npm install
 ```
-2. Abrir el proyecto mediante **WebStorm**
-   * **Open**, y seleccionar la carpeta del proyecto
+2. Abrir el proyecto mediante **WebStorm**.
+   * **Open**, y seleccionar la carpeta del proyecto.
 
-3. Ejecución
+3. Ejecución.
    * Ejecución en local atacando al back-end desplegado en Heroku, por consola: `> ng serve --prod`.
    * Ejecución en local atacando al back-end desplegado localmente: 
-      1. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
-      1. Se debe arrancar el **Back-end**: `> mvn clean spring-boot:run`  
-      1. Se debe arrancar **Angular**: `> ng serve`
+      1. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`.  
+      1. Se debe arrancar el **Back-end**: `> mvn clean spring-boot:run`.  
+      1. Se debe arrancar **Angular**: `> ng serve`.
 
 ###  :movie_camera: Videos explicativos
 [Interfaz de Usuario](https://youtu.be/yBZ3SHShimE)   
@@ -42,7 +42,7 @@ Permite la creación e impresión del recibo ticket o factura de venta —con lo
 actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos...
 
 ### Interfaz de Usuario
-* [App TPV en Heroku](https://betca-tpv-angular.herokuapp.com)
+* [App TPV desplegada en Heroku](https://betca-tpv-angular.herokuapp.com)
 
 ### Arquitectura
 
