@@ -26,9 +26,9 @@ betca-tpv-angular> npm install
 3. Ejecución.
    * Ejecución en local atacando al back-end desplegado en Heroku, por consola: `> ng serve --prod`.
    * Ejecución en local atacando al back-end desplegado localmente: 
-      1. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`.  
-      1. Se debe arrancar el **Back-end**: `> mvn clean spring-boot:run`.  
-      1. Se debe arrancar **Angular**: `> ng serve`.
+      1. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`  
+      1. Se debe arrancar el **Back-end**: `> mvn clean spring-boot:run`    
+      1. Se debe arrancar **Angular**: `> ng serve`   
 
 ###  :movie_camera: Videos explicativos
 [Interfaz de Usuario](https://youtu.be/yBZ3SHShimE)   
@@ -162,6 +162,40 @@ this.tokensService.isManager()...
   demo2(): Observable<any> {
     return this.httpService.post('...', object);
   }
+```
+
+#### Mocks
+[RxJS-Reactive Extensions Library for JavaScript](https://rxjs.dev/guide/overview).
+```typescript
+import {EMPTY, from, Observable, of, range, throwError, timer} from 'rxjs';
+import {delay, take} from 'rxjs/operators';
+
+rxjs1(): Observable<string> {
+  return of('a').pipe(delay(1000));
+}
+rxjs2(): Observable<any> {
+  return of({uno: 'uno', dos: 'dos'});
+}
+rxjs3(): Observable<void> {
+  return EMPTY;
+}
+rxjs4(): Observable<any> {
+   return throwError(new Error('oops!'));
+}
+rxjs5(): Observable<any> {
+  return timer(0, 500).pipe(take(5));
+}
+rxjs6(): Observable<any> {
+  return range(0, 5).pipe(take(5));
+}
+rxjs7(): Observable<any> {
+  const array = [
+    {uno: 'uno', dos: 'dos'},
+    {uno: '1', dos: '2'},
+    {uno: 'a', dos: 'b'},
+  ];
+  return from(array);
+}
 ```
 
 :heavy_check_mark:
