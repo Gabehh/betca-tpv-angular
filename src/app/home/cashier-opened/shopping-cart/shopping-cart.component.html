@@ -83,6 +83,24 @@
       <mat-form-field>
         <input matInput [placeholder]="stockLabel()" type="number" [value]="stockValue()" readonly>
       </mat-form-field>
+      <form>
+        <mat-form-field>
+          <input matInput placeholder="Mobile to discount" type="text" #mobile>
+        </mat-form-field>
+        <button type="submit" mat-mini-fab color="primary" (click)="addDiscount(mobile.value)"
+                [disabled]="mobile.value === ''">
+          <mat-icon>money_off</mat-icon>
+        </button>
+      </form>
+      <form>
+        <mat-form-field>
+          <input matInput placeholder="Offers" type="text" #offer>
+        </mat-form-field>
+        <button type="submit" mat-mini-fab color="primary" (click)="addOffer(offer.value)"
+                [disabled]="offer.value === ''">
+          <mat-icon>local_atm</mat-icon>
+        </button>
+      </form>
     </div>
     <button mat-raised-button color="accent" (click)="checkOut()" [disabled]="isEmpty()">
       <mat-icon mat-icon-button>credit_card</mat-icon>

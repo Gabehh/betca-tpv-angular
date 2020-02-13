@@ -158,6 +158,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     // TODO crear un presupuesto
   }
 
+  addDiscount(mobile) {
+    // TODO aplicar descuento
+  }
+
+  addOffer(offer) {
+    // TODO aplicar descuento
+  }
+
   ngOnDestroy(): void {
     this.subscriptionDataSource.unsubscribe();
   }
