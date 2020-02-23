@@ -10,9 +10,9 @@ import {CashierClosure} from './cashier-closure.model';
   styleUrls: ['cashier-closure-dialog.component.css']
 })
 export class CashierClosureDialogComponent {
-  cashierClosureFinal: CashierClosure = {finalCash: undefined, finalCard: undefined, comment: undefined};
+  cashierClosureFinal: CashierClosure = {finalCash: null, finalCard: null, comment: undefined};
   cashierState: CashierState =
-    {salesTotal: undefined, totalCard: undefined, totalCash: undefined, totalVoucher: undefined};
+    {salesTotal: null, totalCard: null, totalCash: null, totalVoucher: null};
 
   constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<CashierClosureDialogComponent>,
               private cashierClosureService: CashierClosureService) {

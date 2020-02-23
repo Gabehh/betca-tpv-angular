@@ -5,7 +5,6 @@ import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ShoppingCartService} from './shopping-cart.service';
 import {Shopping} from './shopping.model';
 import {CheckOutDialogComponent} from './check-out-dialog.component';
-import {ArticleQuickCreationDialogComponent} from './article-quick-creation-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -115,20 +114,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   add(codeValue: string) {
-    this.shoppingCartService.add(codeValue).subscribe(() => {
-      },
-      () => {
-        const dialogRef = this.dialog.open(ArticleQuickCreationDialogComponent);
-        dialogRef.componentInstance.article = {code: codeValue, description: undefined, retailPrice: undefined};
-        dialogRef.afterClosed().subscribe(
-          isCreatedCode => {
-            if (isCreatedCode) {
-              this.add(codeValue);
-            }
-          }
-        );
-      }
-    );
+    this.shoppingCartService.add(codeValue).subscribe();
   }
 
   stockLabel(): string {
@@ -136,7 +122,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   stockValue(): number {
-    return (this.shoppingCartService.getLastArticle()) ? this.shoppingCartService.getLastArticle().stock : undefined;
+    return (this.shoppingCartService.getLastArticle()) ? this.shoppingCartService.getLastArticle().stock : null;
   }
 
   isEmpty(): boolean {
@@ -144,26 +130,21 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   checkOut() {
-    this.dialog.open(CheckOutDialogComponent, {
-      data: {
-        total: this.shoppingCartService.getTotalShoppingCart(),
-        ticketCreation: {cash: 0, card: 0, voucher: 0, shoppingCart: null}
-      }
-    }).afterClosed().subscribe(
+    this.dialog.open(CheckOutDialogComponent).afterClosed().subscribe(
       () => this.ngOnInit()
     );
   }
 
   createBudget() {
-    // TODO crear un presupuesto
+    // TODO create budget
   }
 
   addDiscount(mobile) {
-    // TODO aplicar descuento
+    // TODO add discount
   }
 
   addOffer(offer) {
-    // TODO aplicar descuento
+    // TODO add offer
   }
 
   ngOnDestroy(): void {

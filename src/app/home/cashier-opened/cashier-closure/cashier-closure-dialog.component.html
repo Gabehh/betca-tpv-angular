@@ -1,29 +1,29 @@
 <h3 mat-dialog-title>Cashier Closure (total sales: € {{cashierState.salesTotal}})</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input matInput type="number" placeholder="Final card (€ {{cashierState.totalCard}})"
-           [(ngModel)]="cashierClosureFinal.finalCard"
-           required cdkFocusInitial/>
+    <input [(ngModel)]="cashierClosureFinal.finalCard" cdkFocusInitial matInput
+           placeholder="Final card (€ {{cashierState.totalCard}})"
+           required type="number"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="number" placeholder="Final cash (€ {{cashierState.totalCash}})"
-           [(ngModel)]="cashierClosureFinal.finalCash"
-           required/>
+    <input [(ngModel)]="cashierClosureFinal.finalCash" matInput placeholder="Final cash (€ {{cashierState.totalCash}})"
+           required
+           type="number"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="number" placeholder="Total vouchers" [value]="cashierState.totalVoucher" readonly/>
+    <input [value]="cashierState.totalVoucher" matInput placeholder="Total vouchers" readonly type="number"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Comment" [(ngModel)]="cashierClosureFinal.comment" required/>
+    <input [(ngModel)]="cashierClosureFinal.comment" matInput placeholder="Comment" required type="text"/>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="accent" (click)="close()" [disabled]="invalid()">
+  <button mat-dialog-close mat-raised-button>Cancel</button>
+  <button (click)="close()" [disabled]="invalid()" color="accent" mat-raised-button>
     <mat-icon>lock_outline</mat-icon>
     Close cashier
   </button>
-  <button mat-raised-button color="primary" (click)="cashMovement()">
+  <button (click)="cashMovement()" color="primary" mat-raised-button>
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash movement</span>
   </button>

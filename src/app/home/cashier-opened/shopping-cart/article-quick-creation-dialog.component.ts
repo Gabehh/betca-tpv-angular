@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-
-import {ShoppingCartService} from './shopping-cart.service';
 import {Article} from '../../shared/article.model';
+import {ArticleService} from '../../shared/article.service';
 
 @Component({
   templateUrl: 'article-quick-creation-dialog.component.html',
@@ -12,7 +11,7 @@ export class ArticleQuickCreationDialogComponent {
 
   article: Article;
 
-  constructor(private shoppingCartService: ShoppingCartService, private dialogRef: MatDialogRef<ArticleQuickCreationDialogComponent>) {
+  constructor(private articleService: ArticleService, private dialogRef: MatDialogRef<ArticleQuickCreationDialogComponent>) {
   }
 
   invalidArticle(): boolean {
@@ -20,8 +19,8 @@ export class ArticleQuickCreationDialogComponent {
   }
 
   create() {
-    this.shoppingCartService.createArticle(this.article).subscribe(
-      () => this.dialogRef.close(true)
+    this.articleService.create(this.article).subscribe(
+      newArticle => this.dialogRef.close(newArticle)
     );
   }
 }

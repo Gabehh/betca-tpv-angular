@@ -73,41 +73,41 @@
     <div class="container">
       <form>
         <mat-form-field>
-          <input matInput placeholder="Product Code" type="text" #code cdkFocusInitial>
+          <input #code cdkFocusInitial matInput placeholder="Product Code" type="text">
         </mat-form-field>
-        <button type="submit" mat-mini-fab color="primary" (click)="add(code.value); code.value=''"
-                [disabled]="code.value === ''">
+        <button (click)="add(code.value); code.value=''" [disabled]="code.value === ''" color="primary" mat-mini-fab
+                type="submit">
           <mat-icon>search</mat-icon>
         </button>
       </form>
       <mat-form-field>
-        <input matInput [placeholder]="stockLabel()" type="number" [value]="stockValue()" readonly>
+        <input [placeholder]="stockLabel()" [value]="stockValue()" matInput readonly type="number">
       </mat-form-field>
       <form>
         <mat-form-field>
-          <input matInput placeholder="Mobile to discount" type="text" #mobile>
+          <input #mobile matInput placeholder="Mobile to discount" type="text">
         </mat-form-field>
-        <button type="submit" mat-mini-fab color="primary" (click)="addDiscount(mobile.value)"
-                [disabled]="mobile.value === ''">
+        <button (click)="addDiscount(mobile.value)" [disabled]="mobile.value === ''" color="primary" mat-mini-fab
+                type="submit">
           <mat-icon>money_off</mat-icon>
         </button>
       </form>
       <form>
         <mat-form-field>
-          <input matInput placeholder="Offers" type="text" #offer>
+          <input #offer matInput placeholder="Offers" type="text">
         </mat-form-field>
-        <button type="submit" mat-mini-fab color="primary" (click)="addOffer(offer.value)"
-                [disabled]="offer.value === ''">
+        <button (click)="addOffer(offer.value)" [disabled]="offer.value === ''" color="primary" mat-mini-fab
+                type="submit">
           <mat-icon>local_atm</mat-icon>
         </button>
       </form>
     </div>
-    <button mat-raised-button color="accent" (click)="checkOut()" [disabled]="isEmpty()">
+    <button (click)="checkOut()" [disabled]="isEmpty()" color="accent" mat-raised-button>
       <mat-icon mat-icon-button>credit_card</mat-icon>
       Checkout
       <mat-icon>euro_symbol</mat-icon>
     </button>
-    <button mat-raised-button color="primary" (click)="createBudget()" disabled="true">
+    <button (click)="createBudget()" color="primary" disabled="true" mat-raised-button>
       <mat-icon>description</mat-icon>
       Budget
     </button>

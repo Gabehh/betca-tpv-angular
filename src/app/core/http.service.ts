@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
-
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 import {environment} from '../../environments/environment';

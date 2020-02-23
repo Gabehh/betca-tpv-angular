@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
+import {Component} from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 import {TicketCreation} from './ticket-creation.model';
 import {ShoppingCartService} from './shopping-cart.service';
@@ -12,11 +12,12 @@ export class CheckOutDialogComponent {
 
   totalPurchase: number;
   requestedInvoice = false;
+  requestedGiftTicket = false;
   ticketCreation: TicketCreation;
 
-  constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialog: MatDialog, private shoppingCartService: ShoppingCartService) {
-    this.totalPurchase = data.total;
-    this.ticketCreation = data.ticketCreation;
+  constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService) {
+    this.totalPurchase = this.shoppingCartService.getTotalShoppingCart();
+    this.ticketCreation = {cash: 0, card: 0, voucher: 0, shoppingCart: null, note: ''};
   }
 
   static format(value: number): number {
@@ -82,6 +83,10 @@ export class CheckOutDialogComponent {
     return (this.totalPurchase + this.returnedAmount() - this.shoppingCartService.getTotalCommitted() < -0.01); // rounding errors
   }
 
+  round(value) {
+    return Math.round(value * 100) / 100;
+  }
+
   checkOut() {
     const returned = this.returnedAmount();
     const cash = this.ticketCreation.cash;
@@ -97,36 +102,23 @@ export class CheckOutDialogComponent {
       this.ticketCreation.cash = 0;
     }
 
-    this.ticketCreation.note = '';
     if (this.ticketCreation.card > 0) {
-      this.ticketCreation.note += ' Pay with card: ' + Math.round(this.ticketCreation.card * 100) / 100 + '.';
+      this.ticketCreation.note += ' Pay with card: ' + this.round(this.ticketCreation.card) + '.';
     }
     if (this.ticketCreation.voucher > 0) {
-      this.ticketCreation.note += ' Pay with voucher: ' + Math.round(this.ticketCreation.voucher * 100) / 100 + '.';
+      this.ticketCreation.note += ' Pay with voucher: ' + this.round(this.ticketCreation.voucher) + '.';
     }
     if (this.ticketCreation.cash > 0) {
-      this.ticketCreation.note += ' Pay with cash: ' + Math.round(cash * 100) / 100 + '.';
+      this.ticketCreation.note += ' Pay with cash: ' + this.round(cash) + '.';
     }
     if (returned > 0) {
-      this.ticketCreation.note += ' Return: ' + Math.round(returned * 100) / 100 + '.';
+      this.ticketCreation.note += ' Return: ' + this.round(returned) + '.';
     }
-    this.shoppingCartService.checkOut(this.ticketCreation).subscribe(() => {
-        if (voucher > 0) {
-          // TODO crear un vale como parte del pago, luego crear la factura
-          this.createInvoice();
-        } else {
-          this.createInvoice();
-        }
-      }
+    this.shoppingCartService.checkOut(this.ticketCreation, voucher, this.requestedInvoice, this.requestedGiftTicket).subscribe(
+      () => {
+      }, () => this.dialog.closeAll()
+      , () => this.dialog.closeAll()
     );
-  }
-
-  createInvoice() {
-    if (this.requestedInvoice) {
-      // TODO crear una factura
-    } else {
-      this.dialog.closeAll();
-    }
   }
 
   invalidInvoice(): boolean {
