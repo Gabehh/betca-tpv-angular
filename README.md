@@ -88,7 +88,7 @@ Como exceptión se permite un proceso muy simple, por ejemplo deshabilitar un bo
   <mat-icon>close</mat-icon>
 </button>
 ```
-:x:
+:x: :radioactive: :no_entry: :shit:
 ```xml
 <mat-dialog-actions>
   <button mat-button mat-dialog-close tabindex="-1">Cancel</button>
@@ -100,6 +100,7 @@ Como exceptión se permite un proceso muy simple, por ejemplo deshabilitar un bo
 > Obtener los datos a traves del `Servicio Local`.   
 > Procesar exclusivamente para preparar la vista.   
 > NO realiza procesos de negocio NI realiza peticiones al API, lo delega en el servicio Local.  
+> Se subscribe a los Observables, pero NO realiza sincronización entre observables
 
 :heavy_check_mark:
 ```typescript
@@ -143,10 +144,52 @@ export class CashierClosureDialogComponent {
   }
 }
 ```
+:x: :radioactive: :no_entry: :shit:
+```typescript
+import { Observable, of, throwError } from 'rxjs'; 
+import { map } from 'rxjs/operators';
+
+export class ComponentError {
+  property: string;
+
+  constructor(){
+    const source: Observable<string> = of('Observer-1');
+    const sourceError: Observable<string> =  throwError(new Error('oops!'))
+    const source2a: Observable<string> = of('Observer-2a');
+    const source2b: Observable<string> = of('Observer-2b');
+    const source3: Observable<string> = of('Observer-error');    
+
+    source.subscribe( //  sourceError.subscribe(
+      value => {
+        console.log(value);
+        source2a.subscribe (
+          value2a =>  {
+            console.log(value2a);
+            source2b.subscribe(
+              value2b => console.log(value2b)
+            );
+          }
+        );
+      },
+      error => {
+        console.error(error);
+        source3.subscribe(
+          value3 => console.log(value3)
+        )
+      },
+      ()=> {
+        console.log('completed! ... deberíamos repetir subcripciones???'); 
+      }
+    );
+  }
+
+}
+```
 
 ##### Servicio
 > Realiza las peticiones del API a traves del `servicio Http` de Core.  
-> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`.  
+> Si hay peticiones repetidas entre varios servicios, se delega a un servicio más genérico situado en una carpeta `shared`. 
+> Si se tiene que sincronizar observables se realiza con los operadores SIN subscripción. 
 
 :bulb:
 ```typescript
@@ -161,6 +204,20 @@ this.tokensService.isManager()...
   
   demo2(): Observable<any> {
     return this.httpService.post('...', object);
+  }
+```
+[RxJS-Reactive Extensions Library for JavaScript](https://rxjs.dev/guide/overview).   
+:heavy_check_mark:
+```typescript
+checkOut(ticketCreation: TicketCreation, voucher: number, requestedInvoice: boolean, requestedGiftTicket): Observable<any> {
+    ticketCreation.shoppingCart = this.shoppingCart;
+    const ticket = this.httpService.pdf().post(AppEndpoints.TICKETS, ticketCreation).pipe(
+      map(() => this.reset())
+    );
+    let receipts = iif(() => voucher > 0, EMPTY); // TODO change EMPTY to create voucher
+    receipts = iif(() => requestedInvoice, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create invoice
+    receipts = iif(() => requestedGiftTicket, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create gift ticket
+    return concat(ticket, receipts);
   }
 ```
 
