@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  VERSION: '2.2.0-SNAPSHOT',
+  VERSION: '2.4.0-SNAPSHOT',
   API: 'http://localhost:8080/api/v0'
 };
 

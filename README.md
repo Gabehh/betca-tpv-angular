@@ -7,7 +7,7 @@ realizado con Spring & webflux.
 
 ### Estado del código  
 [![Build Status](https://travis-ci.org/miw-upm/betca-tpv-angular.svg?branch=develop)](https://travis-ci.org/miw-upm/betca-tpv-angular)
-[![](https://img.shields.io/static/v1?label=Heroku&message=v2.1.0-Release&color=green)](https://betca-tpv-angular.herokuapp.com)   
+[![](https://img.shields.io/static/v1?label=Heroku&message=v2.3.0-Release&color=green)](https://betca-tpv-angular.herokuapp.com)   
 
 ### Tecnologías necesarias
 `Typescript` `npm (6.13)` `Angular (8.3)` `Material` `Node (12.14)` `HTML` `CSS` --- CI: `GitHub` `Travis-CI` `Heroku`
