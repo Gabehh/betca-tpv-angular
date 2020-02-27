@@ -9,6 +9,7 @@ import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closu
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {ProvidersComponent} from './home/providers/providers.component';
+import {OrdersComponent} from './home/orders/orders.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -23,7 +24,8 @@ const routes: Routes = [
       {path: 'articles', component: ArticlesAdminComponent},
       {path: 'vouchers', component: VouchersComponent},
       {path: 'users', component: UsersComponent},
-      {path: 'providers', component: ProvidersComponent}
+      {path: 'providers', component: ProvidersComponent},
+      {path: 'orders', component: OrdersComponent}
     ]
   }
 ];
