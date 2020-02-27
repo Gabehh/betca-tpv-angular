@@ -3,6 +3,7 @@ import {ArticlesFamilyViewComponent} from './home/cashier-opened/articles-family
 import {CashierClosedComponent} from './home/cashier-closed/cashier-closed.component';
 import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.component';
 import {HomeComponent} from './home/home.component';
+import {OrdersComponent} from './home/orders/orders.component';
 import {ShoppingCartComponent} from './home/cashier-opened/shopping-cart/shopping-cart.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
@@ -22,6 +23,7 @@ export class AppComponents {
     CashierClosedComponent,
     CashierOpenedComponent,
     HomeComponent,
+    OrdersComponent,
     ShoppingCartComponent,
     UsersComponent,
     WelcomeComponent,
