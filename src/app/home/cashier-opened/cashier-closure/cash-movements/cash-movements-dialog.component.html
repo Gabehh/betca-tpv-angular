@@ -8,10 +8,17 @@
   <mat-form-field>
     <input [(ngModel)]="cashMovements.comment" matInput placeholder="Comment" required type="text"/>
   </mat-form-field>
+  <mat-form-field>
+    <mat-label>Operation</mat-label>
+    <mat-select [(ngModel)]="operation" required type="number">
+      <mat-option value="0">DEPOSIT</mat-option>
+      <mat-option value="1">WITHDRAWL</mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Cancel</button>
-  <button (click)="move()" color="primary" mat-raised-button>
+  <button (click)="move()" [disabled]="invalid()" color="accent" mat-raised-button>
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash movement</span>
   </button>
