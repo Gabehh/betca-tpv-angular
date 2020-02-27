@@ -5,6 +5,7 @@ import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.compo
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
+import {ProvidersComponent} from './home/providers/providers.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       {path: 'cashier-closed', component: CashierClosedComponent},
       {path: 'cashier-opened', component: CashierOpenedComponent},
-      {path: 'users', component: UsersComponent}
+      {path: 'users', component: UsersComponent},
+      {path: 'providers', component: ProvidersComponent}
     ]
   }
 ];
