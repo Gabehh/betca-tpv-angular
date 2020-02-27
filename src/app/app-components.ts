@@ -9,6 +9,7 @@ import {WelcomeComponent} from './welcome.component';
 import {ArticleQuickCreationDialogComponent} from './home/cashier-opened/shopping-cart/article-quick-creation-dialog.component';
 import {CashierClosureDialogComponent} from './home/cashier-opened/cashier-closure/cashier-closure-dialog.component';
 import {CheckOutDialogComponent} from './home/cashier-opened/shopping-cart/check-out-dialog.component';
+import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {CashMovementsDialogComponent} from './home/cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component';
 
 export class AppComponents {
@@ -21,6 +22,7 @@ export class AppComponents {
     ShoppingCartComponent,
     UsersComponent,
     WelcomeComponent,
+    VouchersComponent
   ];
 
   static DIALOGS = [
