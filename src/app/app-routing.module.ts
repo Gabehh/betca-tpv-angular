@@ -5,6 +5,7 @@ import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.compo
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
+import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {ProvidersComponent} from './home/providers/providers.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       {path: 'cashier-closed', component: CashierClosedComponent},
       {path: 'cashier-opened', component: CashierOpenedComponent},
+      {path: 'vouchers', component: VouchersComponent},
       {path: 'users', component: UsersComponent},
       {path: 'providers', component: ProvidersComponent}
     ]
