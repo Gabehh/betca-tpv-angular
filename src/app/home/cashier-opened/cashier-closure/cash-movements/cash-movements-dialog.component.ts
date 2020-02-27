@@ -4,8 +4,7 @@ import {CashierMovements} from './cash-movements.model';
 
 
 @Component({
-  templateUrl: 'cash-movements-dialog.component.html',
-  styleUrls: ['cash-movements-dialog.component.css']
+  templateUrl: 'cash-movements-dialog.component.html'
 })
 export class CashMovementsDialogComponent {
 
