@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {CashierClosureService} from './cashier-closure.service';
 import {CashierState} from './cashier-state.model';
 import {CashierClosure} from './cashier-closure.model';
+import {CashMovementsDialogComponent} from "./cash-movements/cash-movements-dialog.component";
 
 @Component({
   templateUrl: 'cashier-closure-dialog.component.html',

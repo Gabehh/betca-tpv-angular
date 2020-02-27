@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
+import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -16,7 +17,9 @@ const routes: Routes = [
       {path: 'cashier-closed', component: CashierClosedComponent},
       {path: 'cashier-opened', component: CashierOpenedComponent},
       {path: 'users', component: UsersComponent},
-      {path: 'articles', component: ArticlesAdminComponent}
+      {path: 'articles', component: ArticlesAdminComponent},
+      {path: 'vouchers', component: VouchersComponent},
+      {path: 'users', component: UsersComponent}
     ]
   }
 ];
