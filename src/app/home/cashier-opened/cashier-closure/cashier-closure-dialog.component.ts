@@ -34,8 +34,9 @@ export class CashierClosureDialogComponent {
   }
 
   cashMovement() {
-    // TODO ...
-    console.log('In construction!!!');
+    this.dialog.open(CashierClosureDialogComponent).afterClosed().subscribe(
+      () => this.cashier()
+    );
   }
 
 }
