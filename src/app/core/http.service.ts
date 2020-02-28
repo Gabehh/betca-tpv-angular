@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
+import {EMPTY, Observable, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
@@ -161,11 +161,14 @@ export class HttpService {
 
   private handleError(response): any {
     let error: Error;
-    if (response.status === HttpService.CONNECTION_REFUSE || response.status === HttpService.UNAUTHORIZED) {
-      this.snackBar.open((response.status) ? 'Unauthorized' : 'Connection refuse', 'Error', {duration: 5000});
+    if (response.status === HttpService.UNAUTHORIZED) {
+      this.snackBar.open('Unauthorized', 'Error', {duration: 5000});
       this.logout();
       this.router.navigate(['']);
-      return of();
+      return EMPTY;
+    } else if (response.status === HttpService.CONNECTION_REFUSE) {
+      this.snackBar.open('Connection Refuse', 'Error', {duration: 5000});
+      return EMPTY;
     } else if (response.status === HttpService.NOT_FOUND) {
       error = {error: 'Not Found', message: '', path: ''};
       this.snackBar.open(error.error + ': ' + error.message, 'Info', {duration: 2000});
