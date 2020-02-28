@@ -12,12 +12,12 @@ export class AppServices {
   public static SERVICES = [
     AdminsService,
     ArticleService,
+    AdvancedArticlesSearchService,
     CashierClosureService,
     CashierService,
     ShoppingCartService,
     SystemService,
     UserService,
     VoucherService,
-    AdvancedArticlesSearchService
   ];
 }

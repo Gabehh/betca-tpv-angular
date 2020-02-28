@@ -11,8 +11,9 @@ export class AppEndpoints {
   static SYSTEM_APP_INFO = '/system/app-info';
 
   static TICKETS = '/tickets';
-  static VOUCHERS = '/vouchers';
 
   static USERS = '/users';
+
+  static VOUCHERS = '/vouchers';
 
 }

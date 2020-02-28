@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+
 import {CashierClosedComponent} from './home/cashier-closed/cashier-closed.component';
 import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.component';
 import {HomeComponent} from './home/home.component';
@@ -17,15 +18,14 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent,
     children: [
+      {path: 'articles', component: ArticlesAdminComponent},
       {path: 'cashier-closed', component: CashierClosedComponent},
       {path: 'cashier-opened', component: CashierOpenedComponent},
-      {path: 'users', component: UsersComponent},
       {path: 'cashier-closure-search', component: CashierClosureSearchComponent},
-      {path: 'articles', component: ArticlesAdminComponent},
-      {path: 'vouchers', component: VouchersComponent},
-      {path: 'users', component: UsersComponent},
+      {path: 'orders', component: OrdersComponent},
       {path: 'providers', component: ProvidersComponent},
-      {path: 'orders', component: OrdersComponent}
+      {path: 'users', component: UsersComponent},
+      {path: 'vouchers', component: VouchersComponent},
     ]
   }
 ];
