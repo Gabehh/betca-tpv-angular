@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Provider} from './provider.model';
+import {Provider} from '../shared/provider.model';
 
 @Component({
   templateUrl: `providers.component.html`

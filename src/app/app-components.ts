@@ -3,7 +3,6 @@ import {ArticlesFamilyViewComponent} from './home/cashier-opened/articles-family
 import {CashierClosedComponent} from './home/cashier-closed/cashier-closed.component';
 import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.component';
 import {HomeComponent} from './home/home.component';
-import {OrdersComponent} from './home/orders/orders.component';
 import {ShoppingCartComponent} from './home/cashier-opened/shopping-cart/shopping-cart.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
@@ -15,6 +14,8 @@ import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {CashMovementsDialogComponent} from './home/cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component';
 import {ProvidersComponent} from './home/providers/providers.component';
+import {ProvidersDropdownComponent} from './home/shared/providers-dropdown.component';
+import {OrdersComponent} from './home/orders/orders.component';
 import {VoucherCreationDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-creation-dialog.component';
 
 export class AppComponents {
@@ -31,7 +32,8 @@ export class AppComponents {
     VouchersComponent,
     ProvidersComponent,
     CashierClosureSearchComponent,
-    ArticlesAdminComponent
+    ArticlesAdminComponent,
+    ProvidersDropdownComponent
   ];
 
   static DIALOGS = [
