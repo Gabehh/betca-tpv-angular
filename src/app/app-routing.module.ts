@@ -11,6 +11,7 @@ import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {ProvidersComponent} from './home/providers/providers.component';
 import {OrdersComponent} from './home/orders/orders.component';
+import {SendingsComponent} from './home/sendings/sendings.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'providers', component: ProvidersComponent},
       {path: 'users', component: UsersComponent},
       {path: 'vouchers', component: VouchersComponent},
+      {path: 'sendings', component: SendingsComponent}
     ]
   }
 ];
