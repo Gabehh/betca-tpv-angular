@@ -14,6 +14,7 @@ import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {CashMovementsDialogComponent} from './home/cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component';
 import {ProvidersComponent} from './home/providers/providers.component';
+import {ProvidersDropdownComponent} from './home/shared/providers-dropdown.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -28,7 +29,8 @@ export class AppComponents {
     VouchersComponent,
     ProvidersComponent,
     CashierClosureSearchComponent,
-    ArticlesAdminComponent
+    ArticlesAdminComponent,
+    ProvidersDropdownComponent
   ];
 
   static DIALOGS = [

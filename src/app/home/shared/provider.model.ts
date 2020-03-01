@@ -1,4 +1,5 @@
 export interface Provider {
+  id?: string;
   company: string;
   nif: string;
   note?: string;
