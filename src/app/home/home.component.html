@@ -64,11 +64,11 @@
     <mat-icon>lock_open</mat-icon>
     <span>Open Cashier</span>
   </button>
-  <button *ngIf="!cashierClosed" disabled="true" mat-menu-item routerLink="">
+  <button (click)="moveCash()" *ngIf="!cashierClosed" mat-menu-item>
     <mat-icon>account_balance_wallet</mat-icon>
     <span>Cash Movement</span>
   </button>
-  <button disabled="true" mat-menu-item routerLink="">
+  <button mat-menu-item routerLink="/home/cashier-closure-search">
     <mat-icon>account_balance</mat-icon>
     <span>Cashier Closure</span>
   </button>
@@ -90,13 +90,13 @@
     <mat-icon>description</mat-icon>
     <span>Budgets</span>
   </button>
-  <button disabled="true" mat-menu-item routerLink="">
+  <button mat-menu-item routerLink="/home/vouchers">
     <mat-icon>local_offer</mat-icon>
     <span>Vouchers</span>
   </button>
 </mat-menu>
 <mat-menu #products="matMenu">
-  <button disabled="true" mat-menu-item routerLink="">
+  <button mat-menu-item disabled="false" routerLink="/home/articles">
     <mat-icon>view_list</mat-icon>
     <span>Articles</span>
   </button>
@@ -108,11 +108,11 @@
     <mat-icon>view_module</mat-icon>
     <span>Create Family sizes</span>
   </button>
-  <button disabled="true" mat-menu-item routerLink="">
+  <button mat-menu-item routerLink="/home/providers">
     <mat-icon>local_shipping</mat-icon>
     <span>Providers</span>
   </button>
-  <button *ngIf="isAdmin()||isManager()" disabled="true" mat-menu-item routerLink="">
+  <button *ngIf="isAdmin()||isManager()" mat-menu-item routerLink="/home/orders">
     <mat-icon>storage</mat-icon>
     <span>Orders</span>
   </button>
@@ -123,6 +123,11 @@
   <button disabled="true" mat-menu-item routerLink="">
     <mat-icon>local_atm</mat-icon>
     <span>Offers</span>
+  </button>
+  <!--Sendings-->
+  <button mat-menu-item routerLink="/home/sendings">
+    <mat-icon>speaker_notes</mat-icon>
+    <span>Sendings</span>
   </button>
 </mat-menu>
 <mat-menu #users="matMenu">

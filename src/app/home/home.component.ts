@@ -12,6 +12,7 @@ import {AdminsService} from './admins.service';
 import {UserService} from './users/user.service';
 import {SystemService} from './system.service';
 import {CashierClosureDialogComponent} from './cashier-opened/cashier-closure/cashier-closure-dialog.component';
+import {CashMovementsDialogComponent} from "./cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component";
 
 @Component({
   templateUrl: 'home.component.html',
@@ -83,6 +84,12 @@ export class HomeComponent {
 
   openCashier() {
     this.httpService.post(AppEndpoints.CASHIER_CLOSURES).subscribe(
+      () => this.cashier()
+    );
+  }
+
+  moveCash(){
+    this.dialog.open(CashMovementsDialogComponent).afterClosed().subscribe(
       () => this.cashier()
     );
   }

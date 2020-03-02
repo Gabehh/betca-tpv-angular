@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Pending Recip Search</mat-card-title>
+  <mat-card-content>
+
+    <mat-form-field>
+      <input [(ngModel)]="sendings.username" matInput placeholder="Username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="sendings.dni" matInput placeholder="DNI">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input [(ngModel)]="sendings.mobile" matInput placeholder="Mobile">
+    </mat-form-field>
+
+    <button (click)="search()" color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<app-crud (create)="create()" (delete)="false" (read)="read($event)"
+          (update)="update($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>

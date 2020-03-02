@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Search</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="provider.company" matInput placeholder="Company">
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="provider.nif" matInput placeholder="NIF">
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="provider.phone" matInput placeholder="Phone number">
+    </mat-form-field>
+    <button (click)="search()" color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+<!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
+<app-crud (create)="create()" (delete)="false" (read)="read($event)"
+          (update)="update($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>

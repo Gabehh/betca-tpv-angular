@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-title>Search</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="voucher.creationDate" matInput placeholder="Start date">
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="voucher.creationDate" matInput placeholder="Final date">
+    </mat-form-field>
+    <button (click)="search()" color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+<!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
+<app-crud (create)="create()" (read)="read($event)" [deleteAction]="false"
+          (update)="update($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>
