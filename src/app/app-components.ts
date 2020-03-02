@@ -19,6 +19,7 @@ import {OrdersComponent} from './home/orders/orders.component';
 import {VoucherCreationDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-creation-dialog.component';
 import {SendingsComponent} from './home/sendings/sendings.component';
 import {ProviderCreationDialogComponent} from './home/providers/provider-creation-dialog.component';
+import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -45,6 +46,7 @@ export class AppComponents {
     VoucherCreationDialogComponent,
     CashMovementsDialogComponent,
     CheckOutDialogComponent,
-    ProviderCreationDialogComponent
+    ProviderCreationDialogComponent,
+    OrderCreationDialogComponent
   ];
 }
