@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Order} from './order.model';
+import {MatDialog} from '@angular/material';
+import {OrderCreationDialogComponent} from './order-creation-dialog.component';
 
 @Component({
   templateUrl: `orders.component.html`
@@ -13,7 +15,7 @@ export class OrdersComponent {
   columns = ['description', 'provider Id', 'opening Date'];
   data: Order[];
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.order = {description: null, providerId: null, orderLines: null, openingDate: null};
     this.data = null;
   }
@@ -27,7 +29,7 @@ export class OrdersComponent {
   }
 
   create() {
-    // TODO
+    this.dialog.open(OrderCreationDialogComponent);
   }
 
   read(order: Order) {
