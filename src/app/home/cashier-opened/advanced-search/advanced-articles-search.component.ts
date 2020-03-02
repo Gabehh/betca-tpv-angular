@@ -17,8 +17,9 @@ export class AdvancedArticlesSearchComponent {
     this.data = null;
   }
   search() {
-    this.advancedArticlesSearchService.readAll().subscribe(
+   /* this.advancedArticlesSearchService.readAll().subscribe(
       data => this.data = data
-    );
+    );*/
+   this.data = this.advancedArticlesSearchService.readAll();
   }
 }
