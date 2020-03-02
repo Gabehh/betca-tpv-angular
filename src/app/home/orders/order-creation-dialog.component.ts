@@ -10,7 +10,7 @@ export class OrderCreationDialogComponent {
 
   newOrder: Order = {description: null, providerId: null, openingDate: null, closingDate: null, orderLines: null};
 
-  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<OrderCreationDialogComponent>,  private message: MatSnackBar) {
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<OrderCreationDialogComponent>, private message: MatSnackBar) {
   }
 
   createOrder() {
