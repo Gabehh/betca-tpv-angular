@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {Provider} from '../shared/provider.model';
+import {ProviderCreationDialogComponent} from './provider-creation-dialog.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
-  templateUrl: `providers.component.html`
+  templateUrl: 'providers.component.html'
 })
 export class ProvidersComponent {
 
@@ -12,7 +14,7 @@ export class ProvidersComponent {
   columns = ['company', 'nif', 'phone'];
   data: Provider[];
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.provider = {company: null, nif: null, phone: null};
     this.data = null;
   }
@@ -27,6 +29,7 @@ export class ProvidersComponent {
 
   create() {
     // TODO
+    this.dialog.open(ProviderCreationDialogComponent);
   }
 
   read(provider: Provider) {
