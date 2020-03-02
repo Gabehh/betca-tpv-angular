@@ -1,0 +1,48 @@
+<h3 mat-dialog-title>Article</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input [(ngModel)]="newArticle.description" cdkFocusInitial matInput
+           placeholder="Description"
+           required type="String"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
+           placeholder="Price"
+           required type="number"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input [(ngModel)]="newArticle.reference" matInput
+           placeholder="Reference"
+           required type="String"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="newArticle.provider" matInput
+           placeholder="Proveedor"
+           required type="String"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input [(ngModel)]="newArticle.stock" cdkFocusInitial matInput
+           placeholder="Stock"
+           required type="number"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tax</mat-label>
+    <mat-select [(ngModel)]="tax" required type="number">
+      <mat-option value="0">FREE</mat-option>
+      <mat-option value="1">SUPER_REDUCED</mat-option>
+      <mat-option value="2">REDUCED</mat-option>
+      <mat-option value="3">GENERAL</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createArticle()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Save Changes</span>
+  </button>
+</mat-dialog-actions>
