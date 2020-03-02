@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {Article} from '../shared/article.model';
 import {MatDialog} from '@angular/material';
+import {OrderCreationDialogComponent} from '../orders/order-creation-dialog.component';
+import {ArticlesCreationDialogComponent} from './articles-creation-dialog.component';
 
 @Component({
   templateUrl: 'articles-admin.component.html'
@@ -26,7 +28,7 @@ export class ArticlesAdminComponent {
   }
 
   create() {
-    // TODO
+    this.dialog.open(ArticlesCreationDialogComponent);
   }
 
   read(article: Article) {
