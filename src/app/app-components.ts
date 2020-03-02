@@ -10,6 +10,7 @@ import {ArticleQuickCreationDialogComponent} from './home/cashier-opened/shoppin
 import {CashierClosureDialogComponent} from './home/cashier-opened/cashier-closure/cashier-closure-dialog.component';
 import {CheckOutDialogComponent} from './home/cashier-opened/shopping-cart/check-out-dialog.component';
 import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/cashier-closure-search.component';
+import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {CashMovementsDialogComponent} from './home/cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component';
@@ -27,6 +28,7 @@ export class AppComponents {
     ArticlesFamilyViewComponent,
     CashierClosedComponent,
     CashierOpenedComponent,
+    CustomerDiscountComponent,
     HomeComponent,
     OrdersComponent,
     ShoppingCartComponent,

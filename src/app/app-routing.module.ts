@@ -12,6 +12,7 @@ import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vo
 import {ProvidersComponent} from './home/providers/providers.component';
 import {OrdersComponent} from './home/orders/orders.component';
 import {SendingsComponent} from './home/sendings/sendings.component';
+import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'cashier-closed', component: CashierClosedComponent},
       {path: 'cashier-opened', component: CashierOpenedComponent},
       {path: 'cashier-closure-search', component: CashierClosureSearchComponent},
+      {path: 'customer-discount', component: CustomerDiscountComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'providers', component: ProvidersComponent},
       {path: 'users', component: UsersComponent},
