@@ -18,4 +18,8 @@ export class VoucherService {
   create(newVoucher: Voucher): Observable<Voucher> {
     return this.httpService.post(AppEndpoints.VOUCHERS, newVoucher);
   }
+
+  consume(voucher: Voucher): Observable<Voucher> {
+    return this.httpService.put(AppEndpoints.VOUCHERS + '/' + voucher.id.toString());
+  }
 }

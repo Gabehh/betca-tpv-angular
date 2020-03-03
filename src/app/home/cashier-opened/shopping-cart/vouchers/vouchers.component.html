@@ -2,6 +2,9 @@
   <mat-card-title>Search</mat-card-title>
   <mat-card-content>
     <mat-form-field>
+      <input [(ngModel)]="voucher.id" matInput placeholder="Id">
+    </mat-form-field>
+    <mat-form-field>
       <input [(ngModel)]="voucher.creationDate" matInput placeholder="Start date">
     </mat-form-field>
     <mat-form-field>
@@ -16,5 +19,5 @@
   </mat-card-content>
 </mat-card>
 <!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
-<app-crud (create)="create()" (read)="read($event)" [deleteAction]="false"
-          (update)="update($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>
+<app-crud (create)="create()" (read)="read($event)" [updateAction]="false"
+          (delete)="delete($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>
