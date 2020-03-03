@@ -10,6 +10,7 @@ import {ArticleQuickCreationDialogComponent} from './home/cashier-opened/shoppin
 import {CashierClosureDialogComponent} from './home/cashier-opened/cashier-closure/cashier-closure-dialog.component';
 import {CheckOutDialogComponent} from './home/cashier-opened/shopping-cart/check-out-dialog.component';
 import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/cashier-closure-search.component';
+import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {CashMovementsDialogComponent} from './home/cashier-opened/cashier-closure/cash-movements/cash-movements-dialog.component';
@@ -17,9 +18,11 @@ import {ProvidersComponent} from './home/providers/providers.component';
 import {ProvidersDropdownComponent} from './home/shared/providers-dropdown.component';
 import {OrdersComponent} from './home/orders/orders.component';
 import {VoucherCreationDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-creation-dialog.component';
-import { SendingsComponent } from './home/sendings/sendings.component';
+import {SendingsComponent} from './home/sendings/sendings.component';
+import {ProviderCreationDialogComponent} from './home/providers/provider-creation-dialog.component';
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
 import {OrderLineCreationDialogComponent} from './home/orders/orderLine-creation-dialog.component';
+import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -27,6 +30,7 @@ export class AppComponents {
     ArticlesFamilyViewComponent,
     CashierClosedComponent,
     CashierOpenedComponent,
+    CustomerDiscountComponent,
     HomeComponent,
     OrdersComponent,
     ShoppingCartComponent,
@@ -47,6 +51,9 @@ export class AppComponents {
     CashMovementsDialogComponent,
     CheckOutDialogComponent,
     OrderCreationDialogComponent,
-    OrderLineCreationDialogComponent
+    OrderLineCreationDialogComponent,
+    ProviderCreationDialogComponent,
+    OrderCreationDialogComponent,
+    ArticlesCreationDialogComponent
   ];
 }

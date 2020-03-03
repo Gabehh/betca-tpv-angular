@@ -1,0 +1,5 @@
+<mat-card>
+  <mat-card-title>Customer Discount</mat-card-title>
+</mat-card>
+<app-crud (create)="create()" (delete)="delete($event)" (read)="read($event)"
+          (update)="update($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>

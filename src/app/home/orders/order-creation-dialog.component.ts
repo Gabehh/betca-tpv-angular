@@ -17,7 +17,7 @@ export class OrderCreationDialogComponent {
   columns = ['articleId', 'requiredAmount'];
   data: OrderLine[];
 
-  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<OrderCreationDialogComponent>,  private message: MatSnackBar) {
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<OrderCreationDialogComponent>, private message: MatSnackBar) {
   }
 
   createOrder() {
