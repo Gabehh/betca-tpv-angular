@@ -1,0 +1,25 @@
+<h3 mat-dialog-title>Create Order</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input [(ngModel)]="newOrder.description" cdkFocusInitial matInput
+           placeholder="Description"
+           required type="String"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="newOrder.providerId" matInput
+           placeholder="Provider Id"
+           required type="String"/>
+  </mat-form-field>
+
+</mat-dialog-content>
+<!-- Default: [createAction]="true" [readAction]="false" [updateAction]="false" [deleteAction]="true"-->
+<app-crud (create)="createOrderLine()" (delete)="false"
+          [columns]="columns" [data]="data" [title]="title"></app-crud>
+
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createOrder()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Order</span>
+  </button>
+</mat-dialog-actions>
