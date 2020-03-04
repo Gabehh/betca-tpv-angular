@@ -12,6 +12,7 @@ import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vo
 import {ProvidersComponent} from './home/providers/providers.component';
 import {OrdersComponent} from './home/orders/orders.component';
 import {SendingsComponent} from './home/sendings/sendings.component';
+import {StockAlarmComponent} from './home/stock-alarm/stock-alarm.component';
 import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
       {path: 'providers', component: ProvidersComponent},
       {path: 'users', component: UsersComponent},
       {path: 'vouchers', component: VouchersComponent},
-      {path: 'sendings', component: SendingsComponent}
+      {path: 'sendings', component: SendingsComponent},
+      {path: 'stock-alarm', component: StockAlarmComponent},
     ]
   }
 ];
