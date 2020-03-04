@@ -23,7 +23,6 @@ import {StockAlarmComponent} from './home/stock-alarm/stock-alarm.component';
 import {StockAlarmSearchComponent} from './home/stock-alarm/stock-alarm-search/stock-alarm-search.component';
 import {ProviderCreationDialogComponent} from './home/providers/provider-creation-dialog.component';
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
-import {OrderLineCreationDialogComponent} from './home/orders/orderLine-creation-dialog.component';
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
 
 export class AppComponents {
@@ -55,9 +54,7 @@ export class AppComponents {
     CashMovementsDialogComponent,
     CheckOutDialogComponent,
     OrderCreationDialogComponent,
-    OrderLineCreationDialogComponent,
     ProviderCreationDialogComponent,
-    OrderCreationDialogComponent,
     ArticlesCreationDialogComponent
   ];
 }

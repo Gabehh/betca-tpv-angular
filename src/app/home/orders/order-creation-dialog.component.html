@@ -10,10 +10,22 @@
            placeholder="Provider Id"
            required type="String"/>
   </mat-form-field>
-
+  <mat-divider></mat-divider>
+  <h4 mat-dialog-title>Add Article to Order</h4>
+  <mat-form-field>
+    <input [(ngModel)]="newOrderLine.articleId" matInput
+           placeholder="Article Id"
+           required type="String"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="newOrderLine.requiredAmount" matInput
+           placeholder="Required amount"
+           required type="String"/>
+  </mat-form-field>
+  <button mat-raised-button (click)="addOrderLine()">+</button>
 </mat-dialog-content>
-<!-- Default: [createAction]="true" [readAction]="false" [updateAction]="false" [deleteAction]="true"-->
-<app-crud (create)="createOrderLine()" (delete)="false"
+<!-- Default: [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"-->
+<app-crud (delete)="false"
           [columns]="columns" [data]="data" [title]="title"></app-crud>
 
 <mat-dialog-actions>

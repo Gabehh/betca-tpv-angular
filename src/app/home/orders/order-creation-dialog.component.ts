@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 import {Order} from './order.model';
 import {OrderLine} from './orderLine.model';
-import {OrderLineCreationDialogComponent} from './orderLine-creation-dialog.component';
 
 @Component({
   templateUrl: 'order-creation-dialog.component.html'
@@ -24,7 +23,7 @@ export class OrderCreationDialogComponent {
     // TODO
   }
 
-  createOrderLine() {
-    this.dialog.open(OrderLineCreationDialogComponent);
+  addOrderLine() {
+    // TODO
   }
 }
