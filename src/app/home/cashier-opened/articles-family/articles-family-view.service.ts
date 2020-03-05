@@ -6,7 +6,7 @@ import {AppEndpoints} from '../../../app-endpoints';
 
 
 @Injectable()
-export class ArticleFamilyViewService {
+export class ArticlesFamilyViewService {
 
   constructor(private httpService: HttpService) {
   }
