@@ -1,54 +1,37 @@
 <h3 mat-dialog-title>Article's Detail</h3>
 <mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Code: </mat-label>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
-           placeholder="Price"
-           required type="number"/>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.reference" matInput
-           placeholder="Reference"
-           required type="String"/>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.provider" matInput
-           placeholder="Proveedor"
-           required type="String"/>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.stock" cdkFocusInitial matInput
-           placeholder="Stock"
-           required type="number"/>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <mat-label>Tax</mat-label>
-    <mat-select [(ngModel)]="tax" required type="number">
-      <mat-option value="0">FREE</mat-option>
-      <mat-option value="1">SUPER_REDUCED</mat-option>
-      <mat-option value="2">REDUCED</mat-option>
-      <mat-option value="3">GENERAL</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newArticle.discontinued">Discontinued</mat-slide-toggle>
 
+  <mat-label><strong>Code:</strong> {{article.code}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Description:</strong> {{article.description}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Price:</strong> {{article.retailPrice}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Reference:</strong> {{article.reference}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Provider:</strong> {{article.provider}} (Until Creation of Provider READ) </mat-label>
+
+  <br>
+
+  <mat-label><strong>Stock:</strong> {{article.stock}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Creation Date:</strong> {{article.registrationDate}} </mat-label>
+
+  <br>
+  <mat-chip *ngIf="article.discontinued" selected [color]="color">
+    Discontinued!
+  </mat-chip>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button *ngIf="editMode == false" (click)="createArticle()" color="primary" mat-raised-button>
-    <mat-icon>local_offer</mat-icon>
-    <span>Create Article</span>
-  </button>
-  <button *ngIf="editMode" (click)="createArticle()" color="primary" mat-raised-button>
-    <mat-icon>local_offer</mat-icon>
-    <span>Save Changes</span>
-  </button>
 </mat-dialog-actions>
