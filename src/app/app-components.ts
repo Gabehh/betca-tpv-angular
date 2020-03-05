@@ -26,6 +26,7 @@ import {StockAlarmUpdateDialogComponent} from './home/stock-alarm/stock-alarm-up
 import {ProviderCreationDialogComponent} from './home/providers/provider-creation-dialog.component';
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
+import {VoucherPrintDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-print-dialog.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -53,6 +54,7 @@ export class AppComponents {
     ArticleQuickCreationDialogComponent,
     CashierClosureDialogComponent,
     VoucherCreationDialogComponent,
+    VoucherPrintDialogComponent,
     CashMovementsDialogComponent,
     CheckOutDialogComponent,
     OrderCreationDialogComponent,
