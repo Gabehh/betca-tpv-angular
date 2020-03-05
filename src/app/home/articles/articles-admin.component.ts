@@ -5,6 +5,7 @@ import {ArticlesCreationDialogComponent} from './articles-creation-dialog.compon
 import {EMPTY, from, Observable, of, range, throwError, timer} from 'rxjs';
 import {delay, take} from 'rxjs/operators';
 import {ArticlesMocksService} from './articles-mocks.service';
+import {ArticlesDetailDialogComponent} from './articles-detail-dialog.component';
 
 @Component({
   templateUrl: 'articles-admin.component.html'
@@ -46,6 +47,11 @@ export class ArticlesAdminComponent {
 
   read(article: Article) {
     // TODO
+    this.dialog.open(ArticlesDetailDialogComponent,
+      {data: {
+          code: article.code
+        }}
+    );
   }
 
   update(article: Article) {
