@@ -7,13 +7,12 @@ import {Article} from '../shared/article.model';
 })
 export class ArticlesMocksService {
   articulos: Article[] = [
-    {code: '21', description: 'Falda T2', reference: 'Fa T2', stock: 24, retailPrice: 10},
-    {code: '22', description: 'Falda T3', reference: 'Fa T3', stock: 24, retailPrice: 15},
-    {code: '23', description: 'Falda T4', reference: 'Fa T4', stock: 24, retailPrice: 20},
+    {code: '8400000000017', description: 'Zarzuela - Falda T2', reference: 'Fa T2', stock: 10, retailPrice: 20},
+    {code: '8400000000024', description: 'Zarzuela - Falda T4', reference: 'Zz Falda T4', stock: 5, retailPrice: 27.8},
+    {code: '8400000000031', description: 'descrip-a3', reference: 'ref-a3', stock: 8, retailPrice: 10.12},
   ];
   constructor() { }
   getAll(): Observable<Article[]> {
     return of (this.articulos);
   }
-  }
-
+}
