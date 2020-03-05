@@ -5,6 +5,7 @@ import {VoucherService} from './voucher.service';
 import {VoucherCreationDialogComponent} from './voucher-creation-dialog.component';
 import {MatDialog} from '@angular/material';
 import {CancelYesDialogComponent} from '../../../../core/cancel-yes-dialog.component';
+import {VoucherPrintDialogComponent} from './voucher-print-dialog.component';
 
 @Component({
   templateUrl: `vouchers.component.html`
@@ -34,11 +35,19 @@ export class VouchersComponent {
 
 
   create() {
-    this.dialog.open(VoucherCreationDialogComponent);
+    this.dialog.open(VoucherCreationDialogComponent).afterClosed().subscribe(
+      result => {
+        this.search();
+      }
+    );
   }
 
   read(voucher: Voucher) {
-    // TODO
+    this.dialog.open(VoucherPrintDialogComponent, {
+      data: {
+        voucher_object: voucher
+      }
+    });
   }
 
   delete(voucher: Voucher) {

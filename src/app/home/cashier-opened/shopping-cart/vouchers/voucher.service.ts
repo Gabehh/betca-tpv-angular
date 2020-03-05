@@ -20,6 +20,10 @@ export class VoucherService {
   }
 
   consume(voucher: Voucher): Observable<Voucher> {
-    return this.httpService.put(AppEndpoints.VOUCHERS + '/' + voucher.id.toString());
+    return this.httpService.put(AppEndpoints.VOUCHERS + '/' + voucher.id);
+  }
+
+  print(voucher: Voucher): Observable<Voucher> {
+    return this.httpService.get(AppEndpoints.VOUCHERS + '/' + voucher.id + '/' + AppEndpoints.PRINT);
   }
 }
