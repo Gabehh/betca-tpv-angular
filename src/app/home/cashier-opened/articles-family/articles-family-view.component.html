@@ -1,1 +1,11 @@
 <h1>Articles family view</h1>
+
+<div class="cards-container">
+  <mat-card class="article-family-view-card"
+            *ngFor="let articleElement of articlesFamilyList">
+
+    <mat-card-title *ngIf="articleElement.id">{{articleElement.id}}</mat-card-title>
+    <div *ngIf="articleElement.familyType">{{articleElement.familyType}}</div>
+    <div *ngIf="articleElement.reference">{{articleElement.reference}}</div>
+  </mat-card>
+</div>
