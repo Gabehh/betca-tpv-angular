@@ -18,5 +18,6 @@ export class AppEndpoints {
   static USERS = '/users';
 
   static VOUCHERS = '/vouchers';
+  static PRINT = '/print';
 
 }
