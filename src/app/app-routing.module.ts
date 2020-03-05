@@ -13,6 +13,7 @@ import {ProvidersComponent} from './home/providers/providers.component';
 import {OrdersComponent} from './home/orders/orders.component';
 import {SendingsComponent} from './home/sendings/sendings.component';
 import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
+import {StaffComponent} from './home/staff/staff.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'welcome'},
@@ -28,6 +29,7 @@ const routes: Routes = [
       {path: 'orders', component: OrdersComponent},
       {path: 'providers', component: ProvidersComponent},
       {path: 'users', component: UsersComponent},
+      {path: 'staff', component: StaffComponent},
       {path: 'vouchers', component: VouchersComponent},
       {path: 'sendings', component: SendingsComponent}
     ]

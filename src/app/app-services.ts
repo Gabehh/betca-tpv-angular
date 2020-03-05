@@ -7,6 +7,7 @@ import {SystemService} from './home/system.service';
 import {UserService} from './home/users/user.service';
 import {VoucherService} from './home/cashier-opened/shopping-cart/vouchers/voucher.service';
 import {AdvancedArticlesSearchService} from './home/cashier-opened/advanced-search/advanced-articles-search.service';
+import {StaffService} from './home/staff/staff.service';
 
 export class AppServices {
   public static SERVICES = [
@@ -18,6 +19,7 @@ export class AppServices {
     ShoppingCartService,
     SystemService,
     UserService,
+    StaffService,
     VoucherService,
   ];
 }
