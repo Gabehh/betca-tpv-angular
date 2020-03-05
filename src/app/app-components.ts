@@ -19,10 +19,14 @@ import {ProvidersDropdownComponent} from './home/shared/providers-dropdown.compo
 import {OrdersComponent} from './home/orders/orders.component';
 import {VoucherCreationDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-creation-dialog.component';
 import {SendingsComponent} from './home/sendings/sendings.component';
+import {StockAlarmComponent} from './home/stock-alarm/stock-alarm.component';
+import {StockAlarmSearchComponent} from './home/stock-alarm/stock-alarm-search/stock-alarm-search.component';
+import {StockAlarmCreateDialogComponent} from './home/stock-alarm/stock-alarm-create-dialog/stock-alarm-create-dialog.component';
+import {StockAlarmUpdateDialogComponent} from './home/stock-alarm/stock-alarm-update-dialog/stock-alarm-update-dialog.component';
 import {ProviderCreationDialogComponent} from './home/providers/provider-creation-dialog.component';
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
-import {OrderLineCreationDialogComponent} from './home/orders/orderLine-creation-dialog.component';
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
+import {VoucherPrintDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-print-dialog.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -34,6 +38,8 @@ export class AppComponents {
     HomeComponent,
     OrdersComponent,
     ShoppingCartComponent,
+    StockAlarmComponent,
+    StockAlarmSearchComponent,
     UsersComponent,
     WelcomeComponent,
     VouchersComponent,
@@ -48,12 +54,13 @@ export class AppComponents {
     ArticleQuickCreationDialogComponent,
     CashierClosureDialogComponent,
     VoucherCreationDialogComponent,
+    VoucherPrintDialogComponent,
     CashMovementsDialogComponent,
     CheckOutDialogComponent,
     OrderCreationDialogComponent,
-    OrderLineCreationDialogComponent,
     ProviderCreationDialogComponent,
-    OrderCreationDialogComponent,
-    ArticlesCreationDialogComponent
+    ArticlesCreationDialogComponent,
+    StockAlarmCreateDialogComponent,
+    StockAlarmUpdateDialogComponent,
   ];
 }
