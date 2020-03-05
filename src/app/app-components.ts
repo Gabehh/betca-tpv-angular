@@ -27,6 +27,7 @@ import {ProviderCreationDialogComponent} from './home/providers/provider-creatio
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
 import {VoucherPrintDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-print-dialog.component';
+import {ArticlesDetailDialogComponent} from './home/articles/articles-detail-dialog.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -62,5 +63,6 @@ export class AppComponents {
     ArticlesCreationDialogComponent,
     StockAlarmCreateDialogComponent,
     StockAlarmUpdateDialogComponent,
+    ArticlesDetailDialogComponent,
   ];
 }

@@ -4,6 +4,6 @@ import {Component} from '@angular/core';
   templateUrl: 'articles-detail-dialog.component.html'
 })
 
-export class ArticlesDetailDialog {
+export class ArticlesDetailDialogComponent {
 
 }
