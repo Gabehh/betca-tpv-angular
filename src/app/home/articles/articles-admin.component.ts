@@ -15,10 +15,11 @@ export class ArticlesAdminComponent {
   title = 'Article Management';
   columns = ['code', 'description', 'retailPrice', 'stock'];
   data: Article[];
+  isEdit: boolean;
 
   constructor(private dialog: MatDialog, private articlesMocksService: ArticlesMocksService) {
     this.article = {description: null, provider: null, stock: null, retailPrice: null, discontinued: null, reference: null, code: null};
-   // this.data = null;
+    // this.data = null;
   }
 
   search() {
@@ -33,7 +34,14 @@ export class ArticlesAdminComponent {
   }
 
   create() {
-    this.dialog.open(ArticlesCreationDialogComponent);
+    this.isEdit = false;
+    this.dialog.open(ArticlesCreationDialogComponent,
+      {
+        data: {
+          isEdit: this.isEdit
+        }
+      }
+    );
   }
 
   read(article: Article) {
@@ -41,7 +49,13 @@ export class ArticlesAdminComponent {
   }
 
   update(article: Article) {
-    // TODO
+    this.isEdit = true;
+    this.dialog.open(ArticlesCreationDialogComponent,
+      {data: {
+        code: article.code,
+        isEdit: this.isEdit
+      }}
+    );
   }
 
   delete(article: Article) {
