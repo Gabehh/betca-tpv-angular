@@ -1,11 +1,9 @@
-<h3 mat-dialog-title>Article</h3>
+<h3 mat-dialog-title>Article's Detail</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input [(ngModel)]="newArticle.description" cdkFocusInitial matInput
-           placeholder="Description"
-           required type="String"/>
+    <mat-label>Code: </mat-label>
   </mat-form-field>
-<br>
+  <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
            placeholder="Price"

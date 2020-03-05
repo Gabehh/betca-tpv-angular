@@ -23,7 +23,6 @@ import {ProviderCreationDialogComponent} from './home/providers/provider-creatio
 import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.component';
 import {OrderLineCreationDialogComponent} from './home/orders/orderLine-creation-dialog.component';
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
-import {StaffComponent} from './home/staff/staff.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -36,7 +35,6 @@ export class AppComponents {
     OrdersComponent,
     ShoppingCartComponent,
     UsersComponent,
-    StaffComponent,
     WelcomeComponent,
     VouchersComponent,
     ProvidersComponent,
