@@ -6,6 +6,7 @@ import {EMPTY, from, Observable, of, range, throwError, timer} from 'rxjs';
 import {delay, take} from 'rxjs/operators';
 import {ArticlesMocksService} from './articles-mocks.service';
 import {ArticlesDetailDialogComponent} from './articles-detail-dialog.component';
+import {ArticleService} from '../shared/article.service';
 
 @Component({
   templateUrl: 'articles-admin.component.html'
@@ -18,14 +19,14 @@ export class ArticlesAdminComponent {
   data: Article[];
   isEdit: boolean;
 
-  constructor(private dialog: MatDialog, private articlesMocksService: ArticlesMocksService) {
+  constructor(private dialog: MatDialog, private articlesMocksService: ArticlesMocksService, private articleService: ArticleService) {
     this.article = {description: null, provider: null, stock: null, retailPrice: null, discontinued: null, reference: null, code: null};
     // this.data = null;
   }
 
   search() {
     // TODO
-    this.articlesMocksService.getAll().subscribe(
+    this.articleService.readAll().subscribe(
       data => this.data = data
     );
   }
