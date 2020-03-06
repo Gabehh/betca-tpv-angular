@@ -3,6 +3,7 @@ import {Order} from './order.model';
 import {MatDialog} from '@angular/material';
 import {OrderCreationDialogComponent} from './order-creation-dialog.component';
 import {OrderService} from './order.service';
+import {OrderReadDialogComponent} from './order-read-dialog.component';
 
 @Component({
   templateUrl: `orders.component.html`
@@ -38,7 +39,13 @@ export class OrdersComponent {
   }
 
   read(order: Order) {
-    // TODO
+    this.dialog.open(OrderReadDialogComponent, {
+      width: '500px',
+      data: {
+        dialogTitle: order.description,
+        orderData: order
+      }
+    });
   }
 
   update(order: Order) {
