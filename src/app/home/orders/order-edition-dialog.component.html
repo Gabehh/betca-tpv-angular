@@ -1,0 +1,26 @@
+<h3 mat-dialog-title>Create Order</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input [(ngModel)]="order.description" cdkFocusInitial matInput
+           placeholder="Description"
+           required type="String"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="order.providerId" matInput
+           placeholder="Provider Id"
+           disabled
+           required type="String"/>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <h4 mat-dialog-title>Order's Articles</h4>
+  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [data]="data" [title]="title"
+            [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"></app-crud>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="editOrder()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Edit Order</span>
+  </button>
+</mat-dialog-actions>

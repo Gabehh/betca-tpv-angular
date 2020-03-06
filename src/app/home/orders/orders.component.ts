@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material';
 import {OrderCreationDialogComponent} from './order-creation-dialog.component';
 import {OrderService} from './order.service';
 import {OrderReadDialogComponent} from './order-read-dialog.component';
+import {OrderEditionDialogComponent} from './order-edition-dialog.component';
 
 @Component({
   templateUrl: `orders.component.html`
@@ -18,7 +19,7 @@ export class OrdersComponent {
   data: Order[];
 
   constructor(private dialog: MatDialog, private orderService: OrderService) {
-    this.order = {description: null, providerId: null, orderLines: null, openingDate: null};
+    this.order = {id: null, description: null, providerId: null, orderLines: null, openingDate: null};
     this.data = null;
   }
 
@@ -29,7 +30,7 @@ export class OrdersComponent {
   }
 
   resetSearch() {
-    this.order = {description: null, providerId: null, orderLines: null, openingDate: null};
+    this.order = {id: null, description: null, providerId: null, orderLines: null, openingDate: null};
   }
 
   create() {
@@ -49,7 +50,12 @@ export class OrdersComponent {
   }
 
   update(order: Order) {
-    // TODO
+    this.dialog.open(OrderEditionDialogComponent, {
+      width: '500px',
+      data: {
+        orderData: order
+      }
+    });
   }
 
   delete(order: Order) {
