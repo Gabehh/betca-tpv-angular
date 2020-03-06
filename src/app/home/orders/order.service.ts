@@ -11,15 +11,36 @@ export class OrderService {
   orderLinesMockList: OrderLine[];
 
   constructor(private httpService: HttpService) {
-    this.orderLinesMockList =[
+    this.orderLinesMockList = [
       {articleId: '15651', requiredAmount: 5, finalAmount: null},
       {articleId: '984651', requiredAmount: 5, finalAmount: null},
       {articleId: '5641981', requiredAmount: 5, finalAmount: null},
     ];
     this.ordersMockList = [
-      {providerId: '1154', description: 'Order 1', openingDate: new Date(), closingDate: null, orderLines: this.orderLinesMockList},
-      {providerId: '4421', description: 'Order 2', openingDate: new Date(), closingDate: null, orderLines: this.orderLinesMockList},
-      {providerId: '5431', description: 'Order 3', openingDate: new Date(), closingDate: null, orderLines: this.orderLinesMockList},
+      {
+        id: '0',
+        providerId: '1154',
+        description: 'Order 1',
+        openingDate: new Date(),
+        closingDate: null,
+        orderLines: this.orderLinesMockList
+      },
+      {
+        id: '1',
+        providerId: '4421',
+        description: 'Order 2',
+        openingDate: new Date(),
+        closingDate: null,
+        orderLines: this.orderLinesMockList
+      },
+      {
+        id: '2',
+        providerId: '5431',
+        description: 'Order 3',
+        openingDate: new Date(),
+        closingDate: null,
+        orderLines: this.orderLinesMockList
+      },
     ];
   }
 
@@ -29,6 +50,7 @@ export class OrderService {
 
   createOrder(newOrder: Order): Observable<Order> {
     const order: Order = {
+      id: this.ordersMockList.length.toString(),
       providerId: newOrder.providerId,
       description: newOrder.description,
       openingDate: new Date(),
@@ -38,4 +60,5 @@ export class OrderService {
     this.ordersMockList.push(order);
     return of(order);
   }
+
 }

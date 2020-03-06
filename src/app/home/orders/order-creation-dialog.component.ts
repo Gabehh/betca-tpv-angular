@@ -10,7 +10,7 @@ import {OrderService} from './order.service';
 
 export class OrderCreationDialogComponent {
 
-  order: Order = {description: null, providerId: null, openingDate: null, closingDate: null, orderLines: []};
+  order: Order = {id: null, description: null, providerId: null, openingDate: null, closingDate: null, orderLines: []};
   orderLine: OrderLine = {articleId: null, finalAmount: null, requiredAmount: null};
 
   title = 'Orders\' articles';
@@ -36,7 +36,7 @@ export class OrderCreationDialogComponent {
     this.data = [...this.order.orderLines];
   }
 
-  deleteOrderLine(orderLineDelete: OrderLine){
+  deleteOrderLine(orderLineDelete: OrderLine) {
     const index = this.order.orderLines.findIndex(value => value.articleId === orderLineDelete.articleId);
     if (index > -1) {
       this.order.orderLines.splice(index, 1);
