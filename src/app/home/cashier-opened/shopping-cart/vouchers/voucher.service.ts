@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {AppEndpoints} from '../../../../app-endpoints';
 import {HttpService} from '../../../../core/http.service';
 import {Voucher} from './voucher.model';
+import {SearchVoucher} from './voucher-search.model';
 
 @Injectable()
 export class VoucherService {
@@ -15,8 +16,15 @@ export class VoucherService {
     return this.httpService.get(AppEndpoints.VOUCHERS);
   }
 
-  create(newVoucher: Voucher): Observable<Voucher> {
-    return this.httpService.post(AppEndpoints.VOUCHERS, newVoucher);
+  search(searchVoucher: SearchVoucher): Observable<Voucher[]> {
+    return this.httpService.param('id', searchVoucher.id)
+                           .param('firstDate', searchVoucher.firstDate.toString())
+                           .param('finalDate', searchVoucher.finalDate.toString())
+                           .get(AppEndpoints.VOUCHERS);
+  }
+
+  create(voucher: Voucher): Observable<Voucher> {
+    return this.httpService.post(AppEndpoints.VOUCHERS, voucher);
   }
 
   consume(voucher: Voucher): Observable<Voucher> {
@@ -24,6 +32,6 @@ export class VoucherService {
   }
 
   print(voucher: Voucher): Observable<Voucher> {
-    return this.httpService.get(AppEndpoints.VOUCHERS + '/' + voucher.id + '/' + AppEndpoints.PRINT);
+    return this.httpService.pdf().get(AppEndpoints.VOUCHERS + '/' + voucher.id + AppEndpoints.PRINT);
   }
 }
