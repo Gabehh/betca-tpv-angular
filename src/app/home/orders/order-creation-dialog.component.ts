@@ -38,7 +38,7 @@ export class OrderCreationDialogComponent {
 
   deleteOrderLine(orderLineDelete: OrderLine){
     const index = this.order.orderLines.findIndex(value => value.articleId === orderLineDelete.articleId);
-    if (index > -1){
+    if (index > -1) {
       this.order.orderLines.splice(index, 1);
     }
     this.data = [... this.order.orderLines];
