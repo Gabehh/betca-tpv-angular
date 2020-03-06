@@ -20,4 +20,6 @@ export class AppEndpoints {
   static VOUCHERS = '/vouchers';
   static PRINT = '/print';
 
+  static PROVIDERS = '/providers';
+
 }
