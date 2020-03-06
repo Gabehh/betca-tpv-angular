@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Provider} from './provider.model';
+import {ProviderService} from '../providers/provider.service';
 
 @Component({
   selector: 'app-providers-dropdown',
@@ -9,13 +10,15 @@ export class ProvidersDropdownComponent implements OnInit {
 
   providers: Provider[];
 
-  constructor() {
+  constructor(private providerService: ProviderService) {
   }
 
   ngOnInit() {
   }
 
   readAll() {
-    // TODO
+    this.providerService.readAll().subscribe(
+      data => this.providers = data
+    );
   }
 }
