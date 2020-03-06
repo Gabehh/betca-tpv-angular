@@ -22,7 +22,7 @@ export class OrderEditionDialogComponent {
     this.data = [...this.orderData.orderData.orderLines];
   }
 
-  editOrder(orderToEdit: Order) {
+  editOrder() {
     this.dialogRef.close();
   }
 
