@@ -1,32 +1,32 @@
 <h3 mat-dialog-title>Create Order</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input [(ngModel)]="newOrder.description" cdkFocusInitial matInput
+    <input [(ngModel)]="order.description" cdkFocusInitial matInput
            placeholder="Description"
            required type="String"/>
   </mat-form-field>
   <mat-form-field>
-    <input [(ngModel)]="newOrder.providerId" matInput
+    <input [(ngModel)]="order.providerId" matInput
            placeholder="Provider Id"
            required type="String"/>
   </mat-form-field>
   <mat-divider></mat-divider>
   <h4 mat-dialog-title>Add Article to Order</h4>
   <mat-form-field>
-    <input [(ngModel)]="newOrderLine.articleId" matInput
+    <input [(ngModel)]="orderLine.articleId" matInput
            placeholder="Article Id"
            required type="String"/>
   </mat-form-field>
   <mat-form-field>
-    <input [(ngModel)]="newOrderLine.requiredAmount" matInput
+    <input [(ngModel)]="orderLine.requiredAmount" matInput
            placeholder="Required amount"
            required type="String"/>
   </mat-form-field>
   <button mat-raised-button (click)="addOrderLine()">+</button>
+
+  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [data]="data" [title]="title"
+            [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"></app-crud>
 </mat-dialog-content>
-<!-- Default: [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"-->
-<app-crud (delete)="false"
-          [columns]="columns" [data]="data" [title]="title"></app-crud>
 
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
