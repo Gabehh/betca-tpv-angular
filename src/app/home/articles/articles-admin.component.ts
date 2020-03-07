@@ -62,6 +62,10 @@ export class ArticlesAdminComponent {
         code: article.code,
         isEdit: this.isEdit
       }}
+    ).afterClosed().subscribe(
+      result => {
+        this.search();
+      }
     );
   }
 

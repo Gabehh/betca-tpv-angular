@@ -7,4 +7,5 @@ export interface Article {
   provider?: string;
   discontinued?: boolean;
   registrationDate?: Date;
+  tax?: number;
 }
