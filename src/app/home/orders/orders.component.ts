@@ -5,6 +5,7 @@ import {OrderCreationDialogComponent} from './order-creation-dialog.component';
 import {OrderService} from './order.service';
 import {OrderReadDialogComponent} from './order-read-dialog.component';
 import {OrderEditionDialogComponent} from './order-edition-dialog.component';
+import {CancelYesDialogComponent} from '../../core/cancel-yes-dialog.component';
 
 @Component({
   templateUrl: `orders.component.html`
@@ -59,7 +60,13 @@ export class OrdersComponent {
   }
 
   delete(order: Order) {
-    // TODO
+    this.dialog.open(CancelYesDialogComponent).afterClosed().subscribe(
+      result => {
+        if (result) {
+          console.log('delete');
+        }
+      }
+    );
   }
 
 }
