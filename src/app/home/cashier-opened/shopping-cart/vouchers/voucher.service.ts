@@ -12,15 +12,11 @@ export class VoucherService {
   constructor(private httpService: HttpService) {
   }
 
-  readAll(): Observable<Voucher[]> {
-    return this.httpService.get(AppEndpoints.VOUCHERS);
-  }
-
   search(searchVoucher: SearchVoucher): Observable<Voucher[]> {
     return this.httpService.param('id', searchVoucher.id)
-                           .param('firstDate', searchVoucher.firstDate.toString())
-                           .param('finalDate', searchVoucher.finalDate.toString())
-                           .get(AppEndpoints.VOUCHERS);
+        .param('firstDate', searchVoucher.firstDate.toISOString())
+        .param('finalDate', searchVoucher.finalDate.toISOString())
+        .get(AppEndpoints.VOUCHERS);
   }
 
   create(voucher: Voucher): Observable<Voucher> {
