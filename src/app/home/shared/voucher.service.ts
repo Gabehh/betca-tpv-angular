@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 
 import {AppEndpoints} from '../../app-endpoints';
 import {HttpService} from '../../core/http.service';
-import {Voucher} from '../cashier-opened/shopping-cart/vouchers/voucher.model';
+import {Voucher} from './voucher.model';
 import {SearchVoucher} from '../cashier-opened/shopping-cart/vouchers/voucher-search.model';
 
 @Injectable()

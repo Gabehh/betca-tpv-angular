@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Voucher} from './voucher.model';
+import {Voucher} from '../../../shared/voucher.model';
 import {VoucherService} from '../../../shared/voucher.service';
 import {VoucherCreationDialogComponent} from './voucher-creation-dialog.component';
 import {MatDialog} from '@angular/material';
