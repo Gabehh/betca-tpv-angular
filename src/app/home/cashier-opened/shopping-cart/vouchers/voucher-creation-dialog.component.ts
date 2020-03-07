@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
-import {Voucher} from './voucher.model';
+import {Voucher} from '../../../shared/voucher.model';
 import {VoucherService} from '../../../shared/voucher.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 

@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA} from '@angular/material';
-import {Voucher} from './voucher.model';
+import {Voucher} from '../../../shared/voucher.model';
 import {VoucherService} from '../../../shared/voucher.service';
 
 @Component({
@@ -14,7 +14,6 @@ export class VoucherPrintDialogComponent {
   constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<VoucherPrintDialogComponent>,
               private voucherService: VoucherService, private message: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
       this.voucher = this.data.voucher_object;
-      console.log(this.data);
   }
 
   printVoucher() {

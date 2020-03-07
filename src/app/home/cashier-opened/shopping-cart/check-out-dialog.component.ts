@@ -3,6 +3,9 @@ import {MatDialog} from '@angular/material';
 
 import {TicketCreation} from './ticket-creation.model';
 import {ShoppingCartService} from './shopping-cart.service';
+import {VoucherService} from '../../shared/voucher.service';
+import {CheckOutDialogVoucherComponent} from './check-out-dialog-voucher.component';
+import {Voucher} from '../../shared/voucher.model';
 
 @Component({
   templateUrl: 'check-out-dialog.component.html',
@@ -15,7 +18,7 @@ export class CheckOutDialogComponent {
   requestedGiftTicket = false;
   ticketCreation: TicketCreation;
 
-  constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService) {
+  constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService, private voucherService: VoucherService) {
     this.totalPurchase = this.shoppingCartService.getTotalShoppingCart();
     this.ticketCreation = {cash: 0, card: 0, voucher: 0, shoppingCart: null, note: ''};
   }
@@ -76,7 +79,16 @@ export class CheckOutDialogComponent {
   }
 
   consumeVoucher() {
-    // TODO consumir un vale que se entrega como parte del pago
+    const voucher = new Voucher();
+
+    this.dialog.open(CheckOutDialogVoucherComponent, {
+      data: {voucher_object: voucher}
+    }).afterClosed().subscribe(
+      p => {
+        this.ticketCreation.voucher = voucher.value;
+        this.totalPurchase = this.totalPurchase - this.ticketCreation.voucher;
+      }
+    );
   }
 
   invalidCheckOut(): boolean {
