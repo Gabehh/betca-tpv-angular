@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Voucher} from './voucher.model';
-import {VoucherService} from './voucher.service';
+import {VoucherService} from '../../../shared/voucher.service';
 import {VoucherCreationDialogComponent} from './voucher-creation-dialog.component';
 import {MatDialog} from '@angular/material';
 import {CancelYesDialogComponent} from '../../../../core/cancel-yes-dialog.component';

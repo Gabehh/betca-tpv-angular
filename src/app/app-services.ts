@@ -5,7 +5,7 @@ import {CashierService} from './home/shared/cashier.service';
 import {ShoppingCartService} from './home/cashier-opened/shopping-cart/shopping-cart.service';
 import {SystemService} from './home/system.service';
 import {UserService} from './home/users/user.service';
-import {VoucherService} from './home/cashier-opened/shopping-cart/vouchers/voucher.service';
+import {VoucherService} from './home/shared/voucher.service';
 import {AdvancedArticlesSearchService} from './home/cashier-opened/advanced-search/advanced-articles-search.service';
 import {OrderService} from './home/orders/order.service';
 import {ProviderService} from './home/providers/provider.service';

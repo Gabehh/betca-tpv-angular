@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA} from '@angular/material';
 import {Voucher} from './voucher.model';
-import {VoucherService} from './voucher.service';
+import {VoucherService} from '../../../shared/voucher.service';
 
 @Component({
   templateUrl: 'voucher-print-dialog.component.html'
