@@ -35,4 +35,16 @@ export class ArticlesCreationDialogComponent {
     // TODO
   }
 
+  updateArticle() {
+    this.articleService.update(this.newArticle.code, this.newArticle).subscribe(
+      () => this.dialog.closeAll()
+      , () => this.message.open('Ups, something bad happened.', null, {
+        duration: 2000,
+      })
+      , () => this.message.open('Article updated successfully', null, {
+        duration: 2000,
+      })
+    );
+  }
+
 }
