@@ -6,6 +6,7 @@ import {ShoppingCartService} from './shopping-cart.service';
 import {VoucherService} from '../../shared/voucher.service';
 import {CheckOutDialogVoucherComponent} from './check-out-dialog-voucher.component';
 import {Voucher} from '../../shared/voucher.model';
+import {User} from '../../users/user.model';
 
 @Component({
   templateUrl: 'check-out-dialog.component.html',
@@ -17,6 +18,7 @@ export class CheckOutDialogComponent {
   requestedInvoice = false;
   requestedGiftTicket = false;
   ticketCreation: TicketCreation;
+  user: User;
 
   constructor(private dialog: MatDialog, private shoppingCartService: ShoppingCartService, private voucherService: VoucherService) {
     this.totalPurchase = this.shoppingCartService.getTotalShoppingCart();
@@ -134,8 +136,18 @@ export class CheckOutDialogComponent {
   }
 
   invalidInvoice(): boolean {
-    // TODO pendiente de calcular. Hace falta tener al usuario totalmente completado
-    return true;
+    return (!this.userCompleted() || !this.fullPayedTicket());
   }
 
+  private userCompleted(): boolean {
+    return (this.ticketCreation.userMobile
+      && this.user
+      && this.user.dni
+      && this.user.address
+      && this.user.username.trim() !== '');
+  }
+
+  private fullPayedTicket(): boolean {
+    return this.ticketCreation.card + this.ticketCreation.cash >= this.totalPurchase;
+  }
 }
