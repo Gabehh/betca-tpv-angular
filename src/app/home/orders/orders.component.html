@@ -13,6 +13,8 @@
     <button (click)="resetSearch()" color="primary" mat-mini-fab>
       <mat-icon>close</mat-icon>
     </button>
+    <br/>
+    <mat-checkbox [(ngModel)]="pendingOrders">Pending Orders</mat-checkbox>
   </mat-card-content>
 </mat-card>
 <!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
