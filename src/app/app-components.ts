@@ -28,7 +28,7 @@ import {OrderCreationDialogComponent} from './home/orders/order-creation-dialog.
 import {ArticlesCreationDialogComponent} from './home/articles/articles-creation-dialog.component';
 import {VoucherPrintDialogComponent} from './home/cashier-opened/shopping-cart/vouchers/voucher-print-dialog.component';
 import {ArticlesDetailDialogComponent} from './home/articles/articles-detail-dialog.component';
-import {OrderReadDialogComponent} from './home/orders/order-read-dialog.component';
+import {OrderDetailDialogComponent} from './home/orders/order-detail-dialog.component';
 import {OrderEditionDialogComponent} from './home/orders/order-edition-dialog.component';
 import {CheckOutDialogVoucherComponent} from './home/cashier-opened/shopping-cart/check-out-dialog-voucher.component';
 
@@ -64,7 +64,7 @@ export class AppComponents {
     CheckOutDialogVoucherComponent,
     OrderCreationDialogComponent,
     OrderEditionDialogComponent,
-    OrderReadDialogComponent,
+    OrderDetailDialogComponent,
     ProviderCreationDialogComponent,
     ArticlesCreationDialogComponent,
     StockAlarmCreateUpdateComponent,
