@@ -126,7 +126,7 @@ export class ShoppingCartService {
     const ticket = this.httpService.pdf().post(AppEndpoints.TICKETS, ticketCreation).pipe(
       map(() => this.reset())
     );
-    let receipts = iif(() => voucher > 0, this.voucherService.createAndPrint(Math.abs(this.totalShoppingCart)));
+    let receipts = iif(() => voucher > 0, this.voucherService.createAndPrint(Math.abs(this.totalShoppingCart - ticketCreation.voucher)));
     receipts = iif(() => requestedInvoice, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create invoice
     receipts = iif(() => requestedGiftTicket, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create gift ticket
     return concat(ticket, receipts);
