@@ -32,6 +32,7 @@ import {OrderDetailDialogComponent} from './home/orders/order-detail-dialog.comp
 import {OrderEditionDialogComponent} from './home/orders/order-edition-dialog.component';
 import {CheckOutDialogVoucherComponent} from './home/cashier-opened/shopping-cart/check-out-dialog-voucher.component';
 import {SendingsCreationDialogComponent} from './home/sendings/sendings-creation-dialog.component';
+import {InvoicesComponent} from './home/invoices/invoices.component';
 
 export class AppComponents {
   static COMPONENTS = [
@@ -52,7 +53,8 @@ export class AppComponents {
     CashierClosureSearchComponent,
     ArticlesAdminComponent,
     ProvidersDropdownComponent,
-    SendingsComponent
+    SendingsComponent,
+    InvoicesComponent
   ];
 
   static DIALOGS = [
