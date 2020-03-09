@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import {Sendings} from './sendings.model';
+import {SendingsService} from './sendings.service';
+import {MatDialog} from '@angular/material';
 
 @Component({
   templateUrl: 'sendings.component.html',
@@ -9,11 +11,11 @@ export class SendingsComponent {
   sendings: Sendings;
 
   title = 'Delivery Management';
-  columns = ['username', 'dni', 'mobile'];
+  columns = ['username', 'id', 'reference', 'creationDate', 'estado'];
   data: Sendings[];
 
-  constructor() {
-    this.sendings = {username: null, dni: null, mobile: null};
+  constructor(private sendingsService: SendingsService, private dialog: MatDialog) {
+    this.sendings = {username: null, id: null, reference: null, creationdate: null, estado: null};
     this.data = null;
   }
 
@@ -22,11 +24,11 @@ export class SendingsComponent {
 
 
   search() {
-    // TODO implement search with fields
+    // TODO
   }
 
   resetSearch() {
-    this.sendings = {username: null, dni: null, mobile: null};
+    this.sendings = {username: null, id: null, reference: null, creationdate: null, estado: null};
   }
 
   create() {

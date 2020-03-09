@@ -16,4 +16,5 @@ export class AppEndpoints {
 
   static VOUCHERS = '/vouchers';
 
+  static SENDINGS = '/sendings';
 }
