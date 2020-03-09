@@ -2,7 +2,10 @@
 
 <div class="cards-container">
   <mat-card class="article-family-view-card"
-            *ngFor="let articleElement of articlesFamilyList">
+            *ngFor="let articleElement of articlesFamilyList"
+            [ngClass]="{'type-articles': articleElement.familyType === 'ARTICLES',
+            'type-article': articleElement.familyType === 'ARTICLE',
+            'type-sizes': articleElement.familyType === 'SIZES'}">
 
     <mat-card-title *ngIf="articleElement.id">{{articleElement.id}}</mat-card-title>
     <div *ngIf="articleElement.familyType">{{articleElement.familyType}}</div>
