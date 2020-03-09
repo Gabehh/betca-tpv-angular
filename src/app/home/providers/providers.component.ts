@@ -24,7 +24,7 @@ export class ProvidersComponent {
   }
 
   search() {
-    if ((this.providerSearch.company == null) && (this.providerSearch.company == null) && (this.providerSearch.phone == null)) {
+    if ((this.providerSearch.company == null) && (this.providerSearch.nif == null) && (this.providerSearch.phone == null)) {
       this.providerService.readAll().subscribe(
         data => this.providers = data
       );
@@ -36,7 +36,7 @@ export class ProvidersComponent {
   }
 
   resetSearch() {
-    this.provider = {company: null, nif: null, phone: null};
+    this.providerSearch = {company: null, nif: null, phone: null};
   }
 
   create() {
