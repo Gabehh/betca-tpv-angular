@@ -1,5 +1,8 @@
 import { Component} from '@angular/core';
 import {Sendings} from './sendings.model';
+import {SendingsService} from './sendings.service';
+import {MatDialog} from '@angular/material';
+import {SendingsCreationDialogComponent} from './sendings-creation-dialog.component';
 
 @Component({
   templateUrl: 'sendings.component.html',
@@ -9,29 +12,31 @@ export class SendingsComponent {
   sendings: Sendings;
 
   title = 'Delivery Management';
-  columns = ['username', 'dni', 'mobile'];
+  columns = ['username', 'id', 'reference', 'creationDate', 'estado'];
   data: Sendings[];
 
-  constructor() {
-    this.sendings = {username: null, dni: null, mobile: null};
+  constructor(private sendingsService: SendingsService, private dialog: MatDialog) {
+    this.sendings = {username: null, id: null, reference: null, creationdate: null, estado: null};
     this.data = null;
   }
 
-  // ngOnInit() {
-  // }
-
-
   search() {
-    // TODO implement search with fields
+    this.sendingsService.readAll().subscribe(
+      data => {
+        this.data = data,
+          console.log(this.data);
+      },
+    );
   }
 
   resetSearch() {
-    this.sendings = {username: null, dni: null, mobile: null};
+    this.sendings = {username: null, id: null, reference: null, creationdate: null, estado: null};
   }
 
   create() {
-    // TODO
+    this.dialog.open(SendingsCreationDialogComponent);
   }
+
 
   read(sendings: Sendings) {
     // TODO
