@@ -1,0 +1,21 @@
+<h3 mat-dialog-title>Order Details</h3>
+<mat-dialog-content>
+  <mat-label><strong>Description:</strong> {{order.description}} </mat-label>
+  <br/>
+  <mat-label><strong>Provider Id:</strong> {{order.providerId}} </mat-label>
+  <br/>
+  <mat-label><strong>Opening Date:</strong> {{order.openingDate}} </mat-label>
+  <br/>
+  <mat-label><strong>Closing Date:</strong> {{order.closingDate}} </mat-label>
+
+  <app-crud [columns]="columns" [data]="data" [title]="title"
+            [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="false"></app-crud>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)=false color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create New Order </span>
+  </button>
+</mat-dialog-actions>

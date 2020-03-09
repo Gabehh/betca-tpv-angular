@@ -1,0 +1,25 @@
+<h3 mat-dialog-title>Consume Voucher</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <form [formGroup]="consumeVoucherForm" (ngSubmit)="consumeVoucher()">
+      <label>
+        <input type="text" cdkFocusInitial  [(ngModel)]="voucher.id" placeholder="Voucher code" matInput formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && this.consumeVoucherForm.value.errors }" />
+        <div *ngIf="submitted && this.consumeVoucherForm.value.errors" class="invalid-feedback">
+          <div *ngIf="this.consumeVoucherForm.value.errors.required">Voucher code is incorrect</div>
+        </div>
+      </label>
+    </form>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+  <button mat-dialog-close mat-raised-button>Close</button>
+
+  <button (click)="consumeVoucher()" type="submit" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Consume voucher</span>
+  </button>
+
+
+
+</mat-dialog-actions>

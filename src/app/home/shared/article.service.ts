@@ -15,7 +15,15 @@ export class ArticleService {
     return this.httpService.get(AppEndpoints.ARTICLES + '/' + code);
   }
 
+  readAll(): Observable<Article[]> {
+    return this.httpService.get(AppEndpoints.ARTICLES);
+  }
+
   create(article: Article): Observable<Article> {
     return this.httpService.successful().post(AppEndpoints.ARTICLES, article);
+  }
+
+  update(code: string, article: Article) {
+    return this.httpService.put(AppEndpoints.ARTICLES + '/' + code, article);
   }
 }

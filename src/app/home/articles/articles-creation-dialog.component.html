@@ -5,43 +5,51 @@
            placeholder="Description"
            required type="String"/>
   </mat-form-field>
-
+<br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
            placeholder="Price"
            required type="number"/>
   </mat-form-field>
-
+  <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.reference" matInput
            placeholder="Reference"
            required type="String"/>
   </mat-form-field>
+  <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.provider" matInput
            placeholder="Proveedor"
            required type="String"/>
   </mat-form-field>
-
+  <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.stock" cdkFocusInitial matInput
            placeholder="Stock"
            required type="number"/>
   </mat-form-field>
-
+  <br>
   <mat-form-field>
     <mat-label>Tax</mat-label>
-    <mat-select [(ngModel)]="tax" required type="number">
-      <mat-option value="0">FREE</mat-option>
-      <mat-option value="1">SUPER_REDUCED</mat-option>
-      <mat-option value="2">REDUCED</mat-option>
-      <mat-option value="3">GENERAL</mat-option>
+    <mat-select [(value)]="newArticle.tax"  required type="number">
+      <mat-option value="FREE">FREE</mat-option>
+      <mat-option value="SUPER_REDUCED">SUPER_REDUCED</mat-option>
+      <mat-option value="REDUCED">REDUCED</mat-option>
+      <mat-option value="GENERAL">GENERAL</mat-option>
     </mat-select>
   </mat-form-field>
+  <br>
+  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newArticle.discontinued">Discontinued</mat-slide-toggle>
+
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button (click)="createArticle()" color="primary" mat-raised-button>
+  <button *ngIf="editMode == false" (click)="createArticle()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Article</span>
+  </button>
+  <button *ngIf="editMode" (click)="updateArticle()" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Save Changes</span>
   </button>

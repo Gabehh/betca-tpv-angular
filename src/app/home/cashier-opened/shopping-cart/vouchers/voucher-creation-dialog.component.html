@@ -1,16 +1,21 @@
 <h3 mat-dialog-title>Create Voucher</h3>
 <mat-dialog-content>
   <mat-form-field>
-    <input [(ngModel)]="newVoucher.value" cdkFocusInitial matInput
-           placeholder="Value"
-           required type="number"/>
+    <form [formGroup]="createVoucherForm" (ngSubmit)="createVoucher()">
+      <label>
+        <input type="number" cdkFocusInitial  [(ngModel)]="newVoucher.value" placeholder="Value" matInput formControlName="value" class="form-control" [ngClass]="{ 'is-invalid': submitted && this.createVoucherForm.value.errors }" />
+        <div *ngIf="submitted && this.createVoucherForm.value.errors" class="invalid-feedback">
+          <div *ngIf="this.createVoucherForm.value.errors.required">Value should be major than 0 and minor than 1000</div>
+        </div>
+      </label>
+    </form>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
 
   <button mat-dialog-close mat-raised-button>Close</button>
 
-  <button (click)="createVoucher()" color="primary" mat-raised-button>
+  <button (click)="createVoucher()" type="submit" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Create voucher</span>
   </button>

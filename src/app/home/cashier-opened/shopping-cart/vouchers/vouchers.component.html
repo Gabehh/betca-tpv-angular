@@ -2,14 +2,33 @@
   <mat-card-title>Search</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input [(ngModel)]="voucher.id" matInput placeholder="Id">
+      <input [(ngModel)]="searchVoucher.id" matInput placeholder="Id">
     </mat-form-field>
     <mat-form-field>
-      <input [(ngModel)]="voucher.creationDate" matInput placeholder="Start date">
+      <mat-label>First Date</mat-label>
+      <input matInput
+             #firstDate="ngModel"
+             [matDatepicker]="firstDate"
+             [(ngModel)]="searchVoucher.firstDate"
+             [min]="minDate"
+             [max]="maxDate">
+      <mat-datepicker #firstDate>
+      </mat-datepicker>
     </mat-form-field>
+    <mat-datepicker-toggle [for]="firstDate"></mat-datepicker-toggle>
     <mat-form-field>
-      <input [(ngModel)]="voucher.creationDate" matInput placeholder="Final date">
+      <mat-label>Final Date</mat-label>
+      <input matInput
+             #finalDate="ngModel"
+             [matDatepicker]="finalDate"
+             [(ngModel)]="searchVoucher.finalDate"
+             [min]="minDate"
+             [max]="maxDate">
+      <mat-datepicker #finalDate>
+      </mat-datepicker>
     </mat-form-field>
+    <mat-datepicker-toggle [for]="finalDate"></mat-datepicker-toggle>
+
     <button (click)="search()" color="primary" mat-mini-fab>
       <mat-icon>search</mat-icon>
     </button>
