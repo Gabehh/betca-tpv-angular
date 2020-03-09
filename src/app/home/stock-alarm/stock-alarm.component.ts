@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog , MatDialogConfig } from '@angular/material';
-import {StockAlarm} from './stock-alarm.model';
-import {StockAlarmCreateDialogComponent} from './stock-alarm-create-dialog/stock-alarm-create-dialog.component';
-import {StockAlarmUpdateDialogComponent} from './stock-alarm-update-dialog/stock-alarm-update-dialog.component';
-import {CancelYesDialogComponent} from '../../core/cancel-yes-dialog.component';
+import { StockAlarm } from './stock-alarm.model';
+import { StockAlarmCreateUpdateComponent } from './stock-alarm-create-update/stock-alarm-create-update.component';
+import { StockAlarmDetailDialogComponent } from './stock-alarm-detail-dialog/stock-alarm-detail-dialog.component';
+import { CancelYesDialogComponent } from '../../core/cancel-yes-dialog.component';
 
 @Component({
   selector: 'app-stock-alarm',
@@ -14,35 +14,75 @@ export class StockAlarmComponent implements OnInit {
 
   stockAlarm: StockAlarm;
   title = 'Stock Alarm Management';
-  columns = ['id', 'Description', 'Article', 'provider', 'Warning', 'Critical'];
-  data: StockAlarm[] = [{  id : '10', Description: 'string', Article: 'string', warning: 12,
-    critical: 2}];
+  columns = ['id', 'description', 'provider', 'warning', 'critical'];
+  data: StockAlarm[];
   dialogConfig: MatDialogConfig;
 
   constructor(private dialog: MatDialog ) { }
 
   ngOnInit() {
+    this.readAll();
   }
 
   create() {
-    this.dialog.open(StockAlarmCreateDialogComponent).afterClosed().subscribe(result => {
+    this.dialogConfig = {
+      width: '60%',
+      height: '90%',
+      data: {
+        dialogMode: 'create',
+        alarm: {}
+      }
+    };
+    this.dialog.open(StockAlarmCreateUpdateComponent, this.dialogConfig).afterClosed().subscribe(result => {
       console.log('Create');
     });
   }
 
   update(alarm: StockAlarm) {
-    this.dialog.open(StockAlarmUpdateDialogComponent).afterClosed().subscribe(result => {
+    this.dialogConfig = {
+      width: '60%',
+      height: '90%',
+      data: {
+        dialogMode: 'update',
+        alarm
+      }
+    };
+    this.dialog.open(StockAlarmDetailDialogComponent, this.dialogConfig).afterClosed().subscribe(result => {
       console.log('Update');
     });
   }
 
   delete(alarm: StockAlarm) {
+    this.dialogConfig = {
+      data: {
+        message: 'This stock-alarm will be deleted.',
+        question: 'Are you sure?',
+        alarm
+      }
+    };
     this.dialog.open(CancelYesDialogComponent, this.dialogConfig).afterClosed().subscribe(
       result => {
         if (result) {
-          console.log('Delete');
+          console.log(alarm);
         }
       }
     );
+  }
+
+  read(alarm: StockAlarm) {
+    this.dialogConfig = {
+      width: '60%',
+      height: '90%',
+      data: {
+        alarm
+      }
+    };
+    this.dialog.open(StockAlarmDetailDialogComponent, this.dialogConfig).afterClosed().subscribe(result => {
+      console.log(alarm);
+    });
+  }
+
+  readAll() {
+  console.log('readAll');
   }
 }

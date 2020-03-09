@@ -3,8 +3,9 @@ import {Order} from './order.model';
 import {MatDialog} from '@angular/material';
 import {OrderCreationDialogComponent} from './order-creation-dialog.component';
 import {OrderService} from './order.service';
-import {OrderReadDialogComponent} from './order-read-dialog.component';
+import {OrderDetailDialogComponent} from './order-detail-dialog.component';
 import {OrderEditionDialogComponent} from './order-edition-dialog.component';
+import {CancelYesDialogComponent} from '../../core/cancel-yes-dialog.component';
 
 @Component({
   templateUrl: `orders.component.html`
@@ -13,6 +14,7 @@ import {OrderEditionDialogComponent} from './order-edition-dialog.component';
 export class OrdersComponent {
 
   order: Order;
+  pendingOrders: boolean = true;
 
   title = 'Orders management';
   columns = ['description', 'providerId', 'openingDate'];
@@ -35,13 +37,13 @@ export class OrdersComponent {
 
   create() {
     this.dialog.open(OrderCreationDialogComponent, {
-      width: '500px',
+      width: '600px',
     });
   }
 
   read(order: Order) {
-    this.dialog.open(OrderReadDialogComponent, {
-      width: '500px',
+    this.dialog.open(OrderDetailDialogComponent, {
+      width: '600px',
       data: {
         dialogTitle: order.description,
         orderData: order
@@ -51,7 +53,7 @@ export class OrdersComponent {
 
   update(order: Order) {
     this.dialog.open(OrderEditionDialogComponent, {
-      width: '500px',
+      width: '600px',
       data: {
         orderData: order
       }
@@ -59,7 +61,13 @@ export class OrdersComponent {
   }
 
   delete(order: Order) {
-    // TODO
+    this.dialog.open(CancelYesDialogComponent).afterClosed().subscribe(
+      result => {
+        if (result) {
+          console.log('delete');
+        }
+      }
+    );
   }
 
 }

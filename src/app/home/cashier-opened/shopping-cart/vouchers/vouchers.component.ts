@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {Voucher} from './voucher.model';
-import {VoucherService} from './voucher.service';
+import {Voucher} from '../../../shared/voucher.model';
+import {VoucherService} from '../../../shared/voucher.service';
 import {VoucherCreationDialogComponent} from './voucher-creation-dialog.component';
 import {MatDialog} from '@angular/material';
 import {CancelYesDialogComponent} from '../../../../core/cancel-yes-dialog.component';
@@ -20,22 +20,28 @@ export class VouchersComponent {
   columns = ['id', 'creationDate', 'dateOfUse', 'value'];
   data: Voucher[];
 
+  minDate: Date;
+  maxDate: Date;
+
   constructor(private voucherService: VoucherService, private dialog: MatDialog) {
     this.voucher = {id: null, creationDate: null, dateOfUse: null, value: null};
-    this.searchVoucher = {id: null, firstDate: null, finalDate: null};
+    this.searchVoucher = {id: null, firstDate: this.minDate, finalDate: this.maxDate};
     this.data = null;
   }
 
   search() {
-    if ((this.searchVoucher.id == null) && (this.searchVoucher.firstDate == null) && (this.searchVoucher.finalDate == null) ) {
-      this.voucherService.readAll().subscribe(
-        data => this.data = data
-      );
-    } else {
-      this.voucherService.search(this.searchVoucher).subscribe(
-        data => this.data = data
-      );
+    if (this.minDate == null) {
+      this.minDate = new Date(2019, 1, 1);
+      this.searchVoucher.firstDate = this.minDate;
     }
+    if (this.maxDate == null) {
+      this.maxDate = new Date();
+      this.searchVoucher.finalDate = this.maxDate;
+    }
+
+    this.voucherService.search(this.searchVoucher).subscribe(
+      data => this.data = data
+    );
   }
 
   resetSearch() {
