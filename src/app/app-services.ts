@@ -23,7 +23,7 @@ export class AppServices {
     SystemService,
     UserService,
     VoucherService,
-    ProviderService
+    ProviderService,
     ArticlesFamilyViewService
   ];
 }
