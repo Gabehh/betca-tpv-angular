@@ -13,10 +13,10 @@ export class ProviderService {
   }
 
   search(providerSearch: ProviderSearch): Observable<Provider[]> {
-    return this.httpService.param('company', providerSearch.company)
-      .param('nif', providerSearch.nif.toString())
-      .param('phone', providerSearch.phone.toString())
-      .get(AppEndpoints.PROVIDERS);
+    this.httpService.param('company', providerSearch.company);
+    this.httpService.param('nif', providerSearch.nif);
+    this.httpService.param('phone', providerSearch.phone);
+    return this.httpService.get(AppEndpoints.PROVIDERS);
   }
 
   readAll(): Observable<Provider[]> {
