@@ -11,6 +11,7 @@ import {ArticlesFamilyViewService} from './home/cashier-opened/articles-family/a
 import {OrderService} from './home/orders/order.service';
 import {ProviderService} from './home/providers/provider.service';
 import {SendingsService} from './home/sendings/sendings.service';
+import {InvoiceService} from './home/shared/invoice.service';
 
 export class AppServices {
   public static SERVICES = [
@@ -26,6 +27,7 @@ export class AppServices {
     VoucherService,
     ProviderService,
     ArticlesFamilyViewService,
-    SendingsService
+    SendingsService,
+    InvoiceService
   ];
 }

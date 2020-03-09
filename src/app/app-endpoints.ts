@@ -22,5 +22,7 @@ export class AppEndpoints {
 
   static PROVIDERS = '/providers';
 
+  static INVOICES = '/invoices';
+
   static SENDINGS = '/sendings';
 }
