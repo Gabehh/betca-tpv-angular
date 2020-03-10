@@ -3,13 +3,16 @@ import {Component} from '@angular/core';
 import {Voucher} from '../../../shared/voucher.model';
 import {VoucherService} from '../../../shared/voucher.service';
 import {VoucherCreationDialogComponent} from './voucher-creation-dialog.component';
-import {MatDialog} from '@angular/material';
+import {MAT_DATE_LOCALE, MatDialog} from '@angular/material';
 import {CancelYesDialogComponent} from '../../../../core/cancel-yes-dialog.component';
 import {VoucherPrintDialogComponent} from './voucher-print-dialog.component';
 import {SearchVoucher} from './voucher-search.model';
 
 @Component({
-  templateUrl: `vouchers.component.html`
+  templateUrl: `vouchers.component.html`,
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+  ],
 })
 export class VouchersComponent {
 
@@ -25,18 +28,19 @@ export class VouchersComponent {
 
   constructor(private voucherService: VoucherService, private dialog: MatDialog) {
     this.voucher = {id: null, creationDate: null, dateOfUse: null, value: null};
-    this.searchVoucher = {id: null, firstDate: this.minDate, finalDate: this.maxDate};
     this.data = null;
+    this.maxDate = new Date();
+    this.minDate = new Date(2020, 1, 1);
+    this.searchVoucher = {id: null, firstDate: null, finalDate: null};
   }
 
   search() {
-    if (this.minDate == null) {
-      this.minDate = new Date(2019, 1, 1);
-      this.searchVoucher.firstDate = this.minDate;
+
+    if (this.searchVoucher.firstDate == null) {
+      this.searchVoucher.firstDate = new Date(2020, 1, 1);
     }
-    if (this.maxDate == null) {
-      this.maxDate = new Date();
-      this.searchVoucher.finalDate = this.maxDate;
+    if (this.searchVoucher.finalDate == null ) {
+      this.searchVoucher.finalDate = new Date();
     }
 
     this.voucherService.search(this.searchVoucher).subscribe(
@@ -45,7 +49,9 @@ export class VouchersComponent {
   }
 
   resetSearch() {
-    this.voucher = {id: null, creationDate: null, dateOfUse: null, value: null};
+    this.searchVoucher.firstDate = null;
+    this.searchVoucher.finalDate = null;
+    this.searchVoucher.id = null;
   }
 
 
@@ -57,7 +63,7 @@ export class VouchersComponent {
     );
   }
 
-  read(voucher: Voucher) {
+  print(voucher: Voucher) {
     this.dialog.open(VoucherPrintDialogComponent, {
       data: {
         voucher_object: voucher

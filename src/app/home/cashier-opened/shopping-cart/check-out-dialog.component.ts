@@ -87,8 +87,10 @@ export class CheckOutDialogComponent {
       data: {voucher_object: voucher}
     }).afterClosed().subscribe(
       p => {
-        this.ticketCreation.voucher = voucher.value;
-        this.totalPurchase = this.totalPurchase - this.ticketCreation.voucher;
+        if (voucher.value !== undefined) {
+          this.ticketCreation.voucher = voucher.value + this.ticketCreation.voucher;
+          this.totalPurchase = this.totalPurchase - voucher.value;
+        }
       }
     );
   }

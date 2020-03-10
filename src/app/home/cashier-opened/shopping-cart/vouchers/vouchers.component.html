@@ -38,5 +38,5 @@
   </mat-card-content>
 </mat-card>
 <!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
-<app-crud (create)="create()" (delete)="delete($event)" (read)="read($event)"
-          [columns]="columns" [data]="data" [title]="title" [updateAction]="false"></app-crud>
+<app-crud (create)="create()" (read)="print($event)" [updateAction]="false"
+          (delete)="delete($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>

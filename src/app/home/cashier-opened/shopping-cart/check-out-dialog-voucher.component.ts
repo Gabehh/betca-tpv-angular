@@ -35,14 +35,12 @@ export class CheckOutDialogVoucherComponent implements OnInit {
 
     this.voucherService.consume(this.voucher).subscribe(
       voucher => {
-        console.log(Date.now().valueOf() - new Date(voucher.dateOfUse).valueOf());
         if ((Date.now().valueOf() - new Date(voucher.dateOfUse).valueOf() < 500)) {
           this.voucher.value = voucher.value;
           this.message.open('Voucher consumed successfully. It has been applied.', null, {
             duration: 2000,
           });
         } else {
-          this.voucher.value = 0;
           this.message.open('Ups! That voucher has been used previously', null, {
             duration: 2000,
           });
@@ -52,5 +50,6 @@ export class CheckOutDialogVoucherComponent implements OnInit {
         duration: 2000,
       })
     );
+    this.dialogRef.close(this.dialog);
   }
 }
