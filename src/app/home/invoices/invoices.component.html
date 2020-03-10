@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>Search</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="searchInvoice.mobile" matInput placeholder="Mobile">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>From Date</mat-label>
+      <input #fromDate="ngModel"
+             [(ngModel)]="searchInvoice.fromDate"
+             [matDatepicker]="fromDate"
+             matInput>
+      <mat-datepicker #fromDate>
+      </mat-datepicker>
+    </mat-form-field>
+    <mat-datepicker-toggle [for]="fromDate"></mat-datepicker-toggle>
+    <mat-form-field>
+      <mat-label>To Date</mat-label>
+      <input #toDate="ngModel"
+             [(ngModel)]="searchInvoice.toDate"
+             [matDatepicker]="toDate"
+             matInput>
+      <mat-datepicker #toDate>
+      </mat-datepicker>
+    </mat-form-field>
+    <mat-datepicker-toggle [for]="toDate"></mat-datepicker-toggle>
+    <button (click)="search()" color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+<app-crud (read)="print($event)" [columns]="columns" [createAction]="false" [data]="data"
+          [deleteAction]="false" [title]="title" [updateAction]="false"></app-crud>

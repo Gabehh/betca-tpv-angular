@@ -20,6 +20,7 @@ export class ArticlesCreationDialogComponent {
   };
   tax: number;
   editMode: boolean;
+
   constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialog: MatDialog,
               private dialogRef: MatDialogRef<ArticlesCreationDialogComponent>,
               private message: MatSnackBar, private articleService: ArticleService) {

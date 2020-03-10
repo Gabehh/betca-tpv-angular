@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockAlarmSearchComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
   searchWarning() {
     console.log('search Warning');
   }

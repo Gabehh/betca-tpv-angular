@@ -41,7 +41,7 @@ export class OrderCreationDialogComponent {
     if (index > -1) {
       this.order.orderLines.splice(index, 1);
     }
-    this.data = [... this.order.orderLines];
+    this.data = [...this.order.orderLines];
   }
 
 }

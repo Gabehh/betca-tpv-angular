@@ -82,7 +82,7 @@
     <mat-icon>playlist_add_check</mat-icon>
     <span>Ticket tracking</span>
   </button>
-  <button disabled="true" mat-menu-item routerLink="">
+  <button mat-menu-item routerLink="/home/invoices">
     <mat-icon>receipt</mat-icon>
     <span>Invoices</span>
   </button>
@@ -96,7 +96,7 @@
   </button>
 </mat-menu>
 <mat-menu #products="matMenu">
-  <button mat-menu-item disabled="false" routerLink="/home/articles">
+  <button disabled="false" mat-menu-item routerLink="/home/articles">
     <mat-icon>view_list</mat-icon>
     <span>Articles</span>
   </button>
@@ -142,6 +142,10 @@
   <button mat-menu-item routerLink="/home/customer-discount">
     <mat-icon>money_off</mat-icon>
     <span>Customer Discount</span>
+  </button>
+  <button mat-menu-item routerLink="/home/staff">
+    <mat-icon>people</mat-icon>
+    <span>Staff Attendance</span>
   </button>
 </mat-menu>
 

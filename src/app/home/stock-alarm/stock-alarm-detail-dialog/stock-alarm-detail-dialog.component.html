@@ -4,29 +4,29 @@
     <form [formGroup]="stockAlarmFrom">
       <div class="container">
         <div class="form-group input-margin">
-          <mat-form-field >
-            <input matInput type="text" formControlName="description"
-                   placeholder="Description" required [readonly]="true"/>
+          <mat-form-field>
+            <input [readonly]="true" formControlName="description" matInput
+                   placeholder="Description" required type="text"/>
           </mat-form-field>
         </div>
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="text" formControlName="provider"
-                   placeholder="provider" [readonly]="true"/>
+            <input [readonly]="true" formControlName="provider" matInput
+                   placeholder="provider" type="text"/>
           </mat-form-field>
         </div>
       </div>
       <div class="container">
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="number" formControlName="warning"
-                   placeholder="Warning" [readonly]="true"/>
+            <input [readonly]="true" formControlName="warning" matInput
+                   placeholder="Warning" type="number"/>
           </mat-form-field>
         </div>
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="number" formControlName="critical"
-                   placeholder="Critical" [readonly]="true"/>
+            <input [readonly]="true" formControlName="critical" matInput
+                   placeholder="Critical" type="number"/>
           </mat-form-field>
         </div>
       </div>
@@ -34,13 +34,13 @@
   </mat-card-content>
 </mat-card>
 <mat-card-content>
-  <app-crud [data]="dataSource" [title]="title" [columns]="columns"
-            [createAction]="false"
+  <app-crud [columns]="columns" [createAction]="false" [data]="dataSource"
+            [deleteAction]="false"
             [readAction]="false"
-            [updateAction]="false"
-            [deleteAction]="false">
+            [title]="title"
+            [updateAction]="false">
   </app-crud>
 </mat-card-content>
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-dialog-close mat-raised-button>Cancel</button>
 </mat-dialog-actions>

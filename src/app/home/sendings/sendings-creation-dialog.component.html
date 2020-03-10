@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>Create SendingsInfo</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <input [(ngModel)]="newSendings.id" cdkFocusInitial matInput
+           placeholder="TikectID"
+           required type="string"/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+  <button mat-dialog-close mat-raised-button>Close</button>
+
+  <button (click)="createSendings()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create sendings</span>
+  </button>
+
+
+</mat-dialog-actions>

@@ -6,28 +6,28 @@
       <div class="container">
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="text" formControlName="description"
-                   placeholder="Description" required/>
+            <input formControlName="description" matInput placeholder="Description"
+                   required type="text"/>
           </mat-form-field>
         </div>
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="text" formControlName="provider"
-                   placeholder="provider"/>
+            <input formControlName="provider" matInput placeholder="provider"
+                   type="text"/>
           </mat-form-field>
         </div>
       </div>
       <div class="container">
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="number" formControlName="warning"
-                   placeholder="Warning"/>
+            <input formControlName="warning" matInput placeholder="Warning"
+                   type="number"/>
           </mat-form-field>
         </div>
         <div class="form-group input-margin">
           <mat-form-field>
-            <input matInput type="number" formControlName="critical"
-                   placeholder="Critical"/>
+            <input formControlName="critical" matInput placeholder="Critical"
+                   type="number"/>
           </mat-form-field>
         </div>
       </div>
@@ -35,20 +35,20 @@
     <form [formGroup]="articleAlarmFrom" class="container">
       <div class="form-group input-margin">
         <mat-form-field>
-          <input matInput type="number" formControlName="articleId" placeholder="articleId" required/>
+          <input formControlName="articleId" matInput placeholder="articleId" required type="number"/>
         </mat-form-field>
       </div>
       <div class="form-group input-margin">
         <mat-form-field>
-          <input matInput type="number" formControlName="warning" placeholder="warning" required/>
+          <input formControlName="warning" matInput placeholder="warning" required type="number"/>
         </mat-form-field>
       </div>
       <div class="form-group input-margin">
         <mat-form-field>
-          <input matInput type="number" formControlName="critical" placeholder="critical" required/>
+          <input formControlName="critical" matInput placeholder="critical" required type="number"/>
         </mat-form-field>
       </div>
-      <button mat-button (click)="addArticle(articleAlarmFrom)" color="primary">Add Article</button>
+      <button (click)="addArticle(articleAlarmFrom)" color="primary" mat-button>Add Article</button>
     </form>
   </mat-card-content>
 </mat-card>
@@ -69,8 +69,8 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
       <mat-cell *matCellDef="let alarmArticle">
-        <mat-icon class="mat-icon mat-warn material-icons" color="primary" role="button"
-                  (click)="delete(alarmArticle)">close
+        <mat-icon (click)="delete(alarmArticle)" class="mat-icon mat-warn material-icons" color="primary"
+                  role="button">close
         </mat-icon>
       </mat-cell>
     </ng-container>
@@ -79,8 +79,8 @@
   </mat-table>
 </mat-card-content>
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="true" color="primary"
-          (click)="createOrUpdate()">{{dialogMode}}
+  <button mat-dialog-close mat-raised-button>Cancel</button>
+  <button (click)="createOrUpdate()" [mat-dialog-close]="true" color="primary"
+          mat-raised-button>{{dialogMode}}
   </button>
 </mat-dialog-actions>

@@ -1,9 +1,10 @@
-.container{
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-.input-margin{
+
+.input-margin {
   margin-right: 20px;
 }

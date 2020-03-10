@@ -12,6 +12,7 @@ import {AppEndpoints} from '../../../app-endpoints';
 import {ArticleQuickCreationDialogComponent} from './article-quick-creation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {VoucherService} from '../../shared/voucher.service';
+import {InvoiceService} from '../../shared/invoice.service';
 
 @Injectable()
 export class ShoppingCartService {
@@ -26,7 +27,11 @@ export class ShoppingCartService {
   private shoppingCartSubject: Subject<Shopping[]> = new BehaviorSubject(undefined); // refresh auto
   private lastArticle: Article;
 
-  constructor(private dialog: MatDialog, private articleService: ArticleService, private httpService: HttpService, private voucherService: VoucherService) {
+  constructor(private dialog: MatDialog,
+              private articleService: ArticleService,
+              private httpService: HttpService,
+              private voucherService: VoucherService,
+              private invoiceService: InvoiceService) {
     for (let i = 0; i < ShoppingCartService.SHOPPING_CART_NUM; i++) {
       this.shoppingCartList.push([]);
     }
@@ -127,7 +132,7 @@ export class ShoppingCartService {
       map(() => this.reset())
     );
     let receipts = iif(() => voucher > 0, this.voucherService.createAndPrint(Math.abs(this.totalShoppingCart - ticketCreation.voucher)));
-    receipts = iif(() => requestedInvoice, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create invoice
+    receipts = iif(() => requestedInvoice, merge(receipts, this.invoiceService.create()), receipts);
     receipts = iif(() => requestedGiftTicket, merge(receipts, EMPTY), receipts); // TODO change EMPTY to create gift ticket
     return concat(ticket, receipts);
   }

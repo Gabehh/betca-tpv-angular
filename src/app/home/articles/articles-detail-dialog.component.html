@@ -17,7 +17,7 @@
 
   <br>
 
-  <mat-label><strong>Provider:</strong> {{article.provider}} (Until Creation of Provider READ) </mat-label>
+  <mat-label><strong>Provider:</strong> {{article.provider}} (Until Creation of Provider READ)</mat-label>
 
   <br>
 
@@ -30,7 +30,7 @@
   <br>
   <mat-label><strong>Tax:</strong> {{article.tax}} </mat-label>
   <br>
-  <mat-chip *ngIf="article.discontinued" selected [color]="color">
+  <mat-chip *ngIf="article.discontinued" [color]="color" selected>
     Discontinued!
   </mat-chip>
 </mat-dialog-content>

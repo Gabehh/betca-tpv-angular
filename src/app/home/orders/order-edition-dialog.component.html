@@ -6,15 +6,15 @@
            required type="String"/>
   </mat-form-field>
   <mat-form-field>
-    <input [(ngModel)]="order.providerId" matInput
+    <input [(ngModel)]="order.providerId" disabled
+           matInput
            placeholder="Provider Id"
-           disabled
            required type="String"/>
   </mat-form-field>
   <mat-divider></mat-divider>
   <h4 mat-dialog-title>Order's Articles</h4>
-  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [data]="data" [title]="title"
-            [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"></app-crud>
+  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [createAction]="false" [data]="data"
+            [deleteAction]="true" [readAction]="false" [title]="title" [updateAction]="false"></app-crud>
 </mat-dialog-content>
 
 <mat-dialog-actions>

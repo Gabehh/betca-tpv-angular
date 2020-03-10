@@ -10,6 +10,8 @@ import {AdvancedArticlesSearchService} from './home/cashier-opened/advanced-sear
 import {ArticlesFamilyViewService} from './home/cashier-opened/articles-family/articles-family-view.service';
 import {OrderService} from './home/orders/order.service';
 import {ProviderService} from './home/providers/provider.service';
+import {SendingsService} from './home/sendings/sendings.service';
+import {InvoiceService} from './home/shared/invoice.service';
 
 export class AppServices {
   public static SERVICES = [
@@ -24,6 +26,8 @@ export class AppServices {
     UserService,
     VoucherService,
     ProviderService,
-    ArticlesFamilyViewService
+    ArticlesFamilyViewService,
+    SendingsService,
+    InvoiceService
   ];
 }

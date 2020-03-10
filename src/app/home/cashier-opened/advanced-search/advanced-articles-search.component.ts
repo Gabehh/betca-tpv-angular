@@ -16,10 +16,11 @@ export class AdvancedArticlesSearchComponent {
     // this.user = {mobile: null, username: null};
     this.data = null;
   }
+
   search() {
-   /* this.advancedArticlesSearchService.readAll().subscribe(
-      data => this.data = data
-    );*/
-   this.data = this.advancedArticlesSearchService.readAll();
+    /* this.advancedArticlesSearchService.readAll().subscribe(
+       data => this.data = data
+     );*/
+    this.data = this.advancedArticlesSearchService.readAll();
   }
 }

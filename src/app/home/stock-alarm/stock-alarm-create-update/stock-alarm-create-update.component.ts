@@ -1,7 +1,7 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatTableDataSource} from '@angular/material';
 import {FormControl, FormGroup} from '@angular/forms';
-import {StockAlarm, AlarmArticle} from '../stock-alarm.model';
+import {AlarmArticle, StockAlarm} from '../stock-alarm.model';
 
 @Component({
   selector: 'app-stock-alarm-create-dialog',

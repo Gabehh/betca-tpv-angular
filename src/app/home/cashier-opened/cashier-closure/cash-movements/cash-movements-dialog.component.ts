@@ -11,6 +11,7 @@ export class CashMovementsDialogComponent {
 
   cashMovements: CashierMovements = {cash: null, comment: undefined};
   operation: number;
+
   constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<CashMovementsDialogComponent>) {
 
   }

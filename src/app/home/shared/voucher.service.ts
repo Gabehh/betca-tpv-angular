@@ -14,9 +14,9 @@ export class VoucherService {
 
   search(searchVoucher: SearchVoucher): Observable<Voucher[]> {
     return this.httpService.param('id', searchVoucher.id)
-        .param('firstDate', searchVoucher.firstDate.toISOString())
-        .param('finalDate', searchVoucher.finalDate.toISOString())
-        .get(AppEndpoints.VOUCHERS);
+      .param('firstDate', searchVoucher.firstDate.toISOString())
+      .param('finalDate', searchVoucher.finalDate.toISOString())
+      .get(AppEndpoints.VOUCHERS);
   }
 
   create(voucher: Voucher): Observable<Voucher> {

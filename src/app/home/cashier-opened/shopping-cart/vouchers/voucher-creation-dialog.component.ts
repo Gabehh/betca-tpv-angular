@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 export class VoucherCreationDialogComponent implements OnInit {
 
-  newVoucher: Voucher = {value: null, id: null, dateOfUse: null, creationDate: null };
+  newVoucher: Voucher = {value: null, id: null, dateOfUse: null, creationDate: null};
   createVoucherForm: FormGroup;
   submitted = false;
 
@@ -34,11 +34,11 @@ export class VoucherCreationDialogComponent implements OnInit {
     this.voucherService.create(this.newVoucher).subscribe(
       () => this.dialog.closeAll()
       , () => this.message.open('Ups, something bad happened. The voucher should have a value major than 0 and minor than 1000', null, {
-          duration: 2000,
-        })
+        duration: 2000,
+      })
       , () => this.message.open('Voucher created successfully', null, {
-          duration: 2000,
-        })
-      );
+        duration: 2000,
+      })
+    );
   }
 }
