@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {Article} from '../shared/article.model';
 import {MatDialog} from '@angular/material';
 import {ArticlesCreationDialogComponent} from './articles-creation-dialog.component';
-import {EMPTY, from, Observable, of, range, throwError, timer} from 'rxjs';
-import {delay, take} from 'rxjs/operators';
 import {ArticlesMocksService} from './articles-mocks.service';
 import {ArticlesDetailDialogComponent} from './articles-detail-dialog.component';
 import {ArticleService} from '../shared/article.service';
@@ -49,19 +47,23 @@ export class ArticlesAdminComponent {
   read(article: Article) {
     // TODO
     this.dialog.open(ArticlesDetailDialogComponent,
-      {data: {
+      {
+        data: {
           code: article.code
-        }}
+        }
+      }
     );
   }
 
   update(article: Article) {
     this.isEdit = true;
     this.dialog.open(ArticlesCreationDialogComponent,
-      {data: {
-        code: article.code,
-        isEdit: this.isEdit
-      }}
+      {
+        data: {
+          code: article.code,
+          isEdit: this.isEdit
+        }
+      }
     ).afterClosed().subscribe(
       result => {
         this.search();

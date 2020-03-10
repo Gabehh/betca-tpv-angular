@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '../../../core/http.service';
-import {Observable} from 'rxjs';
-import {ArticleFamilyView} from './articles-family-view.model';
-import {AppEndpoints} from '../../../app-endpoints';
 
 
 @Injectable()

@@ -5,7 +5,7 @@
            placeholder="Description"
            required type="String"/>
   </mat-form-field>
-<br>
+  <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
            placeholder="Price"
@@ -32,7 +32,7 @@
   <br>
   <mat-form-field>
     <mat-label>Tax</mat-label>
-    <mat-select [(value)]="newArticle.tax"  required type="number">
+    <mat-select [(value)]="newArticle.tax" required type="number">
       <mat-option value="FREE">FREE</mat-option>
       <mat-option value="SUPER_REDUCED">SUPER_REDUCED</mat-option>
       <mat-option value="REDUCED">REDUCED</mat-option>
@@ -45,11 +45,11 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button *ngIf="editMode == false" (click)="createArticle()" color="primary" mat-raised-button>
+  <button (click)="createArticle()" *ngIf="editMode == false" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Create Article</span>
   </button>
-  <button *ngIf="editMode" (click)="updateArticle()" color="primary" mat-raised-button>
+  <button (click)="updateArticle()" *ngIf="editMode" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Save Changes</span>
   </button>

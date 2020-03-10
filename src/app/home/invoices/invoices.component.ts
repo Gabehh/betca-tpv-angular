@@ -15,7 +15,7 @@ export class InvoicesComponent {
 
   constructor(private invoiceService: InvoiceService) {
     this.data = null;
-    this.searchInvoice = { mobile: null, toDate: null, fromDate: null};
+    this.searchInvoice = {mobile: null, toDate: null, fromDate: null};
   }
 
   search() {

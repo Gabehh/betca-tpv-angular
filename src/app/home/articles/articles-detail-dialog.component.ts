@@ -22,8 +22,8 @@ export class ArticlesDetailDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialog: MatDialog,
               private dialogRef: MatDialogRef<ArticlesDetailDialogComponent>,
               private message: MatSnackBar, private articleService: ArticleService) {
-      this.articleService.readOne(data.code).subscribe(
-        article => this.article = article
-      );
+    this.articleService.readOne(data.code).subscribe(
+      article => this.article = article
+    );
   }
 }

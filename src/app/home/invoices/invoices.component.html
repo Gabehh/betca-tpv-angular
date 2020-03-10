@@ -6,20 +6,20 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>From Date</mat-label>
-      <input matInput
-             #fromDate="ngModel"
+      <input #fromDate="ngModel"
+             [(ngModel)]="searchInvoice.fromDate"
              [matDatepicker]="fromDate"
-             [(ngModel)]="searchInvoice.fromDate">
+             matInput>
       <mat-datepicker #fromDate>
       </mat-datepicker>
     </mat-form-field>
     <mat-datepicker-toggle [for]="fromDate"></mat-datepicker-toggle>
     <mat-form-field>
       <mat-label>To Date</mat-label>
-      <input matInput
-             #toDate="ngModel"
+      <input #toDate="ngModel"
+             [(ngModel)]="searchInvoice.toDate"
              [matDatepicker]="toDate"
-             [(ngModel)]="searchInvoice.toDate">
+             matInput>
       <mat-datepicker #toDate>
       </mat-datepicker>
     </mat-form-field>
@@ -32,5 +32,5 @@
     </button>
   </mat-card-content>
 </mat-card>
-<app-crud [createAction]="false" [deleteAction]="false" [updateAction]="false" (read)="print($event)"
-          [columns]="columns" [data]="data" [title]="title"></app-crud>
+<app-crud (read)="print($event)" [columns]="columns" [createAction]="false" [data]="data"
+          [deleteAction]="false" [title]="title" [updateAction]="false"></app-crud>

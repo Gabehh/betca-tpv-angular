@@ -22,10 +22,10 @@
            placeholder="Required amount"
            required type="String"/>
   </mat-form-field>
-  <button mat-raised-button (click)="addOrderLine()">+</button>
+  <button (click)="addOrderLine()" mat-raised-button>+</button>
 
-  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [data]="data" [title]="title"
-            [createAction]="false" [readAction]="false" [updateAction]="false" [deleteAction]="true"></app-crud>
+  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [createAction]="false" [data]="data"
+            [deleteAction]="true" [readAction]="false" [title]="title" [updateAction]="false"></app-crud>
 </mat-dialog-content>
 
 <mat-dialog-actions>

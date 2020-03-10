@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {Voucher} from '../../../shared/voucher.model';
 import {VoucherService} from '../../../shared/voucher.service';

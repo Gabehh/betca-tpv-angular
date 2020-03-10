@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {Sendings} from './sendings.model';
 import {SendingsService} from './sendings.service';
 import {MatDialog} from '@angular/material';

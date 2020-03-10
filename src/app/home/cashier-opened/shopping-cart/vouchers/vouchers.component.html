@@ -6,24 +6,24 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>First Date</mat-label>
-      <input matInput
-             #firstDate="ngModel"
-             [matDatepicker]="firstDate"
+      <input #firstDate="ngModel"
              [(ngModel)]="searchVoucher.firstDate"
+             [matDatepicker]="firstDate"
+             [max]="maxDate"
              [min]="minDate"
-             [max]="maxDate">
+             matInput>
       <mat-datepicker #firstDate>
       </mat-datepicker>
     </mat-form-field>
     <mat-datepicker-toggle [for]="firstDate"></mat-datepicker-toggle>
     <mat-form-field>
       <mat-label>Final Date</mat-label>
-      <input matInput
-             #finalDate="ngModel"
-             [matDatepicker]="finalDate"
+      <input #finalDate="ngModel"
              [(ngModel)]="searchVoucher.finalDate"
+             [matDatepicker]="finalDate"
+             [max]="maxDate"
              [min]="minDate"
-             [max]="maxDate">
+             matInput>
       <mat-datepicker #finalDate>
       </mat-datepicker>
     </mat-form-field>
@@ -38,5 +38,5 @@
   </mat-card-content>
 </mat-card>
 <!-- Default: [createAction]="true" [readAction]="true" [updateAction]="true" [deleteAction]="true"-->
-<app-crud (create)="create()" (read)="read($event)" [updateAction]="false"
-          (delete)="delete($event)" [columns]="columns" [data]="data" [title]="title"></app-crud>
+<app-crud (create)="create()" (delete)="delete($event)" (read)="read($event)"
+          [columns]="columns" [data]="data" [title]="title" [updateAction]="false"></app-crud>
