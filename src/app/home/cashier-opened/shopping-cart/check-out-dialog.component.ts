@@ -89,7 +89,7 @@ export class CheckOutDialogComponent {
       p => {
         if (voucher.value !== undefined) {
           this.ticketCreation.voucher = voucher.value + this.ticketCreation.voucher;
-          this.totalPurchase = this.totalPurchase - this.ticketCreation.voucher;
+          this.totalPurchase = this.totalPurchase - voucher.value;
         }
       }
     );
