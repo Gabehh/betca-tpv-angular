@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {StockAlarmService} from '../stock-alarm.service';
+import {StockAlarm} from '../stock-alarm.model';
 
 @Component({
   selector: 'app-stock-alarm-search',
@@ -7,22 +8,34 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./stock-alarm-search.component.css']
 })
 export class StockAlarmSearchComponent implements OnInit {
+  stockAlarm: any;
 
-  constructor() {
+  @Output() outer = new EventEmitter<StockAlarm>();
+
+  constructor(private stockAlarmService: StockAlarmService) {
   }
 
   ngOnInit() {
   }
 
   searchWarning() {
-    console.log('search Warning');
+    this.stockAlarmService.searchWarning().subscribe(result => {
+      this.stockAlarm = result;
+      this.outer.emit(this.stockAlarm);
+    });
   }
 
   searchCritical() {
-    console.log('search Critical');
+    this.stockAlarmService.searchCritical().subscribe(result => {
+      this.stockAlarm = result;
+      this.outer.emit(this.stockAlarm);
+    });
   }
 
   resetSearch() {
-    console.log('reset Search');
+    this.stockAlarmService.readAll().subscribe(result => {
+      this.stockAlarm = result;
+      this.outer.emit(this.stockAlarm);
+    });
   }
 }

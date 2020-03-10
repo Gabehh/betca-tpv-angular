@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {StockAlarm} from './stock-alarm.model';
+import {StockAlarmService} from './stock-alarm.service';
 import {StockAlarmCreateUpdateComponent} from './stock-alarm-create-update/stock-alarm-create-update.component';
 import {StockAlarmDetailDialogComponent} from './stock-alarm-detail-dialog/stock-alarm-detail-dialog.component';
 import {CancelYesDialogComponent} from '../../core/cancel-yes-dialog.component';
@@ -18,7 +19,7 @@ export class StockAlarmComponent implements OnInit {
   data: StockAlarm[];
   dialogConfig: MatDialogConfig;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private alarmService: StockAlarmService) {
   }
 
   ngOnInit() {
@@ -48,7 +49,7 @@ export class StockAlarmComponent implements OnInit {
         alarm
       }
     };
-    this.dialog.open(StockAlarmDetailDialogComponent, this.dialogConfig).afterClosed().subscribe(result => {
+    this.dialog.open(StockAlarmCreateUpdateComponent, this.dialogConfig).afterClosed().subscribe(result => {
       console.log('Update');
     });
   }
@@ -56,15 +57,15 @@ export class StockAlarmComponent implements OnInit {
   delete(alarm: StockAlarm) {
     this.dialogConfig = {
       data: {
-        message: 'This stock-alarm will be deleted.',
-        question: 'Are you sure?',
         alarm
       }
     };
     this.dialog.open(CancelYesDialogComponent, this.dialogConfig).afterClosed().subscribe(
       result => {
         if (result) {
-          console.log(alarm);
+          this.alarmService.delete(alarm).subscribe(response => {
+            console.log(response);
+          });
         }
       }
     );
@@ -84,6 +85,17 @@ export class StockAlarmComponent implements OnInit {
   }
 
   readAll() {
-    console.log('readAll');
+    this.alarmService.readAll().subscribe(result => {
+      this.data = result;
+    });
+  }
+
+  searchData(alarm: any) {
+    if (alarm instanceof Array) {
+      this.data = alarm;
+    } else {
+      this.data = [];
+      this.data.push(alarm);
+    }
   }
 }
