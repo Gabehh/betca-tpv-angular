@@ -3,6 +3,7 @@ import {ArticleService} from './home/shared/article.service';
 import {CashierClosureService} from './home/cashier-opened/cashier-closure/cashier-closure.service';
 import {CashierService} from './home/shared/cashier.service';
 import {ShoppingCartService} from './home/cashier-opened/shopping-cart/shopping-cart.service';
+import {StockAlarmService} from './home/stock-alarm/stock-alarm.service';
 import {SystemService} from './home/system.service';
 import {UserService} from './home/users/user.service';
 import {VoucherService} from './home/shared/voucher.service';
@@ -22,6 +23,7 @@ export class AppServices {
     CashierService,
     OrderService,
     ShoppingCartService,
+    StockAlarmService,
     SystemService,
     UserService,
     VoucherService,

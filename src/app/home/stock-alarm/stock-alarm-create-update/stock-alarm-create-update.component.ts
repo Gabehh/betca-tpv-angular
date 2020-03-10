@@ -1,7 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatTableDataSource} from '@angular/material';
 import {FormControl, FormGroup} from '@angular/forms';
-import {AlarmArticle, StockAlarm} from '../stock-alarm.model';
+import {AlarmArticle, StockAlarm, StockAlarmCreate} from '../stock-alarm.model';
+import {ArticleService} from '../../shared/article.service';
+import {StockAlarmService} from '../stock-alarm.service';
+
 
 @Component({
   selector: 'app-stock-alarm-create-dialog',
@@ -12,13 +15,15 @@ export class StockAlarmCreateUpdateComponent implements OnInit {
 
   stockAlarm: StockAlarm;
   stockAlarmFrom: FormGroup;
+  stockAlarmCreate: StockAlarmCreate;
   articleAlarmFrom: FormGroup;
   dialogMode: string;
   dataSource: MatTableDataSource<AlarmArticle>;
   displayedColumns = ['articleId', 'warning', 'critical', 'action'];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {
-    this.dataSource = this.data.alarm.article;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog,
+              public alarmService: StockAlarmService, public articleService: ArticleService) {
+    this.dataSource = new MatTableDataSource<AlarmArticle>(this.data.alarm.article);
     this.dialogMode = this.data.dialogMode;
   }
 
@@ -42,23 +47,60 @@ export class StockAlarmCreateUpdateComponent implements OnInit {
 
   createOrUpdate() {
     this.data.dialogMode === 'create'
-      ? this.create(this.stockAlarmFrom, this.articleAlarmFrom)
-      : this.update(this.stockAlarmFrom, this.articleAlarmFrom);
+      ? this.create(this.stockAlarmFrom)
+      : this.update(this.stockAlarmFrom);
   }
 
-  create(stockAlarmFrom: FormGroup, articleAlarmFrom: FormGroup) {
-    console.log(stockAlarmFrom.value, articleAlarmFrom.value);
+  create(stockAlarmFrom: FormGroup) {
+    this.stockAlarmCreate = {
+      description: stockAlarmFrom.controls.description.value,
+      provider: stockAlarmFrom.controls.provider.value,
+      warning: stockAlarmFrom.controls.warning.value,
+      critical: stockAlarmFrom.controls.critical.value,
+      article : this.dataSource.data
+    };
+    this.alarmService.create(this.stockAlarmCreate).subscribe(result => {
+      console.log(result);
+    });
   }
 
-  update(stockAlarmFrom: FormGroup, articleAlarmFrom: FormGroup) {
-    console.log(stockAlarmFrom.value, articleAlarmFrom.value);
-  }
-
-  delete(alarmArticle) {
-    console.log(alarmArticle.value);
+  update(stockAlarmFrom: FormGroup) {
+    this.stockAlarmCreate = {
+      description: stockAlarmFrom.controls.description.value,
+      provider: stockAlarmFrom.controls.provider.value,
+      warning: stockAlarmFrom.controls.warning.value,
+      critical: stockAlarmFrom.controls.critical.value,
+      article : this.dataSource.data
+    };
+    this.alarmService.update(this.stockAlarmCreate).subscribe(result => {
+      console.log(result);
+    });
   }
 
   addArticle(articleAlarmFrom: FormGroup) {
-    console.log(articleAlarmFrom.value);
+    this.articleService.readOne(articleAlarmFrom.controls.articleId.value).subscribe(
+      result => {
+        const repeat = this.dataSource.data.some(item => {
+          if (item.articleId === Number(result.code)) {
+            return true;
+          }
+        });
+        if (repeat) {
+          console.log('exist');
+        } else {
+          this.dataSource.data.push(articleAlarmFrom.value);
+          this.dataSource = new MatTableDataSource(this.dataSource.data);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  delete(alarmArticle) {
+    const i = this.dataSource.data.indexOf(alarmArticle);
+    this.dataSource.data.splice(i, 1);
+    this.dataSource = new MatTableDataSource(this.dataSource.data);
   }
 }
