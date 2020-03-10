@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {InvoiceService} from '../shared/invoice.service';
-import {Invoice} from './invoice.model';
-import {SearchInvoice} from './searchInvoice.model';
+import {InvoiceService} from '../shared/invoice/invoice.service';
+import {Invoice} from '../shared/invoice/invoice.model';
+import {SearchInvoice} from '../shared/invoice/searchInvoice.model';
 
 @Component({
   templateUrl: `invoices.component.html`
@@ -9,17 +9,20 @@ import {SearchInvoice} from './searchInvoice.model';
 export class InvoicesComponent {
 
   title = 'Invoices';
-  columns = ['invoice ref.', 'ticket ref.', 'user mobile'];
+  columns = ['invoice', 'ticket', 'mobile'];
   data: Invoice[];
   searchInvoice: SearchInvoice;
 
   constructor(private invoiceService: InvoiceService) {
-    this.data = null;
+    this.data = [];
     this.searchInvoice = {mobile: null, toDate: null, fromDate: null};
   }
 
   search() {
     // TODO implement search with fields
+    this.invoiceService.readAll().subscribe(
+      data => this.data = data
+    );
   }
 
   resetSearch() {
