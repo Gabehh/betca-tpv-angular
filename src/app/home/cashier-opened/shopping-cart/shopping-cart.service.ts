@@ -12,7 +12,7 @@ import {AppEndpoints} from '../../../app-endpoints';
 import {ArticleQuickCreationDialogComponent} from './article-quick-creation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {VoucherService} from '../../shared/voucher.service';
-import {InvoiceService} from '../../shared/invoice.service';
+import {InvoiceService} from '../../shared/invoice/invoice.service';
 
 @Injectable()
 export class ShoppingCartService {
