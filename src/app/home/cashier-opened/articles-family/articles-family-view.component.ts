@@ -11,14 +11,17 @@ export class ArticlesFamilyViewComponent {
   articlesFamilyList: ArticleFamilyView[] = [];
 
   constructor(private articlesFamilyViewService: ArticlesFamilyViewService) {
-    // this.articlesFamilyViewService.readFamilyComposite('ROOT')
-    //   .subscribe(
-    //     data => {
-    //       console.log(data);
-    //       this.articlesFamilyList = data;
-    //     }
-    //   );
-    this.articlesFamilyList = this.articlesFamilyViewService.readFamilyComposite('ROOT');
+    console.log('constructor');
+
+    this.articlesFamilyViewService.readFamilyComposite('root')
+      .subscribe(
+        data => {
+          console.log('data is here');
+          console.log(data);
+          this.articlesFamilyList = data;
+        }
+      );
+    // this.articlesFamilyList = this.articlesFamilyViewService.readFamilyComposite('ROOT');
     console.log(this.articlesFamilyList);
   }
 }
