@@ -17,6 +17,12 @@ export class ArticlesFamilyViewService {
       .get(AppEndpoints.ARTICLES_FAMILY + AppEndpoints.ARTICLES_FAMILY_COMPOSITE);
   }
 
+  readArticlesFamilyList(familyDescription: string): Observable<ArticleFamilyView[]> {
+    return this.httpService
+      .get(AppEndpoints.ARTICLES_FAMILY + `/${familyDescription}`);
+  }
+
+
   // readFamilyComposite(familyDescription: string): any {
   //   if (familyDescription === 'ROOT') {
   //     return [

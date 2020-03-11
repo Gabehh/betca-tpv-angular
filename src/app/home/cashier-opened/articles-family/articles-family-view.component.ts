@@ -13,7 +13,7 @@ export class ArticlesFamilyViewComponent {
   constructor(private articlesFamilyViewService: ArticlesFamilyViewService) {
     console.log('constructor');
 
-    this.articlesFamilyViewService.readFamilyComposite('root')
+    this.articlesFamilyViewService.readArticlesFamilyList('root')
       .subscribe(
         data => {
           console.log('data is here');
