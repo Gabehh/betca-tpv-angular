@@ -107,7 +107,7 @@
       Checkout
       <mat-icon>euro_symbol</mat-icon>
     </button>
-    <button (click)="createBudget()" color="primary" disabled="true" mat-raised-button>
+    <button (click)="createBudget()" color="primary" [disabled]="isEmpty()" mat-raised-button>
       <mat-icon>description</mat-icon>
       Budget
     </button>
