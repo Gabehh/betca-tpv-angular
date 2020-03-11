@@ -6,7 +6,7 @@ import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.compo
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './home/users/users.component';
 import {WelcomeComponent} from './welcome.component';
-import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/cashier-closure-search.component';
+import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/search/cashier-closure-search.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
 import {ProvidersComponent} from './home/providers/providers.component';

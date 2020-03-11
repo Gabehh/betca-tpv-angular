@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>Search</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>From Date</mat-label>
+      <input #closureDate= "ngModel" [(ngModel)]="modelCashierClosureSearch.closureDate" [matDatepicker]="closureDate" matInput>
+      <mat-datepicker #closureDate></mat-datepicker>
+    </mat-form-field>
+    <mat-datepicker-toggle [for]="closureDate"></mat-datepicker-toggle>
+    <button color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+<app-crud [columns]="columns" [createAction]="false" [data]="data" [deleteAction]="false" [title]="title" [updateAction]="false"></app-crud>
