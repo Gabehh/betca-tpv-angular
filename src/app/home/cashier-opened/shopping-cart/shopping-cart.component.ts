@@ -5,7 +5,7 @@ import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ShoppingCartService} from './shopping-cart.service';
 import {Shopping} from './shopping.model';
 import {CheckOutDialogComponent} from './check-out-dialog.component';
-import {BudgetCreation} from './budget-creation.model';
+import {BudgetDialogComponent} from './budget-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,8 +16,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   displayedColumns = ['id', 'description', 'retailPrice', 'amount', 'discount', 'total', 'actions'];
   dataSource: MatTableDataSource<Shopping>;
-
-  budgetCreation: BudgetCreation;
 
   private subscriptionDataSource: Subscription;
   @ViewChild('code', {static: true}) private elementRef: ElementRef;
@@ -33,7 +31,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.elementRef.nativeElement.focus();
-    this.budgetCreation = { shoppingCart: null};
   }
 
   totalShoppingCart(): number {
@@ -140,10 +137,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   createBudget() {
-    this.budgetCreation.shoppingCart = this.shoppingCartService.getShoppingCart()
-    this.shoppingCartService.createBudget(this.budgetCreation).subscribe(
+    this.dialog.open(BudgetDialogComponent).afterClosed().subscribe(
       () => {
-      }, () => this.dialog.closeAll()
+        this.dialog.closeAll();
+      }
       , () => this.dialog.closeAll()
     );
     // TODO create budget
