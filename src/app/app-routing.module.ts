@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {CashierClosedComponent} from './home/cashier-closed/cashier-closed.component';
 import {CashierOpenedComponent} from './home/cashier-opened/cashier-opened.component';
 import {HomeComponent} from './home/home.component';
 import {UsersComponent} from './home/users/users.component';
+import {StaffComponent} from './home/staff/staff.component';
 import {WelcomeComponent} from './welcome.component';
 import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/cashier-closure-search.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
@@ -30,6 +30,7 @@ const routes: Routes = [
       {path: 'orders', component: OrdersComponent},
       {path: 'providers', component: ProvidersComponent},
       {path: 'users', component: UsersComponent},
+      {path: 'staff', component: StaffComponent},
       {path: 'vouchers', component: VouchersComponent},
       {path: 'sendings', component: SendingsComponent},
       {path: 'stock-alarm', component: StockAlarmComponent},

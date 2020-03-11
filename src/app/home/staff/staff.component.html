@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-title>Search</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input [(ngModel)]="staff.mobile" matInput placeholder="Mobile">
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="month" matInput placeholder="Month:02-2020">
+    </mat-form-field>
+    <button (click)="search()" color="primary" mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button (click)="resetSearch()" color="primary" mat-mini-fab>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<app-crud [columns]="columns" [data]="data" [title]="title"></app-crud>
+
