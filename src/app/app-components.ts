@@ -10,7 +10,7 @@ import {WelcomeComponent} from './welcome.component';
 import {ArticleQuickCreationDialogComponent} from './home/cashier-opened/shopping-cart/article-quick-creation-dialog.component';
 import {CashierClosureDialogComponent} from './home/cashier-opened/cashier-closure/cashier-closure-dialog.component';
 import {CheckOutDialogComponent} from './home/cashier-opened/shopping-cart/check-out-dialog.component';
-import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/cashier-closure-search.component';
+import {CashierClosureSearchComponent} from './home/cashier-opened/cashier-closure/search/cashier-closure-search.component';
 import {CustomerDiscountComponent} from './home/customer-discount/customer-discount.component';
 import {ArticlesAdminComponent} from './home/articles/articles-admin.component';
 import {VouchersComponent} from './home/cashier-opened/shopping-cart/vouchers/vouchers.component';
