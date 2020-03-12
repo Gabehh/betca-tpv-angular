@@ -4,6 +4,7 @@ import {Article} from '../shared/article.model';
 import {ArticleService} from '../shared/article.service';
 
 @Component({
+  styleUrls: ['articles-creation-dialog.component.css'],
   templateUrl: 'articles-creation-dialog.component.html'
 })
 
@@ -38,7 +39,10 @@ export class ArticlesCreationDialogComponent {
 
   updateArticle() {
     this.articleService.update(this.newArticle.code, this.newArticle).subscribe(
-      () => this.dialog.closeAll()
+      (data) => {
+        this.newArticle = data;
+        this.dialog.closeAll();
+      }
       , () => this.message.open('Ups, something bad happened.', null, {
         duration: 2000,
       })

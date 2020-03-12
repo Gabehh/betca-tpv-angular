@@ -1,36 +1,37 @@
 <h3 mat-dialog-title>Article</h3>
 <mat-dialog-content>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.description" cdkFocusInitial matInput
+
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newArticle.description"  cdkFocusInitial matInput
            placeholder="Description"
            required type="String"/>
   </mat-form-field>
   <br>
-  <mat-form-field>
-    <input [(ngModel)]="newArticle.retailPrice" cdkFocusInitial matInput
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newArticle.retailPrice"  matInput
            placeholder="Price"
            required type="number"/>
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <input [(ngModel)]="newArticle.reference" matInput
            placeholder="Reference"
            required type="String"/>
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <input [(ngModel)]="newArticle.provider" matInput
            placeholder="Proveedor"
            required type="String"/>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input [(ngModel)]="newArticle.stock" cdkFocusInitial matInput
+    <input [(ngModel)]="newArticle.stock"  matInput
            placeholder="Stock"
            required type="number"/>
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <mat-label>Tax</mat-label>
     <mat-select [(value)]="newArticle.tax" required type="number">
       <mat-option value="FREE">FREE</mat-option>

@@ -23,7 +23,14 @@ export class ArticleService {
     return this.httpService.successful().post(AppEndpoints.ARTICLES, article);
   }
 
-  update(code: string, article: Article) {
+  update(code: string, article: Article): Observable<Article> {
     return this.httpService.put(AppEndpoints.ARTICLES + '/' + code, article);
+  }
+
+  search(description: string, provider: string): Observable<Article[]> {
+    // TODO
+    this.httpService.param('description', description);
+    this.httpService.param('provider', provider);
+    return this.httpService.get(AppEndpoints.ARTICLES + '/' + 'search');
   }
 }
