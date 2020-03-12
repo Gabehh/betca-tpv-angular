@@ -24,19 +24,26 @@ export class ArticlesAdminComponent {
 
   search() {
     // TODO
-    this.articleService.readAll().subscribe(
-      data => this.data = data
-    );
+    if (this.article.description == null && this.article.provider == null) {
+      this.articleService.readAll().subscribe(
+        data => this.data = data
+      );
+    } else {
+      this.articleService.search(this.article.description, this.article.provider).subscribe(
+        data => this.data = data
+      );
+    }
   }
 
   resetSearch() {
-    // TODO
+    this.article = {description: null, provider: null, stock: null, retailPrice: null, discontinued: null, reference: null, code: null};
   }
 
   create() {
     this.isEdit = false;
     this.dialog.open(ArticlesCreationDialogComponent,
       {
+        width: '500px',
         data: {
           isEdit: this.isEdit
         }
@@ -48,6 +55,7 @@ export class ArticlesAdminComponent {
     // TODO
     this.dialog.open(ArticlesDetailDialogComponent,
       {
+        width: '400px',
         data: {
           code: article.code
         }
@@ -59,6 +67,7 @@ export class ArticlesAdminComponent {
     this.isEdit = true;
     this.dialog.open(ArticlesCreationDialogComponent,
       {
+        width: '500px',
         data: {
           code: article.code,
           isEdit: this.isEdit
