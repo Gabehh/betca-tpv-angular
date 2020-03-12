@@ -4,9 +4,11 @@ import {Observable} from 'rxjs';
 import {HttpService} from './http.service';
 import {Role} from './role.model';
 
+
 @Injectable()
 export class TokensService {
   static END_POINT = '/users/token';
+
 
   constructor(private httpService: HttpService) {
   }
