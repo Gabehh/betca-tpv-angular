@@ -17,9 +17,14 @@ export class TokensService {
 
   login(mobile: number, password: string): Observable<any> {
     this.nowTime = new Date();
-    // this.staffService.create();
-
-
+    const staff: Staff = {
+      id : null,
+      mobile,
+      month: this.nowTime.getMonth().toString(),
+      day: this.nowTime.getDay().toString(),
+      workHours: 0,
+      lastLoginTime: this.nowTime,
+    };
     return this.httpService.login(mobile, password, TokensService.END_POINT);
   }
 
