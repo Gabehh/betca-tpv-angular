@@ -1,4 +1,4 @@
-export interface SearchInvoice {
+export interface InvoiceFilter {
   mobile?: number;
   fromDate?: Date;
   toDate?: Date;
