@@ -5,6 +5,7 @@ import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ShoppingCartService} from './shopping-cart.service';
 import {Shopping} from './shopping.model';
 import {CheckOutDialogComponent} from './check-out-dialog.component';
+import {BudgetDialogComponent} from './budget-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -136,6 +137,12 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   createBudget() {
+    this.dialog.open(BudgetDialogComponent).afterClosed().subscribe(
+      () => {
+        this.dialog.closeAll();
+      }
+      , () => this.dialog.closeAll()
+    );
     // TODO create budget
   }
 

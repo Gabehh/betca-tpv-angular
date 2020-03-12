@@ -13,6 +13,7 @@ import {ArticleQuickCreationDialogComponent} from './article-quick-creation-dial
 import {MatDialog} from '@angular/material/dialog';
 import {VoucherService} from '../../shared/voucher.service';
 import {InvoiceService} from '../../shared/invoice/invoice.service';
+import {BudgetCreation} from './budget-creation.model';
 
 @Injectable()
 export class ShoppingCartService {
@@ -153,6 +154,17 @@ export class ShoppingCartService {
       shopping.updateDiscount();
     }
     this.synchronizeAll();
+  }
+
+  createBudget(budgetCreation: BudgetCreation): Observable<any> {
+    const budget = this.httpService.pdf().post(AppEndpoints.BUDGETS, budgetCreation).pipe(
+      map(() => this.reset())
+    );
+    return budget;
+  }
+
+  getShoppingCart() {
+    return this.shoppingCart;
   }
 
   private reset() {
