@@ -2,12 +2,12 @@
   <mat-card-title>Search</mat-card-title>
   <mat-card-content>
     <mat-form-field>
-      <input [(ngModel)]="searchInvoice.mobile" matInput placeholder="Mobile">
+      <input [(ngModel)]="filter.mobile" matInput placeholder="Mobile">
     </mat-form-field>
     <mat-form-field>
       <mat-label>From Date</mat-label>
       <input #fromDate="ngModel"
-             [(ngModel)]="searchInvoice.fromDate"
+             [(ngModel)]="filter.fromDate"
              [matDatepicker]="fromDate"
              matInput>
       <mat-datepicker #fromDate>
@@ -17,7 +17,7 @@
     <mat-form-field>
       <mat-label>To Date</mat-label>
       <input #toDate="ngModel"
-             [(ngModel)]="searchInvoice.toDate"
+             [(ngModel)]="filter.toDate"
              [matDatepicker]="toDate"
              matInput>
       <mat-datepicker #toDate>

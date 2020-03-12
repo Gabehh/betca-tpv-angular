@@ -1,32 +1,38 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {InvoiceService} from '../shared/invoice/invoice.service';
 import {Invoice} from '../shared/invoice/invoice.model';
-import {SearchInvoice} from '../shared/invoice/searchInvoice.model';
+import {InvoiceFilter} from '../shared/invoice/invoice-filters.model';
+
 
 @Component({
   templateUrl: `invoices.component.html`
 })
-export class InvoicesComponent {
+export class InvoicesComponent implements OnInit {
 
   title = 'Invoices';
   columns = ['invoice', 'ticket', 'mobile'];
   data: Invoice[];
-  searchInvoice: SearchInvoice;
+  filter: InvoiceFilter;
 
   constructor(private invoiceService: InvoiceService) {
     this.data = [];
-    this.searchInvoice = {mobile: null, toDate: null, fromDate: null};
+    this.filter = {mobile: null, toDate: null, fromDate: null};
   }
 
-  search() {
-    // TODO implement search with fields
+  ngOnInit() {
     this.invoiceService.readAll().subscribe(
       data => this.data = data
     );
   }
 
+  search() {
+    this.invoiceService.search(this.filter).subscribe(
+      data => this.data = data
+    );
+  }
+
   resetSearch() {
-    this.searchInvoice = {mobile: null, fromDate: null, toDate: null};
+    this.filter = {mobile: null, fromDate: null, toDate: null};
   }
 
   print(invoice: Invoice) {
