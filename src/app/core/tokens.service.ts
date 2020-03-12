@@ -3,28 +3,17 @@ import {Observable} from 'rxjs';
 
 import {HttpService} from './http.service';
 import {Role} from './role.model';
-import {StaffService} from '../home/staff/staff.service';
-import {Staff} from '../home/staff/staff.model';
+
 
 @Injectable()
 export class TokensService {
   static END_POINT = '/users/token';
-  private nowTime: Date;
-  staffService: StaffService;
+
 
   constructor(private httpService: HttpService) {
   }
 
   login(mobile: number, password: string): Observable<any> {
-    this.nowTime = new Date();
-    const staff: Staff = {
-      id : null,
-      mobile,
-      month: this.nowTime.getMonth().toString(),
-      day: this.nowTime.getDay().toString(),
-      workHours: 0,
-      lastLoginTime: this.nowTime,
-    };
     return this.httpService.login(mobile, password, TokensService.END_POINT);
   }
 
