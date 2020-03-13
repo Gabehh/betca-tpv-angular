@@ -54,9 +54,4 @@ export class ProvidersComponent {
   update(provider: Provider) {
     // TODO
   }
-
-  delete(provider: Provider) {
-    // TODO
-  }
-
 }
