@@ -1,0 +1,32 @@
+<h3 mat-dialog-title>Provider Details</h3>
+<mat-dialog-content>
+  <div *ngIf="provider.company">
+    <h4>Company name</h4>
+    <p>{{provider.company}}</p>
+  </div>
+  <div *ngIf="provider.nif">
+    <h4>NIF</h4>
+    <p>{{provider.nif}}</p>
+  </div>
+  <div *ngIf="provider.note">
+    <h4>Note</h4>
+    <p>{{provider.note}}</p>
+  </div>
+  <div *ngIf="provider.email">
+    <h4>E-mail</h4>
+    <p>{{provider.email}}</p>
+  </div>
+  <div *ngIf="provider.phone">
+    <h4>Phone number</h4>
+    <p>{{provider.phone}}</p>
+  </div>
+  <div *ngIf="provider.address">
+    <h4>Address</h4>
+    <p>{{provider.address}}</p>
+  </div>
+  <mat-slide-toggle [(ngModel)]="provider.active" disabled>Active</mat-slide-toggle>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button color="primary" mat-dialog-close mat-raised-button>Close</button>
+</mat-dialog-actions>

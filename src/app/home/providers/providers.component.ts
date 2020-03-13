@@ -4,6 +4,7 @@ import {ProviderCreationDialogComponent} from './provider-creation-dialog.compon
 import {MatDialog} from '@angular/material';
 import {ProviderService} from './provider.service';
 import {ProviderSearch} from './provider-search.model';
+import {ProviderDetailDialogComponent} from './provider-detail-dialog.component';
 
 @Component({
   templateUrl: 'providers.component.html'
@@ -48,7 +49,9 @@ export class ProvidersComponent {
   }
 
   read(provider: Provider) {
-    // TODO
+    this.dialog.open(ProviderDetailDialogComponent, {
+      data: {obj: provider}
+    });
   }
 
   update(provider: Provider) {
