@@ -19,11 +19,7 @@
            required type="String"/>
   </mat-form-field>
   <br>
-  <mat-form-field class="full-width">
-    <input [(ngModel)]="newArticle.provider" matInput
-           placeholder="Proveedor"
-           required type="String"/>
-  </mat-form-field>
+    <app-providers-dropdown></app-providers-dropdown>
   <br>
   <mat-form-field>
     <input [(ngModel)]="newArticle.stock"  matInput
